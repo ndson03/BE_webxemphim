@@ -11,15 +11,15 @@
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -55,8 +55,7 @@
               "RelativeToolTip": "Controllers\\HomeController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:32:49.853Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:32:49.853Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "Views\\Login\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-27T09:16:03.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-27T09:16:03.874Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "Views\\Login\\Login.cshtml",
               "ViewState": "AQIAAB4AAAAAAAAAAAAAAAUAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-02T03:27:35.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:27:35.827Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "Controllers\\LoginController.cs",
               "ViewState": "AQIAACYAAAAAAAAAAAAcwBgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-27T09:07:36.353Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-27T09:07:36.353Z"
             }
           ]
         }
