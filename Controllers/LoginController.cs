@@ -20,6 +20,36 @@ namespace NetflixClone.Controllers
             return View(db.users.ToList());
         }
 
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View(db.users.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            if (email.Equals("") || password.Equals(""))
+            {
+                ViewBag.Error = "Username or Password is empty!";
+                return View("Login");
+            }
+            else
+            {
+                var user = db.users.Where(u => u.email == email && u.password == password).FirstOrDefault();
+                if (user != null)
+                {
+                    Session["user"] = user.fullName;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.Error = "Invalid username or password!";
+                    return View("Login", user);
+                }
+            }
+        }
+
         // GET: Login/Details/5
         public ActionResult Details(int? id)
         {
