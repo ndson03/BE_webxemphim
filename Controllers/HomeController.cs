@@ -26,7 +26,7 @@ namespace NetflixClone.Controllers
                 "FROM [movieweb].[genres_movies] join [movieweb].[genre] on [movieweb].[genre].[genreID] = [movieweb].[genres_movies].[genreID] " +
                 "GROUP BY [genres_movies].[movieID];";
             string query = 
-                "SELECT [serieID] as 'id',[serieName] as 'serieName' ,[status],[tagline],[popularity],[posterPath],[backdropPath],[trailer],[tags] ,[adult],[numberOfSeasons],[overview] " +
+                "SELECT [serieID] as 'id',[serieName] as 'serieName',[status],[tagline],[popularity],[posterPath],[backdropPath],[trailer],[tags],[adult],[numberOfSeasons],[overview] " +
                 "FROM [movieweb].[series]  where serieID > 0  " +
                 "UNION " +
                 "SELECT [movieID] as 'id',[movieName] as 'serieName',[status],[tagline],[popularity],[posterPath],[backdropPath],[trailer],[tags],[adult],1,[overview] " +
@@ -48,7 +48,7 @@ namespace NetflixClone.Controllers
                 serieAdd.serieID = int.Parse(reader["id"].ToString());
                 serieAdd.serieName = reader["serieName"].ToString();
                 serieAdd.posterPath = "https://image.tmdb.org/t/p/w500" + reader["posterPath"].ToString();
-                
+                serieAdd.tags = reader["tags"].ToString();
                 if (reader["adult"].ToString() == "0") serieAdd.adult = "18+";
                 else serieAdd.adult = "All age";
                 if (int.TryParse(reader["numberOfSeasons"].ToString(), out int z)) serieAdd.numberOfSeasons = int.Parse(reader["numberOfSeasons"].ToString());
