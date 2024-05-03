@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\movies\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\movies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\shared\\movielist_top10.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\shared\\movielist_top10.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\views\\movies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\movies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\shared\\movielist_popular.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\shared\\movielist_popular.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\shared\\movielist_toprated.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\shared\\movielist_toprated.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:controllers\\moviescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|d:\\semester 6\\th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\sourcecode\\netflixclone\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9513E052-0415-48FB-B432-877C414CE25A}|NetflixClone.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,32 +34,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAADwAAAAEAAAA",
+              "DocumentIndex": 1,
+              "Title": "MovieList_Top10.cshtml",
+              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_Top10.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\MovieList_Top10.cshtml",
+              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_Top10.cshtml",
+              "RelativeToolTip": "Views\\Shared\\MovieList_Top10.cshtml",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAkwCQAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T04:01:34.428Z",
+              "WhenOpened": "2024-05-03T09:24:00.183Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\movies\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\movies\\Index.cshtml",
-              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\movies\\Index.cshtml",
-              "RelativeToolTip": "Views\\movies\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAiAAAA",
+              "DocumentIndex": 3,
+              "Title": "MovieList_Popular.cshtml",
+              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_Popular.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\MovieList_Popular.cshtml",
+              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_Popular.cshtml",
+              "RelativeToolTip": "Views\\Shared\\MovieList_Popular.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T03:35:54.873Z",
+              "WhenOpened": "2024-05-03T09:13:49.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovieList_TopRated.cshtml",
+              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_TopRated.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\MovieList_TopRated.cshtml",
+              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Shared\\MovieList_TopRated.cshtml",
+              "RelativeToolTip": "Views\\Shared\\MovieList_TopRated.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAgwDsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-03T08:46:59.53Z",
               "EditorCaption": ""
             },
             {
@@ -70,48 +83,35 @@
               "RelativeDocumentMoniker": "Views\\movies\\Details.cshtml",
               "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\movies\\Details.cshtml",
               "RelativeToolTip": "Views\\movies\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "ViewState": "AQIAAGQAAAAALjMzMzMrwIMAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-03T03:32:23.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "moviesController.cs",
-              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\moviesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\moviesController.cs",
-              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\moviesController.cs",
-              "RelativeToolTip": "Controllers\\moviesController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T03:32:02.561Z",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\movies\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\movies\\Index.cshtml",
+              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\movies\\Index.cshtml",
+              "RelativeToolTip": "Views\\movies\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-03T03:35:54.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAL4AAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-03T03:04:08.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAD8AAAAVAAAA",
+              "Title": "moviesController.cs",
+              "DocumentMoniker": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\moviesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\moviesController.cs",
+              "ToolTip": "D:\\Semester 6\\Th\u1EF1c t\u1EADp chuy\u00EAn ng\u00E0nh\\SourceCode\\NetflixClone\\Controllers\\moviesController.cs",
+              "RelativeToolTip": "Controllers\\moviesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:32:49.853Z",
+              "WhenOpened": "2024-05-03T08:42:06.231Z",
               "EditorCaption": ""
             }
           ]

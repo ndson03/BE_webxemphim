@@ -2632,6 +2632,10 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\movies\Details.cshtml" />
     <Content Include="Views\movies\Index.cshtml" />
+    <Content Include="Views\movies\Delete.cshtml" />
+    <Content Include="Views\Shared\MovieList_TopRated.cshtml" />
+    <Content Include="Views\Shared\MovieList_Popular.cshtml" />
+    <Content Include="Views\Shared\MovieList_Top10.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

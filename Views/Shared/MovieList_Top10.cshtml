@@ -1,0 +1,51 @@
+﻿@model List<NetflixClone.Models.movie>
+
+@{
+    // Order movies by vote average in descending order and take the top 10 movies
+    var topTenMovies = Model.OrderByDescending(m => m.voteAverage).Take(10);
+}
+
+<ul id="top-ten-slider" class="list-inline p-0 m-0 d-flex align-items-center">
+    @foreach (var movie in topTenMovies)
+    {
+        <li class="slick-bg">
+            <a href="#">
+                @{
+                    string path = "https://image.tmdb.org/t/p/w500/";
+                }
+                <img src="@Url.Content(path + movie.backdropPath)" class="img-fluid w-100" alt="" />
+                <h6 class="iq-title"><a href="#">@movie.movieName</a></h6>
+            </a>
+        </li>
+    }
+</ul>
+<div class="vertical_s">
+    <ul id="top-ten-slider-nav" class="list-inline p-0 m-0 d-flex align-items-center">
+        @foreach (var movie in topTenMovies)
+        {
+            <li>
+                <div class="block-images position-relative">
+                    <a href="#">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + movie.backdropPath)" class="img-fluid w-100" alt="" />
+                    </a>
+                    <div class="block-description">
+                        <h5>@movie.movieName</h5>
+                        <div class="movie-time d-flex align-items-center my-2">
+                            
+                            <span class="text-white">Vote average: @movie.voteAverage</span>
+                        </div>
+                        <div class="hover-buttons">
+                            <a href="#" class="btn btn-hover" tabindex="0">
+                                <i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
