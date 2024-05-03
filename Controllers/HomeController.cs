@@ -15,7 +15,7 @@ namespace NetflixClone.Controllers
         public ActionResult Index()
         {
             // Kết nối với cơ sở dữ liệu SQL Server
-            string connectionString = "data source=DESKTOP-2NFPMCV;initial catalog=movieweb;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionString = "data source=DESKTOP-TSJIK9V;initial catalog=movieweb;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework";
             string genreQuery = "SELECT \r\n    [genres_series].[serieID],\r\n    STRING_AGG([genreName], ',') AS genres\r\nFROM \r\n    [movieweb].[genres_series] join [movieweb].[genre] on [movieweb].[genre].[genreID] = [movieweb].[genres_series].[genreID]\r\nGROUP BY \r\n    [genres_series].[serieID]\r\nunion\r\nSELECT \r\n    [genres_movies].[movieID],\r\n    STRING_AGG([genreName], ',') AS genres\r\nFROM \r\n    [movieweb].[genres_movies] join [movieweb].[genre] on [movieweb].[genre].[genreID] = [movieweb].[genres_movies].[genreID]\r\nGROUP BY \r\n    [genres_movies].[movieID];";
             string query = "SELECT [serieID] as 'id',[serieName] as 'serieName'   \r\n,[status],[tagline],[popularity],[posterPath],[backdropPath],[trailer],[tags] ,[adult],[numberOfSeasons],[overview] \r\nFROM [movieweb].[series]  where serieID > 0  UNION \r\nSELECT  [movieID] as 'id',[movieName] as 'serieName'\r\n,[status],[tagline],[popularity],[posterPath],[backdropPath],[trailer],[tags],[adult],1,[overview]\r\nFROM [movieweb].[movie] where movieID > 0";
             string topquery = "select  top (1)  * from [movieweb].series\r\nwhere serieID>0";

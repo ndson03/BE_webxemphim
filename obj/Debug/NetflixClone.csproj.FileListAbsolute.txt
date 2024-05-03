@@ -164,3 +164,4 @@ F:\dh\ttcn\_prj\obj\Debug\NetflixClone.csproj.CoreCompileInputs.cache
 F:\dh\ttcn\_prj\obj\Debug\NetflixClone.csproj.CopyComplete
 F:\dh\ttcn\_prj\obj\Debug\NetflixClone.dll
 F:\dh\ttcn\_prj\obj\Debug\NetflixClone.pdb
+D:\Semester 6\Thực tập chuyên ngành\SourceCode\NetflixClone\bin\Content\MainPage\assests\co2.jpg
