@@ -36,44 +36,48 @@
 
     </div>
     <div class="original">
-        <h3 class="no-title">Netflix Originals</h3>
+        <h3 class="no-title">Popular</h3>
         <div class="no">
-            <ul >
+            <ul>
+
                 @foreach (var s in Model)
                 {
-                    <li style="display:inline-block">
-                        <a href="">
-                            <img src=@s.posterPath alt="">
-                            <div class="original-details">
-                                <div class="details-video">
-                                    <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
-                                    <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
-                                </div>
-                                <div class="details-info">
-                                    <div class="details-icon">
-                                        <div class="icon-one">
-                                            <i class="fa-solid fa-play icon-v"></i>
-                                            <i class="fa-solid fa-check icon-check"></i>
-                                        </div>
-                                        <div class="icon-two">
-                                            <i class="fa-solid fa-angle-down icon-down"></i>
-                                        </div>
+                    if (s != null && s.tags != null && s.tags.Contains("popular"))
+                    {
+                        <li style="display:inline-block">
+                            <a href="">
+                                <img src=@s.posterPath alt="">
+                                <div class="original-details">
+                                    <div class="details-video">
+                                        <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
+                                        <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
                                     </div>
-                                    <div class="details-more">
-                                        <span class="more-one">@s.adult</span>
-                                        <span class="more-two">@s.numberOfSeasons</span>
-                                        <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
-                                        <span class="more-hd">@s.serieName</span>
-                                    </div>
+                                    <div class="details-info">
+                                        <div class="details-icon">
+                                            <div class="icon-one">
+                                                <i class="fa-solid fa-play icon-v"></i>
+                                                <i class="fa-solid fa-check icon-check"></i>
+                                            </div>
+                                            <div class="icon-two">
+                                                <i class="fa-solid fa-angle-down icon-down"></i>
+                                            </div>
+                                        </div>
+                                        <div class="details-more">
+                                            <span class="more-one">@s.adult</span>
+                                            <span class="more-two">@s.numberOfSeasons</span>
+                                            <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
+                                            <span class="more-hd">@s.serieName</span>
+                                        </div>
 
-                                    <div class="details-category">
-                                        @s.genreID
+                                        <div class="details-category">
+                                            @s.genreID
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                        <p></p>
-                    </li style="display:inline-block">
+                            </a>
+                            <p></p>
+                        </li>
+                    }
                 }
             </ul>
         </div>
@@ -83,41 +87,45 @@
         <h3 class="no-title">Top Rated</h3>
         <div class="no">
             <ul>
+
                 @foreach (var s in Model)
                 {
-                    <li style="display:inline-block">
-                        <a href="">
-                            <img src=@s.posterPath alt="">
-                            <div class="original-details">
-                                <div class="details-video">
-                                    <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
-                                    <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
-                                </div>
-                                <div class="details-info">
-                                    <div class="details-icon">
-                                        <div class="icon-one">
-                                            <i class="fa-solid fa-play icon-v"></i>
-                                            <i class="fa-solid fa-check icon-check"></i>
-                                        </div>
-                                        <div class="icon-two">
-                                            <i class="fa-solid fa-angle-down icon-down"></i>
-                                        </div>
+                    if (s != null && s.tags != null && s.tags.Contains("topRated"))
+                    {
+                        <li style="display:inline-block">
+                            <a href="">
+                                <img src=@s.posterPath alt="">
+                                <div class="original-details">
+                                    <div class="details-video">
+                                        <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
+                                        <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
                                     </div>
-                                    <div class="details-more">
-                                        <span class="more-one">@s.adult</span>
-                                        <span class="more-two">@s.numberOfSeasons</span>
-                                        <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
-                                        <span class="more-hd">@s.serieName</span>
-                                    </div>
+                                    <div class="details-info">
+                                        <div class="details-icon">
+                                            <div class="icon-one">
+                                                <i class="fa-solid fa-play icon-v"></i>
+                                                <i class="fa-solid fa-check icon-check"></i>
+                                            </div>
+                                            <div class="icon-two">
+                                                <i class="fa-solid fa-angle-down icon-down"></i>
+                                            </div>
+                                        </div>
+                                        <div class="details-more">
+                                            <span class="more-one">@s.adult</span>
+                                            <span class="more-two">@s.numberOfSeasons</span>
+                                            <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
+                                            <span class="more-hd">@s.serieName</span>
+                                        </div>
 
-                                    <div class="details-category">
-                                        @s.genreID
+                                        <div class="details-category">
+                                            @s.genreID
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                        <p></p>
-                    </li>
+                            </a>
+                            <p></p>
+                        </li>
+                    }
                 }
             </ul>
         </div>
@@ -127,72 +135,82 @@
         <h3 class="no-title">Comedy Movies</h3>
         <div class="no">
             <ul>
+
                 @foreach (var s in Model)
                 {
-                    <li style="display:inline-block">
-                        <a href="">
-                            <img src=@s.posterPath alt="">
-                            <div class="original-details">
-                                <div class="details-video">
-                                    <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
-                                    <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
-                                </div>
-                                <div class="details-info">
-                                    <div class="details-icon">
-                                        <div class="icon-one">
-                                            <i class="fa-solid fa-play icon-v"></i>
-                                            <i class="fa-solid fa-check icon-check"></i>
-                                        </div>
-                                        <div class="icon-two">
-                                            <i class="fa-solid fa-angle-down icon-down"></i>
-                                        </div>
+                    if (s != null && s.genreID != null && s.genreID.Contains("Comedy"))
+                    {
+                        <li style="display:inline-block">
+                            <a href="">
+                                <img src=@s.posterPath alt="">
+                                <div class="original-details">
+                                    <div class="details-video">
+                                        <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
+                                        <!--<video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>-->
                                     </div>
-                                    <div class="details-more">
-                                        <span class="more-one">@s.adult</span>
-                                        <span class="more-two">@s.numberOfSeasons</span>
-                                        <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
-                                        <span class="more-hd">@s.serieName</span>
-                                    </div>
+                                    <div class="details-info">
+                                        <div class="details-icon">
+                                            <div class="icon-one">
+                                                <i class="fa-solid fa-play icon-v"></i>
+                                                <i class="fa-solid fa-check icon-check"></i>
+                                            </div>
+                                            <div class="icon-two">
+                                                <i class="fa-solid fa-angle-down icon-down"></i>
+                                            </div>
+                                        </div>
+                                        <div class="details-more">
+                                            <span class="more-one">@s.adult</span>
+                                            <span class="more-two">@s.numberOfSeasons</span>
+                                            <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
+                                            <span class="more-hd">@s.serieName</span>
+                                        </div>
 
-                                    <div class="details-category">
-                                        @s.genreID
+                                        <div class="details-category">
+                                            @s.genreID
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                        <p></p>
-                    </li>
-                }
-            </ul>
+                            </a>
+                            <p></p>
+                        </li>
+                        }
+                    }
+                </ul>
         </div>
     </div>
 
     <div class="original1">
-        <h3 class="no-title">Romantic Movies</h3><!--<a href=""><img src="~/Content/MainPage/assests/ro1.jpg" alt=""></a>-->
+        <h3 class="no-title">Romantic </h3><!--<a href=""><img src="~/Content/MainPage/assests/ro1.jpg" alt=""></a>-->
         <div class="no">
             <ul>
                 @foreach (var s in Model)
                 {
+                    if (s != null && s.genreID != null && s.genreID.Contains("Romance"))
+                    {
                     <li style="display:inline-block">
                         <a href="">
                             <img src=@s.posterPath alt="">
                         </a>
                     </li>
+                    }
                 }
             </ul>
         </div>
     </div>
     <div class="original1">
-        <h3 class="no-title">Action Movies</h3>
+        <h3 class="no-title">Action </h3>
         <div class="no">
             <ul>
                 @foreach (var s in Model)
                 {
-                    <li style="display:inline-block">
-                        <a href="">
-                            <img src=@s.posterPath alt="">
-                        </a>
-                    </li>
+                    if (s != null && s.genreID != null && s.genreID.Contains("Action"))
+                    {
+                        <li style="display:inline-block">
+                            <a href="">
+                                <img src=@s.posterPath alt="">
+                            </a>
+                        </li>
+                    }
                 }
             </ul>
         </div>
