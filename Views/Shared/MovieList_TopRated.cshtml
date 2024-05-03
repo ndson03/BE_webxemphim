@@ -3,7 +3,7 @@
 <ul class="favorites-slider list-inline row p-0 mb-0">
     @foreach (var movie in Model)
     {
-        if (movie.tags.Equals("topRated"))
+        if (movie != null && movie.tags != null && movie.tags.Equals("topRated"))
         {
             <!-- slide item 1 -->
             <li class="slide-item">
