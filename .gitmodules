@@ -1,0 +1,8 @@
+
+[submodule "Content/LandingPage_SignUp"]
+    path = Content/LandingPage_SignUp
+    url = <https://github.com/ndson03/BE_webxemphim.git>
+
+[submodule "Content/MainPage"]
+    path = Content/MainPage
+    url = <https://github.com/ndson03/BE_webxemphim.git>
