@@ -164,51 +164,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="icon" href="~/Content/MainPage/assests/nficon.ico"> -->
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
     <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
     <title>Netflix</title>
     <style>
+        /* Movie Item Styles */
+        .movie-item {
+            position: relative;
+            width: calc(100% / 6 - 10px); /* Adjusted width with decreased space */
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+            .movie-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        .movie-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            color: white;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .movie-item:hover .movie-details {
+            opacity: 1;
+        }
+
+        /* Slider Styles */
         .slider-container {
             position: relative;
             overflow: hidden;
+            margin-top: 100px; /* Adjusted margin to see full video background */
+            width: 100%;
         }
 
         .slider {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.8s ease-in-out;
+            overflow-x: scroll; /* Allow horizontal scrolling */
+            overflow-y: hidden;
+            white-space: nowrap; /* Prevent items from wrapping to the next line */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
         }
 
-            .slider img {
-                width: calc(100% / 6);
-                flex-shrink: 0;
+            .slider::-webkit-scrollbar {
+                display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
             }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 24px;
-            z-index: 1;
-        }
-
-        .slider-btn-left {
-            left: 0;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-
-        .slider-btn-right {
-            right: 0;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
 
         /* Video Styles */
         video {
@@ -219,44 +230,6 @@
             top: 0;
             left: 0;
             z-index: -1;
-        }
-
-        .original {
-            margin-top: 800px;
-        }
-
-        .movie-item {
-            position: relative;
-            margin-right: 20px; /* Adjust spacing between movie items */
-        }
-
-        .movie-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-            .movie-image img {
-                width: 100%;
-                height: auto;
-                transition: transform 0.3s ease;
-            }
-
-        .movie-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .movie-item:hover .movie-details {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
@@ -271,74 +244,112 @@
         <source src="~/Content/SingleMovie/video/Y2meta.app%20-%20TRANSFORMERS%20_%20Trailer%20A%20%20%2006.2023.mp4" type="video/mp4" />
     </video>
 
-    <div class="original">
-        <section id="iq-favorites">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 overflow-hidden">
-                        <div class="iq-main-header d-flex align-items-center justify-content-between">
-                            <h4 class="main-title">Top rated movies</h4>
-                            <a href="#" class="iq-view-all">View All</a>
-                        </div>
-                        <div class="favorite-contens slider-container">
-                            <div class="slider">
-                                @foreach (var movie in Model)
-                                {
-                                    if (movie.tags.Equals("topRated"))
-                                    {
-                                        <div class="movie-item">
-                                            <a id="link" href="@Url.Action("Details", "movies", new { id = movie.movieID })">
-                                                <div class="movie-image">
-                                                    <img src="@movie.posterPath" alt="@movie.movieName">
-                                                    <div class="movie-details">
-                                                        <h5>@movie.movieName</h5>
-                                                        <p>@movie.releaseDate</p>
-                                                        <!-- Add additional information here -->
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    }
-                                }
+    <!--Top rated movies-->
+    <div class="slider-container" style="margin-top: 700px">
+        <h4>TOP RATED MOVIES</h4>
+        <div class="slider">
+            @foreach (var movie in Model)
+            {
+                if (movie.tags.Equals("topRated"))
+                {
+                    <div class="movie-item">
+                        <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                            <img src="@movie.posterPath" alt="@movie.movieName">
+                            <div class="movie-details">
+                                <h5>@movie.movieName</h5>
+                                <p>@movie.releaseDate</p>
                             </div>
-                            <!-- No slider buttons -->
-                        </div>
+                        </a>
                     </div>
-                </div>
-            </div>
-        </section>
+                }
+
+            }
+        </div>
     </div>
 
+    <!--Now playing movies-->
+    <h4>NOW PLAYING MOVIES</h4>
+    <div class="slider-container">
+        <div class="slider">
+            @foreach (var movie in Model)
+            {
+                if (movie.tags.Equals("nowPlaying"))
+                {
+                    <div class="movie-item">
+                        <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                            <img src="@movie.posterPath" alt="@movie.movieName">
+                            <div class="movie-details">
+                                <h5>@movie.movieName</h5>
+                                <p>@movie.releaseDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
 
-    <!-- Add other sections as needed -->
+            }
+        </div>
+    </div>
+
+    <!--Highest budget movies-->
+    <h4>BLOCK-BUSTERS</h4>
+    <div class="slider-container">
+        <div class="slider">
+            @{
+                var moviesWithBudget = Model.Where(m => m.budget.HasValue).OrderByDescending(m => m.budget);
+            }
+            @foreach (var movie in moviesWithBudget)
+            {
+                <div class="movie-item">
+                    <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                        <img src="@movie.posterPath" alt="@movie.movieName">
+                        <div class="movie-details">
+                            <h5>@movie.movieName</h5>
+                            <p>@movie.releaseDate</p>
+                        </div>
+                    </a>
+                </div>
+
+            }
+        </div>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const slider = document.querySelector(".slider");
-            const slides = document.querySelectorAll(".slider img");
-            const totalSlides = slides.length;
-            let currentIndex = 0;
-            const slidesPerPage = 6;
+    const sliders = document.querySelectorAll(".slider");
 
-            function showSlide(index) {
-                const startPosition = index * -100 / slidesPerPage;
-                slider.style.transform = `translateX(${startPosition}%)`;
-            }
+    sliders.forEach(function (slider) {
+        const slides = slider.querySelectorAll(".movie-item");
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        const slidesPerPage = 6;
 
-            function nextSlide() {
-                currentIndex = (currentIndex + slidesPerPage < totalSlides) ? currentIndex + slidesPerPage : 0;
-                showSlide(currentIndex);
-            }
+        function showSlide(index) {
+            const slideWidth = slides[0].offsetWidth;
+            const startPosition = index * -slideWidth * (slidesPerPage / totalSlides);
+            slider.style.transform = `translateX(${startPosition}px)`;
+        }
 
-            function prevSlide() {
-                currentIndex = (currentIndex - slidesPerPage >= 0) ? currentIndex - slidesPerPage : totalSlides - slidesPerPage;
-                showSlide(currentIndex);
-            }
+        function nextSlide() {
+            currentIndex = (currentIndex + slidesPerPage < totalSlides) ? currentIndex + slidesPerPage : 0;
+            showSlide(currentIndex);
+        }
 
-            // Autoplay Slider
-            setInterval(nextSlide, 3000); // Change slide every 3 seconds
-        });
+        function prevSlide() {
+            currentIndex = (currentIndex - slidesPerPage >= 0) ? currentIndex - slidesPerPage : totalSlides - slidesPerPage;
+            showSlide(currentIndex);
+        }
+
+        // Autoplay Slider
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+        // Show all slides
+        showSlide(currentIndex);
+    });
+});
+
     </script>
+
+
 </body>
 </html>
 
