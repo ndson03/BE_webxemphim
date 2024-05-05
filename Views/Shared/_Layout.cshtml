@@ -284,7 +284,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <a href='@Url.Action("Logout", "Login")' class="iq-sub-card setting-dropdown">
+                                                    <a href='@Url.Action("Logout", "Login")' onclick="return confirmLogout()" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">
                                                                 <i class="fa fa-sign-out text-primary"></i>
@@ -395,5 +395,13 @@
 </body>
 
 </html>
-
+<!-- logout confirmation -->
+<script>
+    function confirmLogout() {
+        if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
+            return true;
+        }
+        return false;
+    }
+</script>
 
