@@ -1,0 +1,167 @@
+﻿@model IEnumerable<NetflixClone.Models.series>
+
+@{
+    ViewBag.Title = "Series page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.serieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.originalSerieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.firstAirDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lastAirDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tagline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.overview)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.homepage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.popularity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.voteAverage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.voteCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.posterPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.backdropPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trailer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numberOfSeasons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numberOfEpisodes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.runtime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.originalLanguage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genreID)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.serieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.originalSerieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstAirDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastAirDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tagline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.overview)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.homepage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.popularity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.voteAverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.voteCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.posterPath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.backdropPath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trailer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfSeasons)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfEpisodes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.runtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.originalLanguage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genreID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.serieID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.serieID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.serieID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
