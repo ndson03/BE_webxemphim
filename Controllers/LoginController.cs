@@ -50,6 +50,15 @@ namespace NetflixClone.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            // Xóa session của người dùng
+            Session.Remove("user");
+
+            // Chuyển hướng người dùng đến trang đăng nhập
+            return RedirectToAction("Login", "Login"); // Thay "TênController" bằng tên Controller của bạn
+        }
+
         // GET: Login/Details/5
         public ActionResult Details(int? id)
         {
