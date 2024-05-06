@@ -173,11 +173,13 @@
                                             <i class="fa fa-search"></i>
                                         </a>
                                         <div class="search-box iq-search-bar d-search">
-                                            <form action="#" class="searchbox">
+                                            <form action= "#" class="searchbox">
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="text search-input font-size-12"
-                                                           placeholder="type here to search..." />
-                                                    <i class="search-link fa fa-search"></i>
+                                                           id="searchInp"
+                                                           placeholder="type here to search..."
+                                                           onkeypress="checkEnterKey(event)"/>
+                                                    <i class="search-link fa fa-search" onclick="performSearch()"></i>
                                                 </div>
                                             </form>
                                         </div>
@@ -322,18 +324,21 @@
                                 <a href="#">
                                     <i>
                                         <fa class="fa fa-facebook"></fa>
+                                    
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i>
                                         <fa class="fa fa-youtube"></fa>
+                                    
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i>
                                         <fa class="fa fa-instagram"></fa>
+                                    
                                 </a>
                             </li>
                         </ul>
@@ -380,4 +385,20 @@
         return false;
     }
 </script>
+<!-- search -->
+<script>
+    function performSearch() {
+        var searchTerm = document.getElementById("searchInp").value;
+        if (searchTerm !== '') {
+            var searchUrl = '@Url.Action("Index", "Search")' + '?query=' + encodeURIComponent(searchTerm);
+            window.location.href = searchUrl;
+        }
+    }
 
+    function checkEnterKey(event) {
+        if (event.keyCode === 13) { // 13 là mã ASCII của phím "Enter"
+            event.preventDefault(); // Ngăn chặn hành động mặc định của phím "Enter" trong form
+            performSearch();
+        }
+    }
+</script>
