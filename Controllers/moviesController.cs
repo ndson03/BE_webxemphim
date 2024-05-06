@@ -27,20 +27,7 @@ namespace NetflixClone.Controllers
 
         public ActionResult PlayMovie()
         {
-            // Get the physical path to the test.html file within the project directory
-            string filePath = Server.MapPath("~/Views/movies/MovieResource/test.html");
-
-            // Check if the file exists
-            if (System.IO.File.Exists(filePath))
-            {
-                // Return the file as a FilePathResult
-                return File(filePath, "text/html");
-            }
-            else
-            {
-                // Handle the case where the file doesn't exist
-                return HttpNotFound("File not found");
-            }
+            return View();
         }
 
         // GET: movies/Details/5
