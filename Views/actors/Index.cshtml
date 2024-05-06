@@ -65,8 +65,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
 
         .item_add:hover {
-            background-color: inherit; /* Inherit background color from the layout */
-            color: inherit; /* Inherit text color from the layout */
+            background-color: darkred; /* Inherit background color from the layout */
+            color: black; /* Inherit text color from the layout */
         }
 
         /* Video Styles */
@@ -116,7 +116,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <p>Gender: @gender</p>
                             <!-- Add more details here -->
                         </div>
-                        <a href="@Url.Action("Details", "actors", new { id = actor.actorID })" class="cup item_add" style="margin-top: -15px; margin-bottom: 20px;"><span class=" item_price">View details <i> </i> </span></a>
+                        <a href="@Url.Action("Details", "actors", new { id = actor.actorID })" class="cup item_add" style="margin-top: -15px; margin-bottom: 20px; color:white; background-color: red"><span class=" item_price">View details <i> </i> </span></a>
                     </div>
                     <!---->
                 </div>

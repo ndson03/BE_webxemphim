@@ -5,95 +5,284 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<!doctype html>
+<html lang="zxx">
 
-<div>
-    <h4>actor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.actorName)
-        </dt>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Personal information</title>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/Content/CelebInfo/css/style-starter.css">
+    <!-- Template CSS -->
+    <link href="//fonts.googleapis.com/css?family=Spartan:400,500,600,700,900&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.actorName)
-        </dd>
+        .credit {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.birthday)
-        </dt>
+            .credit img {
+                width: 100px;
+                height: auto;
+                float: left;
+                margin-right: 20px;
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.birthday)
-        </dd>
+        .credit-content {
+            overflow: hidden;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.gender)
-        </dt>
+        .credit-title {
+            font-size: 20px;
+            margin-top: 0;
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.gender)
-        </dd>
+    </style>
+</head>
+<body>
+    <!-- /Homepage-->
+    <section class="w3l-banner-main">
+        <!-- //Header -->
+        <section class="banner-main-inf" id="section07">
+            <!--/banner-content-->
+            <div class="bannerhny-content text-center">
+                <div class="layer">
+                    <div class="bannerhnyinf">
+                        <h3>@Model.actorName</h3>
+                        @{
+                            string department = "";
+                            switch (Model.knownForDepartment)
+                            {
+                                case "Acting":
+                                    department = "Actor";
+                                    break;
+                                case "Directting":
+                                    department = "Director";
+                                    break;
+                                case "Prodution":
+                                    department = "Production Department";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        <h4 class="ban-t">@department <span class="typed-text"></span><span class="cursor">&nbsp</span></h4>
+                        <div class="scroll-button">
+                            <a href="#about" class="scroll">
+                                <div class="icon-scroll">
+                                    <div class="mouse">
+                                        <div class="wheel"></div>
+                                    </div>
+                                    <div class="icon-arrows">
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--//banner-content-->
+            </div>
+            </div>
+        </section>
+        <!-- //Homepage -->
+        <section class="w3l-content-w-photo-6" id="about">
+            <!-- /content-grids-->
+            <div class="content-photo-info py-5">
+                <div class="container py-lg-3">
+                    <!-- /row-->
+                    <div class="content-photo-grids row mt-lg-5 mt-4">
+                        <div class="photo-6-inf-left col-lg-6 pr-lg-4">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500";
+                            }
+                            <img src="@Url.Content(path + Model.profilePath)" class="img-fluid" alt="">
+                        </div>
+                        <div class="photo-6-inf-right col-lg-6 text-left pl-lg-5">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.placeOfBirth)
-        </dt>
+                            <h3 class="hny-title">
+                                About<span class="dot-1">.</span>
+                            </h3>
+                            <p>
+                                <h4>
+                                    @{
+                                        string gender;
+                                        if (Model.gender.Equals(1))
+                                        {
+                                            gender = "male";
+                                        }
+                                        else
+                                        {
+                                            gender = "female";
+                                        }
+                                    }
+                                    Gender: @gender
+                                </h4>
+                                <h4>Popularity rating: @Model.popularity</h4>
+                                <h4>IMDB ID: @Model.actorID</h4>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- //row-->
+                    <!-- Credits will be dynamically generated here -->
+                    <div class="container" id="creditsContainer">
+                        <!-- Credits will be dynamically generated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //content-grids-->
+    </section>
 
-        <dd>
-            @Html.DisplayFor(model => model.placeOfBirth)
-        </dd>
+</body>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.biography)
-        </dt>
+</html>
 
-        <dd>
-            @Html.DisplayFor(model => model.biography)
-        </dd>
+<script src="~/Content/CelebInfo/js/jquery-3.3.1.min.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<!--//-->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!--/scroll-down-JS-->
+<script>
+    $(function () {
+        $('a[href*=#]').on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500, 'linear');
+        });
+    });
+</script>
+<!--//scroll-down-JS-->
+<!-- /typig-text-->
+<script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
 
-        <dt>
-            @Html.DisplayNameFor(model => model.knownForDepartment)
-        </dt>
+    const textArray = [];
+    const typingDelay = 200;
+    const erasingDelay = 10;
+    const newTextDelay = 100; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
 
-        <dd>
-            @Html.DisplayFor(model => model.knownForDepartment)
-        </dd>
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+        }
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.popularity)
-        </dt>
+    function erase() {
+        if (charIndex > 0) {
+            // add class 'typing' if there's none
+            if (!cursorSpan.classList.contains("typing")) {
+                cursorSpan.classList.add("typing");
+            }
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, 0);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay);
+        }
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.popularity)
-        </dd>
+    document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
+        if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+</script>
+<!-- //typig-text-->
+<!-- for blog carousel slider -->
+<script src="~/Content/CelebInfo/js/owl.carousel1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#owl-demo2").owlCarousel({
+            items: 1,
+            lazyLoad: true,
+            autoPlay: true,
+            navigation: false,
+            navigationText: ["", ""],
+            rewindNav: false,
+            scrollPerPage: true,
+            pagination: false,
+            paginationNumbers: false,
 
-        <dt>
-            @Html.DisplayNameFor(model => model.profilePath)
-        </dt>
+        })
+    })
+</script>
 
-        <dd>
-            @Html.DisplayFor(model => model.profilePath)
-        </dd>
+<!-- Fetch actor's credits and dynamically generate HTML for display -->
+<script>
+    const actorId = @Model.actorID; // Actor ID from the model
+    const apiKey = '4c7a48492227a8ce26dceb363ea366cb'; // Your TMDB API key here
 
-        <dt>
-            @Html.DisplayNameFor(model => model.imdbID)
-        </dt>
+    // Fetch actor's credits from TMDB API
+    fetch(`https://api.themoviedb.org/3/person/${actorId}/combined_credits?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            // Function to generate HTML for each credit
+            function generateCreditsHTML(credits) {
+                let html = '';
+                credits.forEach(credit => {
+                    html += `
+                        <div class="credit">
+                            <img src="https://image.tmdb.org/t/p/w200/${credit.poster_path}" alt="${credit.title}">
+                            <div class="credit-content">
+                                <h2 class="credit-title">${credit.title}</h2>
+                                <p><strong>Character:</strong> ${credit.character ? credit.character : 'N/A'}</p>
+                                <p><strong>Release Date:</strong> ${credit.release_date}</p>
+                                <p><strong>Rating:</strong> ${credit.vote_average}/10 (${credit.vote_count} votes)</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                return html;
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.imdbID)
-        </dd>
+            // Select container element
+            const container = document.getElementById('creditsContainer');
 
-        <dt>
-            @Html.DisplayNameFor(model => model.originalName)
-        </dt>
+            // Generate HTML for credits and append to container
+            container.innerHTML = generateCreditsHTML(data.cast);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+</script>
 
-        <dd>
-            @Html.DisplayFor(model => model.originalName)
-        </dd>
+<!-- //for blog carousel slider -->
+<!-- jQuery-Photo-filter-lightbox-portfolio-plugin -->
+<script src="~/Content/CelebInfo/js/jquery-1.7.2.js"></script>
+<script src="~/Content/CelebInfo/js/jquery.quicksand.js"></script>
+<script src="~/Content/CelebInfo/js/script.js"></script>
+<script src="~/Content/CelebInfo/js/jquery.prettyPhoto.js"></script>
+<!-- //jQuery-Photo-filter-lightbox-portfolio-plugin -->
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.actorID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<script src="~/Content/CelebInfo/js/bootstrap.min.js"></script>
