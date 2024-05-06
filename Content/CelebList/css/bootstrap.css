@@ -733,6 +733,9 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
+.container{
+    margin: 0 auto;
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;
