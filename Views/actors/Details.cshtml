@@ -1,0 +1,99 @@
+﻿@model NetflixClone.Models.actor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>actor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.actorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.placeOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.placeOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.biography)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.biography)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.knownForDepartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.knownForDepartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.popularity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.popularity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profilePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imdbID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imdbID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.originalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.originalName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.actorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

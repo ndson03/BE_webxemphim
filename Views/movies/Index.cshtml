@@ -5,159 +5,6 @@
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
 
-@*
-    <!DOCTYPE html>
-
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="icon" href="~/Content/MainPage/assests/nficon.ico"> -->
-        <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
-        <link href="~/Content/MainPage/moviezone.css" rel="stylesheet" />
-        <title>Netflix</title>
-    </head>
-    <body>
-        <section class="container">
-            <div class="head">
-                <img src="~/Content/MainPage/assests/netflixlogo.png" alt="">
-            </div>
-        </section>
-        <div class="home-image">
-            <div class="home-image-text">
-                <img class="money" src="~/Content/MainPage/assests/monetharis.png" alt="">
-                <a class="play-btn" href="~/Content/MainPage/assests/MoneyH.mp4">
-                    <img src="~/Content/MainPage/assests/play.png" alt="">
-                    <span>Play</span>
-                </a>
-            </div>
-
-        </div>
-        <div class="original">
-            <h3 class="no-title">Popular</h3>
-            <section id="iq-favorites">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 overflow-hidden">
-                            <div class="iq-main-header d-flex align-items-center justify-content-between">
-                                <h4 class="main-title">Top rated movies</h4>
-                                <a href="#" class="iq-view-all">View All</a>
-                            </div>
-                            <div class="favorite-contens">
-                                @Html.Partial("MovieList_Popular", db.movies.ToList())
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="original2">
-            <h3 class="no-title">Top Rated</h3>
-            <section id="iq-favorites">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 overflow-hidden">
-                            <div class="iq-main-header d-flex align-items-center justify-content-between">
-                                <h4 class="main-title">Top rated movies</h4>
-                                <a href="#" class="iq-view-all">View All</a>
-                            </div>
-                            <div class="favorite-contens">
-                                @Html.Partial("MovieList_TopRated", db.movies.ToList())
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="original2">
-            <h3 class="no-title">Comedy Movies</h3>
-            <div class="no">
-                <ul>
-
-                    @foreach (var s in Model)
-                    {
-
-                        <li style="display:inline-block">
-                            <a id="link" href="@Url.Action("Details", "movies", new { id = s.movieID })">
-                                <img src=@s.posterPath alt="">
-                                <div class="original-details">
-                                    <div class="details-video">
-                                        <!-- nhiều vid thì lag nên comment tạm chứ chạy bt -->
-                                        <video src="~/Content/MainPage/assests/MoneyH.mp4" autoplay loop muted></video>
-                                    </div>
-                                    <div class="details-info">
-                                        <div class="details-icon">
-                                            <div class="icon-one">
-                                                <i class="fa-solid fa-play icon-v"></i>
-                                                <i class="fa-solid fa-check icon-check"></i>
-                                            </div>
-                                            <div class="icon-two">
-                                                <i class="fa-solid fa-angle-down icon-down"></i>
-                                            </div>
-                                        </div>
-                                        <div class="details-more">
-                                            <span class="more-one">@s.adult</span>
-                                            <span class="more-two">1</span>
-                                            <!-- cái ở dưới để tạm để biết phim nào do ảnh đang không chạy -->
-                                            <span class="more-hd">@s.movieName</span>
-                                        </div>
-
-                                        <div class="details-category">
-                                            @s.genreID
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <p></p>
-                        </li>
-
-                    }
-                </ul>
-            </div>
-        </div>
-
-        <div class="original1">
-            <h3 class="no-title">Romantic </h3><!--<a href=""><img src="~/Content/MainPage/assests/ro1.jpg" alt=""></a>-->
-            <div class="no">
-                <ul>
-                    @foreach (var s in Model)
-                    {
-
-                        <li style="display:inline-block">
-                            <a id="link" href="@Url.Action("Details", "movies", new { id = s.movieID })">
-                                <img id="image" src="@s.posterPath" alt="">
-                            </a>
-                        </li>
-
-                    }
-                </ul>
-            </div>
-        </div>
-        <div class="original1">
-            <h3 class="no-title">Action </h3>
-            <div class="no">
-                <ul>
-                    @foreach (var s in Model)
-                    {
-
-                        <li style="display:inline-block">
-                            <a id="link" href="@Url.Action("Details", "movies", new { id = s.movieID })">
-                                <img id="image" src="@s.posterPath" alt="">
-                            </a>
-                        </li>
-
-                    }
-                </ul>
-            </div>
-        </div>
-
-    </body>
-    </html>
-*@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,10 +15,9 @@
     <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
     <title>Netflix</title>
     <style>
-        /* Movie Item Styles */
         .movie-item {
             position: relative;
-            width: calc(100% / 6 - 10px); /* Adjusted width with decreased space */
+            width: calc(100% / 6 - 10px);
             flex-shrink: 0;
             margin-right: 10px;
         }
@@ -199,26 +45,25 @@
             opacity: 1;
         }
 
-        /* Slider Styles */
         .slider-container {
             position: relative;
             overflow: hidden;
-            margin-top: 100px; /* Adjusted margin to see full video background */
+            margin-top: 100px;
             width: 100%;
         }
 
         .slider {
             display: flex;
             transition: transform 0.8s ease-in-out;
-            overflow-x: scroll; /* Allow horizontal scrolling */
+            overflow-x: scroll;
             overflow-y: hidden;
-            white-space: nowrap; /* Prevent items from wrapping to the next line */
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+            white-space: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
             .slider::-webkit-scrollbar {
-                display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+                display: none;
             }
 
         /* Video Styles */
@@ -245,7 +90,7 @@
     </video>
 
     <!--Top rated movies-->
-    <div class="slider-container" style="margin-top: 700px">
+    <div class="slider-container" style="margin-top: 900px">
         <h4>TOP RATED MOVIES</h4>
         <div class="slider">
             @foreach (var movie in Model)
@@ -313,53 +158,108 @@
         </div>
     </div>
 
+    <!--Highest score movies-->
+    <div class="slider-container">
+        <h4>HIGHEST SCORE MOVIES</h4>
+        <div class="slider">
+            @{
+                var topScore = Model.Where(m => m.runtime.HasValue).OrderByDescending(m => m.runtime);
+            }
+            @foreach (var movie in topScore)
+            {
+                <div class="movie-item">
+                    <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                        <img src="@movie.posterPath" alt="@movie.movieName">
+                        <div class="movie-details">
+                            <h5>@movie.movieName</h5>
+                            <p>@movie.releaseDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!--Audience recommendation-->
+    <div class="slider-container">
+        <h4>AUDIENCE RECOMMENDATION</h4>
+        <div class="slider">
+            @{
+                var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
+            }
+            @foreach (var movie in audience)
+            {
+                <div class="movie-item">
+                    <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                        <img src="@movie.posterPath" alt="@movie.movieName">
+                        <div class="movie-details">
+                            <h5>@movie.movieName</h5>
+                            <p>@movie.releaseDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!--Rotten Tomatoes movies-->
+    <div class="slider-container">
+        <h4>FRESH ROTTEN TOMATOES</h4>
+        <div class="slider">
+            @{
+                var rotten = Model.Where(m => m.revenue.HasValue).OrderByDescending(m => m.revenue);
+            }
+            @foreach (var movie in rotten)
+            {
+                <div class="movie-item">
+                    <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
+                        <img src="@movie.posterPath" alt="@movie.movieName">
+                        <div class="movie-details">
+                            <h5>@movie.movieName</h5>
+                            <p>@movie.releaseDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    const sliders = document.querySelectorAll(".slider");
+            const sliders = document.querySelectorAll(".slider");
 
-    sliders.forEach(function (slider) {
-        const slides = slider.querySelectorAll(".movie-item");
-        const totalSlides = slides.length;
-        let currentIndex = 0;
-        const slidesPerPage = 6;
+            sliders.forEach(function (slider) {
+                const slides = slider.querySelectorAll(".movie-item");
+                const totalSlides = slides.length;
+                let currentIndex = 0;
+                const slidesPerPage = 6;
 
-        function showSlide(index) {
-            const slideWidth = slides[0].offsetWidth;
-            const startPosition = slides[index].offsetLeft;
-            slider.scrollTo({
-                left: startPosition,
-                behavior: 'smooth'
+                function showSlide(index) {
+                    const slideWidth = slides[0].offsetWidth;
+                    const startPosition = slides[index].offsetLeft;
+                    slider.scrollTo({
+                        left: startPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + slidesPerPage < totalSlides) ? currentIndex + slidesPerPage : 0;
+                    showSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - slidesPerPage >= 0) ? currentIndex - slidesPerPage : totalSlides - slidesPerPage;
+                    showSlide(currentIndex);
+                }
+
+                // Autoplay Slider
+                setInterval(nextSlide, 4000);
+
+                // Show all slides
+                showSlide(currentIndex);
             });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + slidesPerPage < totalSlides) ? currentIndex + slidesPerPage : 0;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - slidesPerPage >= 0) ? currentIndex - slidesPerPage : totalSlides - slidesPerPage;
-            showSlide(currentIndex);
-        }
-
-        // Autoplay Slider
-        setInterval(nextSlide, 5000); // Change slide every 5 seconds
-
-        // Show all slides
-        showSlide(currentIndex);
-    });
-});
-
+        });
     </script>
-
-
 </body>
 </html>
-
-<script>
-    // Lắng nghe sự kiện click trên thẻ hình ảnh
-    document.getElementById("image").addEventListener("click", function () {
-        // Kích hoạt sự kiện click của thẻ a
-        document.getElementById("link").click();
-    });
-</script>

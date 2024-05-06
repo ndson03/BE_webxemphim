@@ -5,163 +5,303 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
+    <title>Netflix</title>
+    <style>
+        .serie-item {
+            position: relative;
+            width: calc(100% / 6 - 10px);
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+            .serie-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        .serie-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            color: white;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .serie-item:hover .serie-details {
+            opacity: 1;
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 100px;
+            width: 100%;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+            .slider::-webkit-scrollbar {
+                display: none;
+            }
+
+        /* Video Styles */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.serieName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.originalSerieName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.firstAirDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.lastAirDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tagline)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.overview)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.homepage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.popularity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.voteAverage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.voteCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.posterPath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.backdropPath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.trailer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numberOfSeasons)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.numberOfEpisodes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.runtime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.originalLanguage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tags)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.adult)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.genreID)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.serieName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.originalSerieName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.firstAirDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastAirDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tagline)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.overview)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.homepage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.popularity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.voteAverage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.voteCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.posterPath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.backdropPath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.trailer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numberOfSeasons)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numberOfEpisodes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.runtime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.originalLanguage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tags)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.adult)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.genreID)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.serieID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.serieID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.serieID })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <section class="container">
+        <div class="head">
+            <img src="~/Content/MainPage/assests/netflixlogo.png" alt="">
+        </div>
+    </section>
+    <!-- Background Video -->
+    <video autoplay loop muted>
+        <source src="~/Content/SingleMovie/video/Y2meta.app%20-%20The%20Hobbit_%20An%20Unexpected%20Journey%20-%20Official%20Trailer%202%20[HD].mp4" type="video/mp4" />
+    </video>
+
+    <!--Top rated series-->
+    <div class="slider-container" style="margin-top: 900px">
+        <h4>TOP RATED SERIES</h4>
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.tags.Equals("topRated"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+
+    <!--Now playing series-->
+    <h4>NOW PLAYING SERIES</h4>
+    <div class="slider-container">
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.tags.Equals("airingToday"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+
+    <!--Top budget series-->
+    <div class="slider-container">
+        <h4>BLOCK-BUSTERS SERIES</h4>
+        <div class="slider">
+            @{
+                var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
+            }
+            @foreach (var serie in topBudget)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <!--Highest score series-->
+    <div class="slider-container">
+        <h4>HIGHEST SCORE SERIES</h4>
+        <div class="slider">
+            @{
+                var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
+            }
+            @foreach (var serie in topScore)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!--Audience recommendation-->
+    <div class="slider-container">
+        <h4>AUDIENCE RECOMMENDATION</h4>
+        <div class="slider">
+            @{
+                var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
+            }
+            @foreach (var serie in audience)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!--Rotten Tomatoes series-->
+    <div class="slider-container">
+        <h4>FRESH ROTTEN TOMATOES</h4>
+        <div class="slider">
+            @{
+                var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
+            }
+            @foreach (var serie in rotten)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!--Completed series-->
+    <h4>COMPLETED SERIES</h4>
+    <div class="slider-container">
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.status.Equals("Ended"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sliders = document.querySelectorAll(".slider");
+
+            sliders.forEach(function (slider) {
+                const slides = slider.querySelectorAll(".serie-item");
+                const totalSlides = slides.length;
+                let currentIndex = 0;
+                const slidesPerPage = 6;
+
+                function showSlide(index) {
+                    const slideWidth = slides[0].offsetWidth;
+                    const startPosition = slides[index].offsetLeft;
+                    slider.scrollTo({
+                        left: startPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + slidesPerPage < totalSlides) ? currentIndex + slidesPerPage : 0;
+                    showSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - slidesPerPage >= 0) ? currentIndex - slidesPerPage : totalSlides - slidesPerPage;
+                    showSlide(currentIndex);
+                }
+
+                // Autoplay Slider
+                setInterval(nextSlide, 4000);
+
+                // Show all slides
+                showSlide(currentIndex);
+            });
+        });</script>
 </body>
 </html>
