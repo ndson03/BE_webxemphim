@@ -133,6 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\moviesController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\seriesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -147,6 +148,7 @@
     <Compile Include="Models\season.cs" />
     <Compile Include="Models\series.cs" />
     <Compile Include="Models\user.cs" />
+    <Compile Include="Models\ViewModels.cs" />
     <Compile Include="Models\watchlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2710,6 +2712,7 @@
     <Content Include="Views\Shared\Casting_Series.cshtml" />
     <Content Include="Views\actors\Details.cshtml" />
     <Content Include="Views\actors\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
