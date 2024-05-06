@@ -1,0 +1,437 @@
+﻿@model IEnumerable<NetflixClone.Models.series>
+
+@{
+    ViewBag.Title = "Series page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
+    <title>Netflix</title>
+    <style>
+        .prev-next-button {
+            margin-top: 16px;
+            border: none;
+            position: absolute;
+            top: 50%;
+            width: 2%;
+            padding-bottom: 2%;
+            border-radius: 50%;
+            background: white;
+            transform: translateY(-50%);
+            outline: none;
+            cursor: pointer;
+        }
+
+            .prev-next-button:hover {
+                background-color: gainsboro;
+            }
+
+            .prev-next-button:focus {
+                outline: none;
+            }
+
+            .prev-next-button:active {
+                background-color: white;
+            }
+
+        .previous {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .prev-next-button svg {
+            position: absolute;
+            left: 20%;
+            top: 20%;
+            width: 60%;
+            height: 60%;
+        }
+
+        .arrow {
+            fill: red;
+        }
+        .serie-item {
+            position: relative;
+            width: calc(100% / 6 - 10px);
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+            .serie-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+        .serie-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            color: white;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .serie-item:hover .serie-details {
+            opacity: 1;
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+            width: 100%;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+            .slider::-webkit-scrollbar {
+                display: none;
+            }
+
+        /* Video Styles */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .tt-movies-list {
+            padding-bottom: 16px;
+            padding-left: 30px;
+            font-weight: bold;
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="head">
+            <img src="~/Content/MainPage/assests/netflixlogo.png" alt="">
+        </div>
+    </section>
+    <!-- Background Video -->
+    <video autoplay loop muted>
+        <source src="~/Content/SingleMovie/video/Y2meta.app%20-%20The%20Hobbit_%20An%20Unexpected%20Journey%20-%20Official%20Trailer%202%20[HD].mp4" type="video/mp4" />
+    </video>
+
+    <!--Top rated series-->
+    <div class="slider-container" style="margin-top: 900px">
+        <h4 class="tt-movies-list">TOP RATED SERIES</h4>
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.tags.Equals("topRated"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <!--Now playing series-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">NOW PLAYING SERIES</h4>
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.tags.Equals("airingToday"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <!--Top budget series-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">BLOCK-BUSTERS SERIES</h4>
+        <div class="slider">
+            @{
+                var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
+            }
+            @foreach (var serie in topBudget)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+
+    <!--Highest score series-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">HIGHEST SCORE SERIES</h4>
+        <div class="slider">
+            @{
+                var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
+            }
+            @foreach (var serie in topScore)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <!--Audience recommendation-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">AUDIENCE RECOMMENDATION</h4>
+        <div class="slider">
+            @{
+                var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
+            }
+            @foreach (var serie in audience)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <!--Rotten Tomatoes series-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">FRESH ROTTEN TOMATOES</h4>
+        <div class="slider">
+            @{
+                var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
+            }
+            @foreach (var serie in rotten)
+            {
+                <div class="serie-item">
+                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                        @{
+                            string path = "https://image.tmdb.org/t/p/w500/";
+                        }
+                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-details">
+                            <h5>@serie.serieName</h5>
+                            <p>@serie.firstAirDate</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <!--Completed series-->
+    <div class="slider-container">
+        <h4 class="tt-movies-list">COMPLETED SERIES</h4>
+        <div class="slider">
+            @foreach (var serie in Model)
+            {
+                if (serie.status.Equals("Ended"))
+                {
+                    <div class="serie-item">
+                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-details">
+                                <h5>@serie.serieName</h5>
+                                <p>@serie.firstAirDate</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sliderContainers = document.querySelectorAll(".slider-container");
+
+            sliderContainers.forEach(function (container) {
+                const slider = container.querySelector(".slider");
+                const slides = slider.querySelectorAll(".serie-item");
+                const totalSlides = slides.length;
+                let currentIndex = 0;
+                const slidesPerPage = 6;
+
+                function showSlide(index) {
+                    const slideWidth = slides[0].offsetWidth;
+                    const startPosition = index * slidesPerPage * slideWidth;
+                    slider.scrollTo({
+                        left: startPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)) ? currentIndex + 1 : 0;
+                    showSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
+                    showSlide(currentIndex);
+                }
+
+                // Autoplay Slider
+                setInterval(nextSlide, 4000);
+
+                // Show all slides
+                showSlide(currentIndex);
+
+                const prevButton = container.querySelector('.prev-next-button.previous');
+                const nextButton = container.querySelector('.prev-next-button.next');
+
+                prevButton.addEventListener('click', prevSlide);
+                nextButton.addEventListener('click', nextSlide);
+            });
+        });
+    </script>
+</body>
+</html>

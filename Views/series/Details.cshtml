@@ -1,0 +1,237 @@
+﻿@model NetflixClone.Models.series
+
+@{
+    ViewBag.Title = "Series detail";
+    NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
+}
+
+<style>
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    #trailer-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+    #trailer-video {
+        pointer-events: none;
+    }
+
+
+        #trailer-video::-webkit-media-controls-start-playback-button {
+            display: none;
+        }
+
+    .movie-details-container {
+        min-height: 100vh;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slick-bg.s-bg-1 {
+        height: auto !important; 
+    }
+</style>
+
+<!-- slider starts  -->
+<section id="home" class="iq-main-slider p-0">
+    <div id="home-slider" class="slider m-0 p-0">
+        <div class="slide slick-bg s-bg-1">
+            <div class="video-background">
+                <iframe id="trailer-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="container-fluid position-relative movie-details-container">
+                <div class="slider-inner">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <a href="javascript:void(0)">
+                                <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
+                                    <img src="~/Content/SingleMovie/images/logo.png" class="c-logo" alt="" />
+                                </div>
+                            </a>
+                            <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
+                                data-delay-in="0.6">
+                                @Html.DisplayFor(model => model.serieName)
+                            </h1>
+                            <div class="d-flex flex-wrap align-items-center fadeInLeft animated" data-animation-in="fadeInLeft"
+                                 style="opacity: 1">
+                                <div class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3">
+                                    <ul class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star-half"></i></li>
+                                    </ul>
+                                    <span class="text-white ml-2">7.3(imbd)</span>
+                                </div>
+                                <div class="d-flex align-items-center mt-2 mt-md-3">
+                                    <span class="badge badge-secondary p-2">16+</span>
+                                    <span class="ml-3">@Html.DisplayFor(model => model.numberOfSeasons) (seasons)</span>
+                                </div>
+                            </div>
+                            <p data-animation-in="fadeInUp">
+                                @Html.DisplayFor(model => model.overview)
+                            </p>
+                            <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
+                                <div class="text-primary title starring">
+                                    Original name:
+                                    <span class="text-body">
+                                        @Html.DisplayFor(model => model.originalSerieName)
+                                    </span>
+                                </div>
+                                <div class="text-primary title genres">
+                                    Genres : <span class="text-body">
+                                        @foreach (var genre in Model.genres)
+                                        {
+                                            @genre.genreName
+                                            if (!genre.Equals(Model.genres.Last()))
+                                            {
+                                                <span>, </span>
+                                            }
+                                        }
+                                    </span>
+                                </div>
+                                <div class="text-primary title tag">
+                                    Tags :
+                                    <span class="text-body">@Html.DisplayFor(model => model.tags) </span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
+                                <a href="#" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
+                                <a href="#" class="btn btn-link">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
+                        <a href="~/Content/MovieResource/test.html" class="video-open playbtn">
+                            <img src="~/Content/SingleMovie/images/play.png" class="play" alt="" />
+                            <span class="w-trailor">Watch</span>
+                        </a>
+                    </div>
+                </div>
+                <!--<section id="iq-favorites">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Casting</h4>
+                        <a href="#" class="iq-view-all">View All</a>
+                    </div>
+                    <div class="favorite-contens">
+                        Html.Partial("Casting_Series", db.actors.ToList())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- slider ends -->
+<!-- main content starts  -->
+<div class="main-content">
+    <!--top rated section starts   -->
+    <section id="iq-favorites">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Top Rated Series</h4>
+                        <a href="#" class="iq-view-all">View All</a>
+                    </div>
+                    <div class="favorite-contens">
+                        @Html.Partial("SeriesList_TopRated", db.series.ToList())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- top rated section ends -->
+    <!--popular section starts  -->
+    <section id="iq-upcoming-movie">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Airing Today</h4>
+                        <a href="#" class="iq-view-all">View All</a>
+                    </div>
+                    <div class="favorite-contens">
+                        @Html.Partial("SeriesList_AiringToday", db.series.ToList())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- popular section ends -->
+    <!-- top ten trending  -->
+    <section id="iq-topten">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="topten-contents">
+                        <h4 class="main-title iq-title topten-title">
+                            Top 10 Audience Vote
+                        </h4>
+                        @Html.Partial("SeriesList_Top10", db.series.ToList())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--suggested tv shows-->
+    <section id="iq-suggested" class="s-margin">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Suggested Movies</h4>
+                        <a href="#" class="iq-view-all">View All</a>
+                    </div>
+                    <div class="favorite-contens">
+                        @Html.Partial("MovieList_Suggested", db.movies.ToList())
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- main content ends  -->
+
+<script>
+    const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
+    const movieId = '@Model.serieID';
+
+    const trailerVideo = document.getElementById('trailer-video');
+
+    fetch(`https://api.themoviedb.org/3/tv/${movieId}/videos?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const videos = data.results;
+
+            videos.forEach(video => {
+                if (video.site === 'YouTube') {
+                    trailerVideo.src = `https://www.youtube.com/embed/${video.key}?autoplay=1&controls=0&loop=1&mute=0`;
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching trailer:', error));
+</script>

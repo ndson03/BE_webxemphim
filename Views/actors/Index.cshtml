@@ -1,0 +1,179 @@
+﻿@model IEnumerable<NetflixClone.Models.actor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
+    <title>Netflix</title>
+    <link href="~/Content/CelebList/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/CelebList/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="~/Content/CelebList/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Amaranth:400,700' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+    <script type="text/javascript" src="~/Content/CelebList/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Content/CelebList/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start menu -->
+    <link href="~/Content/CelebList/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/Content/CelebList/js/megamenu.js"></script>
+    <script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>
+    <script src="~/Content/CelebList/js/simpleCart.min.js"></script>
+    <style>
+        .menu-item a{
+            color: white;
+        }
+        .actor-details {
+            background-color: inherit; /* Inherit background color from the layout */
+            padding: 10px;
+            text-align: center;
+        }
+
+            .actor-details h4 {
+                margin-top: 0;
+                margin-bottom: 5px;
+                color: white;
+            }
+
+            .actor-details p {
+                margin-bottom: 0;
+                color: white;
+            }
+
+        .item_add:hover {
+            background-color: darkred; /* Inherit background color from the layout */
+            color: black; /* Inherit text color from the layout */
+        }
+
+        /* Video Styles */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .tt {
+            text-align: center;
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+        }         
+        .white-line {
+            border: none;
+            height: 2.5px; 
+            background-color: white;
+            margin-top: 10px;
+        }
+
+        .v_dt {
+            background: red;
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            height: 30px;
+            align-content: center;
+            margin-bottom:50px;
+            border-radius: 3px;
+        }
+
+            .v_dt:hover {
+                color: #000;
+                text-decoration: none;
+                background-color: red;
+                background-image: linear-gradient(315deg,red 10%, darkred 74%);
+              
+                transition: all 0.3s ease;
+            }
+
+        #img_act:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Video -->s
+    <video autoplay loop muted>
+        <source src="~/Content/SingleMovie/video/Producers%20and%20Directors%20Career%20Video.mp4" type="video/mp4" />
+    </video>
+
+    <div class="container">
+        <div class="content-top-blue" style="margin-top: 500px;">
+            <p class="tt">CELEBRITIES LIST</p>
+            <hr class="white-line">
+            @foreach (var actor in Model)
+            {
+                <div class="col-md-3 blue">
+                    @{
+                        string path = "https://image.tmdb.org/t/p/w500";
+                    }
+                    <a href="@Url.Action("Details", "actors", new { id = actor.actorID })"> <img id="img_act" style="border-radius: 10px; transition: transform 0.3s ease;" src="@Url.Content(path + actor.profilePath)" class="img-responsive" alt="@actor.actorName image"></a>
+                    <!---->
+                    <div class="grid_1 simpleCart_shelfItem" style="">
+                        <div class="actor-details">
+                            <h4>@actor.actorName</h4>
+                            @{
+                                string gender;
+                                if (actor.gender.Equals(1))
+                                {
+                                    gender = "male";
+                                }
+                                else
+                                {
+                                    gender = "female";
+                                }
+                            }
+                            <p>Gender: @gender</p>
+                            <!-- Add more details here -->
+                        </div>
+                        <a href="@Url.Action("Details", "actors", new { id = actor.actorID })" class="v_dt"  >View details</a>
+                    </div>
+                    <!---->
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+        <!---->
+    </div>
+</body>
+
+</html>
