@@ -47,7 +47,7 @@
         .slider-container {
             position: relative;
             overflow: hidden;
-            margin-top: 100px;
+            margin-top: 70px;
             width: 100%;
         }
 
@@ -75,6 +75,13 @@
             left: 0;
             z-index: -1;
         }
+
+        .tt-movies-list {
+            padding-bottom: 16px;
+            padding-left: 30px;
+            font-weight: bold;
+            font-size: 26px;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +97,7 @@
 
     <!--Top rated series-->
     <div class="slider-container" style="margin-top: 900px">
-        <h4>TOP RATED SERIES</h4>
+        <h4 class="tt-movies-list">TOP RATED SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
@@ -115,8 +122,8 @@
     </div>
 
     <!--Now playing series-->
-    <h4>NOW PLAYING SERIES</h4>
     <div class="slider-container">
+        <h4 class="tt-movies-list">NOW PLAYING SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
@@ -142,7 +149,7 @@
 
     <!--Top budget series-->
     <div class="slider-container">
-        <h4>BLOCK-BUSTERS SERIES</h4>
+        <h4 class="tt-movies-list">BLOCK-BUSTERS SERIES</h4>
         <div class="slider">
             @{
                 var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
@@ -168,7 +175,7 @@
 
     <!--Highest score series-->
     <div class="slider-container">
-        <h4>HIGHEST SCORE SERIES</h4>
+        <h4 class="tt-movies-list">HIGHEST SCORE SERIES</h4>
         <div class="slider">
             @{
                 var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
@@ -193,7 +200,7 @@
 
     <!--Audience recommendation-->
     <div class="slider-container">
-        <h4>AUDIENCE RECOMMENDATION</h4>
+        <h4 class="tt-movies-list">AUDIENCE RECOMMENDATION</h4>
         <div class="slider">
             @{
                 var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
@@ -218,7 +225,7 @@
 
     <!--Rotten Tomatoes series-->
     <div class="slider-container">
-        <h4>FRESH ROTTEN TOMATOES</h4>
+        <h4 class="tt-movies-list">FRESH ROTTEN TOMATOES</h4>
         <div class="slider">
             @{
                 var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
@@ -242,8 +249,8 @@
     </div>
 
     <!--Completed series-->
-    <h4>COMPLETED SERIES</h4>
     <div class="slider-container">
+        <h4 class="tt-movies-list">COMPLETED SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
