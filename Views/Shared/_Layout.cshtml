@@ -177,7 +177,8 @@
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="text search-input font-size-12"
                                                            id="searchInp"
-                                                           placeholder="type here to search..."/>
+                                                           placeholder="type here to search..."
+                                                           onkeypress="checkEnterKey(event)"/>
                                                     <i class="search-link fa fa-search" onclick="performSearch()"></i>
                                                 </div>
                                             </form>
@@ -391,6 +392,13 @@
         if (searchTerm !== '') {
             var searchUrl = '@Url.Action("Index", "Search")' + '?query=' + encodeURIComponent(searchTerm);
             window.location.href = searchUrl;
+        }
+    }
+
+    function checkEnterKey(event) {
+        if (event.keyCode === 13) { // 13 là mã ASCII của phím "Enter"
+            event.preventDefault(); // Ngăn chặn hành động mặc định của phím "Enter" trong form
+            performSearch();
         }
     }
 </script>

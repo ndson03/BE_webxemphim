@@ -15,20 +15,6 @@ namespace NetflixClone.Controllers
         private Model1 db = new Model1();
         public ActionResult Index(string query)
         {
-            var searchResults  = from m in db.movies 
-                                            select m;
-            
-            if (!String.IsNullOrEmpty(query)) 
-            {
-                searchResults = searchResults.Where(m => m.movieName.Contains(query));
-            }
-
-            var searchResultsList = searchResults.ToList();
-            foreach (var s in searchResultsList)
-            {
-                s.posterPath = "https://image.tmdb.org/t/p/w500" + s.posterPath;
-            }
-
             var viewModel = new MediaListViewModel
             {
                 Movies = db.movies.ToList(),
