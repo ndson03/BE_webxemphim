@@ -22,8 +22,8 @@ namespace NetflixClone.Controllers
             };
             if (!String.IsNullOrEmpty(query))
             {
-                viewModel.Series = viewModel.Series.Where(s => s.serieName.Contains(query)).ToList();
-                viewModel.Movies = viewModel.Movies.Where(m => m.movieName.Contains(query)).ToList();
+                viewModel.Series = viewModel.Series.Where(s => s.serieName.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                viewModel.Movies = viewModel.Movies.Where(m => m.movieName.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
             foreach (var s in viewModel.Movies)
             {
