@@ -113,8 +113,8 @@
     </div>
 
     <!--Now playing movies-->
-    <h4>NOW PLAYING MOVIES</h4>
     <div class="slider-container">
+        <h4>NOW PLAYING MOVIES</h4>
         <div class="slider">
             @foreach (var movie in Model)
             {
@@ -136,8 +136,8 @@
     </div>
 
     <!--Highest budget movies-->
-    <h4>BLOCK-BUSTERS</h4>
     <div class="slider-container">
+        <h4>BLOCK-BUSTERS</h4>
         <div class="slider">
             @{
                 var moviesWithBudget = Model.Where(m => m.budget.HasValue).OrderByDescending(m => m.budget);
