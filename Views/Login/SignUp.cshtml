@@ -33,17 +33,25 @@
         <div id="content">
             <div class="pics">
                 <div class="wrapper">
-                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    @using (Html.BeginForm("SignUp", "Login", FormMethod.Post))
                     {
                         <h1>Sign In</h1>
                         <div class="input-box" id="input1">
                             @Html.TextBox("email", null, new { required = "required", placeholder = "Email or phone number" })
                         </div>
+                        <div class="input-box" id="input1">
+                            @Html.TextBox("name", null, new { required = "required", placeholder = "Username" })
+                        </div>
+                        <div class="input-box" id="input1">
+                            @Html.TextBox("fullname", null, new { required = "required", placeholder = "Full Name" })
+                        </div>
                         <div class="input-box" id="input2">
                             @Html.Password("password", null, new { required = "required", placeholder = "Password" })
                         </div>
+                        <div class="input-box" id="input2">
+                            @Html.Password("passwordconf", null, new { required = "required", placeholder = "Password confirmation" })
+                        </div>
                         <button type="submit" class="btn">Sign In</button>
-                        <button class="btn"><a id="abc" href="@Url.Action("SignUp", "Login")">Sign Up</a></button>
                     }
                 </div>
             </div>
