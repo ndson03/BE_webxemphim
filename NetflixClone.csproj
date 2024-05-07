@@ -210,6 +210,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ndson_style.css" />
     <Content Include="Content\CelebList\css\bootstrap.css" />
     <Content Include="Content\CelebList\css\etalage.css" />
     <Content Include="Content\CelebList\css\megamenu.css" />
