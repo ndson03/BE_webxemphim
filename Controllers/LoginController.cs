@@ -50,6 +50,51 @@ namespace NetflixClone.Controllers
             }
         }
 
+        public ActionResult SignUp(string email, string name, string fullname, string password, string passwordconf)
+        {
+            if (string.IsNullOrEmpty(email) ||
+                string.IsNullOrEmpty(name) ||
+                string.IsNullOrEmpty(fullname) ||
+                string.IsNullOrEmpty(password) ||
+                string.IsNullOrEmpty(passwordconf))
+            {
+                ViewBag.Error = "Please fill in all the required fields!";
+                return View("SignUp");
+            }
+            else
+            {
+                var user = db.users.Where(u => u.email == email).FirstOrDefault();
+                if (user != null)
+                {
+                    ViewBag.Error = "Email already exists. Please use another email.";
+                    return View("SignUp");
+                }
+                else if (password!= passwordconf)
+                {
+                    ViewBag.Error = "Password and Confirm Password do not match!";
+                    return View("SignUp");
+                }
+                else
+                {
+                    var userCount = db.users.Count();
+                    var newUser = new user
+                    {
+                        userID = userCount+1,
+                        userName = name,
+                        password = password,
+                        fullName = fullname,
+                        birthday = DateTime.Now,
+                        gender = 1,
+                        profileImage = "",
+                        email = email,
+                    };
+                    db.users.Add(newUser);
+                    db.SaveChanges();
+                    return RedirectToAction("Login", "Login");
+                }
+            }
+        }
+
         public ActionResult Logout()
         {
             Session.Remove("user");
