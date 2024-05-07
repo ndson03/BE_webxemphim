@@ -2714,6 +2714,7 @@
     <Content Include="Views\actors\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\movies\PlayMovie.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
