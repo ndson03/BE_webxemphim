@@ -11,6 +11,14 @@ namespace NetflixClone.Controllers
         private String encryptedEmail { get; set; }
         private String encryptedPassword { get; set; }
 
+        public String getEncryptedEmail()
+        {
+            return encryptedEmail;
+        }
+        public String getEncryptedPassword()
+        {
+            return encryptedPassword;
+        }
         public Encrypted()
         {
             InitializeRSA();

@@ -65,8 +65,12 @@ namespace NetflixClone.Controllers
                     // Encrypt the email and password before saving to the database
                     Encrypted encrypted = new Encrypted(RSAEncryption.Encrypt(user.email.Substring(0, Math.Min(user.email.Length, 100))), RSAEncryption.Encrypt(user.password.Substring(0, Math.Min(user.password.Length, 100))));
                     list.Add(encrypted);
-
-                    if (user.birthday == null && user.profileImage == null && user.gender == null && user.userName == null && user.fullName == null)
+                    var userCount = db.users.Count();
+                    user.userID = userCount + 1;
+                    //comment email với password khi nào chạy thì bỏ cmt
+                    //user.email = encrypted.getEncryptedEmail();
+                    //user.password = encrypted.getEncryptedPassword();
+                    if (user.birthday == null || user.profileImage == null || user.gender == null || user.userName == null || user.fullName == null)
                     {
                         user.userName = user.email;
                         user.birthday = DateTime.Now;
