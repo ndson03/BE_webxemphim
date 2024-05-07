@@ -144,25 +144,33 @@ video {
     font-size: 26px;
 }
 
-.movie-details .dt, .serie-details .dt{
+.movie-details .dt, .serie-details .dt {
     height: 100px;
     bottom: 0;
     padding-bottom: 20px;
     position: absolute;
     overflow: hidden;
     left: 20px;
+    word-break: break-word;
 }
 
 .dt h5 {
-    word-break: break-word;
-    overflow-wrap: break-word;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     padding-top: 5px;
+    display: inline-block;
+    word-break: break-word;
+    white-space: pre-line;
+
+    
 }
 
 .dt p {
     font-size: 12px;
     padding: 0;
     margin: 0;
+}
+
+h5 {
+    word-wrap: break-word;
 }
