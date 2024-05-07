@@ -68,11 +68,12 @@ namespace NetflixClone.Controllers
                     var userCount = db.users.Count();
                     user.userID = userCount + 1;
                     //comment email với password khi nào chạy thì bỏ cmt
-                    //user.email = encrypted.getEncryptedEmail();
-                    //user.password = encrypted.getEncryptedPassword();
+                    user.email = encrypted.getEncryptedEmail();
+                    user.password = encrypted.getEncryptedPassword();
+                    Console.WriteLine(user.email + user.password);
                     if (user.birthday == null || user.profileImage == null || user.gender == null || user.userName == null || user.fullName == null)
                     {
-                        user.userName = user.email;
+                        user.userName = "";
                         user.birthday = DateTime.Now;
                         user.profileImage = "";
                         user.gender = 1;
