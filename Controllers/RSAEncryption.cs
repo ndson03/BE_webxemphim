@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Web;
 using System.Security.Cryptography;
+using NetflixClone.Models;
 
 namespace NetflixClone.Controllers
 {
@@ -19,7 +20,7 @@ namespace NetflixClone.Controllers
 
         public static string Encrypt(string plainText)
         {
-            byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(plainText);
+            byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(plainText.Substring(0, Math.Min(plainText.Length, 45)));
             byte[] encryptedBytes = rsa.Encrypt(bytesToEncrypt, RSAEncryptionPadding.Pkcs1);
             return Convert.ToBase64String(encryptedBytes);
         }

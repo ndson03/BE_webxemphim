@@ -14,6 +14,11 @@ namespace NetflixClone.Controllers
     {
         private Model1 db = new Model1();
 
+        public LoginController()
+        {
+            RSAEncryption.InitializeRSA(); // Initialize RSA encryption
+        }
+
         // GET: Login
         public ActionResult Index()
         {
@@ -29,14 +34,18 @@ namespace NetflixClone.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            if (email.Equals("") || password.Equals(""))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                ViewBag.Error = "Username or Password is empty!";
+                ViewBag.Error = "Email or password is empty!";
                 return View("Login");
             }
             else
             {
-                var user = db.users.Where(u => u.email == email && u.password == password).FirstOrDefault();
+                // Encrypt the email and password before comparing
+                string encryptedEmail = RSAEncryption.Encrypt(email);
+                string encryptedPassword = RSAEncryption.Encrypt(password);
+
+                var user = db.users.FirstOrDefault(u => u.email == encryptedEmail && u.password == encryptedPassword);
                 if (user != null)
                 {
                     Session["user"] = user.fullName;
@@ -44,53 +53,8 @@ namespace NetflixClone.Controllers
                 }
                 else
                 {
-                    ViewBag.Error = "Invalid username or password!";
-                    return View("Login", user);
-                }
-            }
-        }
-
-        public ActionResult SignUp(string email, string name, string fullname, string password, string passwordconf)
-        {
-            if (string.IsNullOrEmpty(email) ||
-                string.IsNullOrEmpty(name) ||
-                string.IsNullOrEmpty(fullname) ||
-                string.IsNullOrEmpty(password) ||
-                string.IsNullOrEmpty(passwordconf))
-            {
-                ViewBag.Error = "Please fill in all the required fields!";
-                return View("SignUp");
-            }
-            else
-            {
-                var user = db.users.Where(u => u.email == email).FirstOrDefault();
-                if (user != null)
-                {
-                    ViewBag.Error = "Email already exists. Please use another email.";
-                    return View("SignUp");
-                }
-                else if (password!= passwordconf)
-                {
-                    ViewBag.Error = "Password and Confirm Password do not match!";
-                    return View("SignUp");
-                }
-                else
-                {
-                    var userCount = db.users.Count();
-                    var newUser = new user
-                    {
-                        userID = userCount+1,
-                        userName = name,
-                        password = password,
-                        fullName = fullname,
-                        birthday = DateTime.Now,
-                        gender = 1,
-                        profileImage = "",
-                        email = email,
-                    };
-                    db.users.Add(newUser);
-                    db.SaveChanges();
-                    return RedirectToAction("Login", "Login");
+                    ViewBag.Error = "Invalid email or password!";
+                    return View("Login");
                 }
             }
         }
@@ -98,7 +62,7 @@ namespace NetflixClone.Controllers
         public ActionResult Logout()
         {
             Session.Remove("user");
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Login");
         }
 
         // GET: Login/Details/5
@@ -113,29 +77,6 @@ namespace NetflixClone.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
-        }
-
-        // GET: Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Login/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,userName,password,fullName,birthday,gender,profileImage,email")] user user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             return View(user);
         }
 
@@ -168,32 +109,6 @@ namespace NetflixClone.Controllers
                 return RedirectToAction("Index");
             }
             return View(user);
-        }
-
-        // GET: Login/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            user user = db.users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Login/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            user user = db.users.Find(id);
-            db.users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

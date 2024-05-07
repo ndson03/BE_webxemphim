@@ -131,12 +131,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\actorsController.cs" />
+    <Compile Include="Controllers\Encrypted.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\moviesController.cs" />
     <Compile Include="Controllers\RSAEncryption.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\seriesController.cs" />
+    <Compile Include="Controllers\SignupController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +227,7 @@
     <Content Include="Content\CelebList\js\move-top.js" />
     <Content Include="Content\CelebList\js\owl.carousel.js" />
     <Content Include="Content\CelebList\js\simpleCart.min.js" />
+    <Content Include="Content\UserImages\default.jpg" />
     <Content Include="Content\LandingPage_SignUp\aos\aos.css" />
     <Content Include="Content\LandingPage_SignUp\aos\aos.js" />
     <Content Include="Content\LandingPage_SignUp\backgr.jpg" />
@@ -2691,8 +2694,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Login\Create.cshtml" />
-    <Content Include="Views\Login\Delete.cshtml" />
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
@@ -2716,7 +2717,8 @@
     <Content Include="Views\actors\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\movies\PlayMovie.cshtml" />
-    <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Signup\Create.cshtml" />
+    <Content Include="Views\Signup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

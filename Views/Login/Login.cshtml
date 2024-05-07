@@ -16,7 +16,7 @@
 
 <body>
     <div class="banner">
-        <a href="main.html">
+        <a href="@Url.Action("Index", "Login")">
             <img class="netflix" src="~/Content/LandingPage_SignUp/logoNetflix.png" alt="Netflix Logo">
         </a>
     </div>
@@ -43,7 +43,6 @@
                             @Html.Password("password", null, new { required = "required", placeholder = "Password" })
                         </div>
                         <button type="submit" class="btn">Sign In</button>
-                        <button class="btn"><a id="abc" href="@Url.Action("SignUp", "Login")">Sign Up</a></button>
                     }
                 </div>
             </div>

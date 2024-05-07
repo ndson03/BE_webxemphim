@@ -18,7 +18,10 @@
 <body>
     <div class="header">
         <nav>
-            <img src="~/Content/LandingPage_SignUp/logoNetflix.png" class="logo" alt="logo">
+            <a href="@Url.Action("Index", "Login")">
+                <img src="~/Content/LandingPage_SignUp/logoNetflix.png" class="logo" alt="logo">
+            </a>
+
             <div>
                 <button class="lang-btn">English <img src="~/Content/LandingPage_SignUp/images/down-icon.png" alt=""></button>
                 <button><a id="abc" href="@Url.Action("Login", "Login")">Sign In</a></button>
@@ -28,8 +31,8 @@
             <h1>Unlimited movies, TV shows and more</h1>
             <h3>Watch anywhere. Cancel anytime.</h3>
             <p>Ready to watch? Enter your email to create or restart your membership.</p>
-            <form class="email-signup">
-                <input type="email" placeholder="Email address" required>
+            <form class="email-signup" action="@Url.Action("Create", "Signup")">
+                <input type="email" name="email" placeholder="Email address" required>
                 <button type="submit">Get Started</button>
             </form>
         </div>
@@ -188,25 +191,26 @@
                 </div>
                 <button class="lang-btn">English <img src="~/Content/LandingPage_SignUp/images/down-icon.png" alt=""></button>
             </div>
-
-</body>
-<script>
-    AOS.init();
-</script>
-<script>
-    const radioButtons = document.getElementsByName('accordion');
-    radioButtons.forEach((radio) => {
-        radio.onclick = function () {
-            if (radio.checked) {
-                if (radio.getAttribute('checked')) {
-                    radio.removeAttribute('checked')
-                    radio.checked = false;
-                } else {
-                    radio.setAttribute('checked', 'true')
-                    radioButtons.forEach((el) => { if (el !== radio) el.removeAttribute('checked') });
+        </div>
+    </div>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        const radioButtons = document.getElementsByName('accordion');
+        radioButtons.forEach((radio) => {
+            radio.onclick = function () {
+                if (radio.checked) {
+                    if (radio.getAttribute('checked')) {
+                        radio.removeAttribute('checked')
+                        radio.checked = false;
+                    } else {
+                        radio.setAttribute('checked', 'true')
+                        radioButtons.forEach((el) => { if (el !== radio) el.removeAttribute('checked') });
+                    }
                 }
             }
-        }
-    })
-</script>
+        })
+    </script>
+</body>
 </html>
