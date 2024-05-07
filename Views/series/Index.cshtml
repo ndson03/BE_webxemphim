@@ -399,6 +399,7 @@
                 const totalSlides = slides.length;
                 let currentIndex = 0;
                 const slidesPerPage = 6;
+                let intervalId = null;
 
                 function showSlide(index) {
                     const slideWidth = slides[0].offsetWidth;
@@ -419,8 +420,15 @@
                     showSlide(currentIndex);
                 }
 
-                // Autoplay Slider
-                setInterval(nextSlide, 4000);
+                function startAutoPlay() {
+                    intervalId = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoPlay() {
+                    clearInterval(intervalId);
+                }
+
+                startAutoPlay();
 
                 // Show all slides
                 showSlide(currentIndex);
@@ -430,6 +438,15 @@
 
                 prevButton.addEventListener('click', prevSlide);
                 nextButton.addEventListener('click', nextSlide);
+
+                slider.addEventListener('mouseenter', function (event) {
+                    stopAutoPlay();
+
+                });
+
+                slider.addEventListener('mouseleave', function (event) {
+                    startAutoPlay();
+                });
             });
         });
     </script>
