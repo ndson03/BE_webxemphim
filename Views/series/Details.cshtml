@@ -149,15 +149,13 @@
                             if (season.serieID.Equals(Model.serieID))
                             {
                                 <div class="serie-item">
-                                    <a href="@Url.Action("Details", "series", new { id = season.seasonID })" class="season-link">
+                                    <a href="@Url.Action("Index", "seasons", new { id = season.seasonID })" class="season-link">
                                         <div class="season-poster">
                                             @{
                                                 string path = "https://image.tmdb.org/t/p/w500/";
                                             }
                                             <img class="poster-image" src="@Url.Content(path + season.posterPath)" alt="@season.seasonName">
-                                            <div class="play-button-overlay">
-                                                <i class="fas fa-play"></i>
-                                            </div>
+                                            <p>@season.seasonName</p>
                                         </div>
                                         <div class="serie-details">
                                             <div class="dt">
