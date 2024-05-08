@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-
+using System.IO;
 namespace NetflixClone.Controllers
 {
     public class RSAEncryption
@@ -17,7 +17,27 @@ namespace NetflixClone.Controllers
         public static void InitializeRSA()
         {
             isInit = true;
-            rsa = RSA.Create();//sẽ check ở đây, có thể do rsa.create nhiều lần dẫn đền khác key
+            rsa = RSA.Create();
+            //Uncomment export() khi chạy lần đầu, từ lần 2 thì comment lại vì có key rồi
+            //export();
+            // Đọc khóa từ file XML
+            string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
+
+            // Import khóa từ chuỗi XML vào đối tượng RSACryptoServiceProvider
+            rsa.FromXmlString(xmlString);
+            xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
+            rsa.FromXmlString(xmlString);
+        }
+
+        //Xuất key trong lần đầu chạy project
+        public static void export()
+        {
+            // Tạo thư mục ở ổ tương ứng để xuất file
+            string publicKeyXml = rsa.ToXmlString(false);
+            File.WriteAllText(@"C:\Keys\publicKey.xml", publicKeyXml);
+
+            string privateKeyXml = rsa.ToXmlString(true);
+            File.WriteAllText(@"C:\Keys\privateKey.xml", privateKeyXml);
         }
 
         public static byte[] Encrypt(string plainText)

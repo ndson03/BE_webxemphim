@@ -120,11 +120,9 @@ namespace NetflixClone.Controllers
                     usernew.userID = userCount + 1;
                     //comment email với password khi nào chạy thì bỏ cmt
                     usernew.email = encrypted.encryptedEmail;
-                    string a = RSAEncryption.Decrypt(encrypted.encryptedEmail);
-                    Console.WriteLine(a);
                     usernew.password = encrypted.encryptedPassword;
                     //Console.WriteLine();
-                        usernew.userName = "";
+                        usernew.userName = fullname;
                         usernew.birthday = DateTime.Now;
                         usernew.profileImage = "";
                         usernew.gender = 1;
