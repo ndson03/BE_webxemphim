@@ -16,7 +16,7 @@
     <link href="~/Content/ndson_style.css" rel="stylesheet">
 
     <title>Netflix</title>
-    
+
 </head>
 <body>
     <section class="container">
@@ -31,18 +31,21 @@
 
     <!--Top rated movies-->
     <div class="slider-container" style="margin-top: 900px">
-        <h4 class="tt-movies-list" >TOP RATED MOVIES</h4>
+        <h4 class="tt-movies-list">TOP RATED MOVIES</h4>
         <div class="slider">
 
             @foreach (var movie in Model)
             {
                 if (movie.tags.Equals("topRated"))
                 {
-                    <div class="movie-item">
+                    <div class="movie-item" data-movieid="@movie.movieID">
                         <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                             <img src="@movie.posterPath" alt="@movie.movieName">
                             <div class="movie-details">
-                                <video disablepictureinpicture="true" class="tl-vd"  loop src="~/Content/SingleMovie/video/trailer.mp4"></video>
+                                <video class="tl-vd" loop muted src="">
+                                    <source src="" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                                 <div class="dt">
                                     <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                     <p><span style="color: red">@movie.voteAverage</span>/10</p>
@@ -57,12 +60,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -75,11 +78,11 @@
             {
                 if (movie.tags.Equals("nowPlaying"))
                 {
-                    <div class="movie-item">
+                    <div class="movie-item" data-movieid="@movie.movieID">
                         <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                             <img src="@movie.posterPath" alt="@movie.movieName">
                             <div class="movie-details">
-                                <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
+                                <video class="tl-vd" loop muted src=""></video>
                                 <div class="dt">
                                     <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                     <p><span style="color: red">@movie.voteAverage</span>/10</p>
@@ -94,12 +97,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -113,12 +116,11 @@
             }
             @foreach (var movie in moviesWithBudget)
             {
-                <div class="movie-item">
+                <div class="movie-item" data-movieid="@movie.movieID">
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <img src="@movie.posterPath" alt="@movie.movieName">
                         <div class="movie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
-                            <div class="dt">
+                            <video class="tl-vd" loop muted src=""></video>                            <div class="dt">
                                 <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                 <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
@@ -131,12 +133,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -150,11 +152,11 @@
             }
             @foreach (var movie in topScore)
             {
-                <div class="movie-item">
+                <div class="movie-item" data-movieid="@movie.movieID">
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <img src="@movie.posterPath" alt="@movie.movieName">
                         <div class="movie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
+                            <video class="tl-vd" loop muted src=""></video>
                             <div class="dt">
                                 <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                 <p><span style="color: red">@movie.voteAverage</span>/10</p>
@@ -167,12 +169,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -186,12 +188,11 @@
             }
             @foreach (var movie in audience)
             {
-                <div class="movie-item">
+                <div class="movie-item" data-movieid="@movie.movieID">
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <img src="@movie.posterPath" alt="@movie.movieName">
                         <div class="movie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
-                            <div class="dt">
+                            <video class="tl-vd" loop muted src=""></video>                            <div class="dt">
                                 <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                 <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
@@ -203,12 +204,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -222,12 +223,11 @@
             }
             @foreach (var movie in rotten)
             {
-                <div class="movie-item">
+                <div class="movie-item" data-movieid="@movie.movieID">
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <img src="@movie.posterPath" alt="@movie.movieName">
                         <div class="movie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
-                            <div class="dt">
+                            <video class="tl-vd" loop muted src=""></video>                            <div class="dt">
                                 <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                 <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
@@ -239,17 +239,18 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
 
-    <script>
+    <!--Slider function-->
+    <!--<script>
         document.addEventListener("DOMContentLoaded", function () {
             const sliderContainers = document.querySelectorAll(".slider-container");
 
@@ -338,8 +339,118 @@
 
 
             });
-            
+        });
+    </script>-->
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const apiKey = '4c7a48492227a8ce26dceb363ea366cb'; // Replace with your actual TMDB API Key
+
+            const sliderContainers = document.querySelectorAll(".slider-container");
+
+            sliderContainers.forEach(function (container) {
+                const slider = container.querySelector(".slider");
+                const slides = slider.querySelectorAll(".movie-item");
+                const totalSlides = slides.length;
+                let currentIndex = 0;
+                const slidesPerPage = 6;
+                let intervalId = null;
+
+                function showSlide(index) {
+                    const slideWidth = slides[0].offsetWidth;
+                    const startPosition = index * slidesPerPage * slideWidth;
+                    slider.scrollTo({
+                        left: startPosition,
+                        behavior: "smooth",
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex =
+                        currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)
+                            ? currentIndex + 1
+                            : 0;
+                    showSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = currentIndex > 0 ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
+                    showSlide(currentIndex);
+                }
+
+                function startAutoPlay() {
+                    intervalId = setInterval(nextSlide, 4000);
+                }
+
+                function stopAutoPlay() {
+                    clearInterval(intervalId);
+                }
+
+                startAutoPlay();
+
+                // Show all slides
+                showSlide(currentIndex);
+
+                const prevButton = container.querySelector(".prev-next-button.previous");
+                const nextButton = container.querySelector(".prev-next-button.next");
+
+                prevButton.addEventListener("click", prevSlide);
+                nextButton.addEventListener("click", nextSlide);
+
+                slider.addEventListener("mouseenter", function (event) {
+                    stopAutoPlay();
+                });
+
+                slider.addEventListener("mouseleave", function (event) {
+                    startAutoPlay();
+                });
+
+                const videos = container.querySelectorAll("video");
+
+                function startPreview(video) {
+                    video.muted = true;
+                    video.currentTime = 0; // Reset video time to the beginning
+                    video.play();
+                }
+
+                function stopPreview(video) {
+                    video.pause();
+                }
+
+                videos.forEach((video) => {
+                    const movieItem = video.closest(".movie-item");
+
+                    movieItem.addEventListener("mouseenter", () => {
+                        startPreview(video);
+                    });
+
+                    movieItem.addEventListener("mouseleave", () => {
+                        stopPreview(video);
+                    });
+
+                    const movieId = movieItem.dataset.movieid;
+
+                    fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log("Trailer data:", data); // Log the trailer data
+
+                            if (Array.isArray(data.results)) {
+                                const videoInfo = data.results.find((video) => video.site === "YouTube");
+
+                                if (videoInfo) {
+                                    const videoUrl = `https://www.youtube.com/embed/${videoInfo.key}`;
+                                    video.src = videoUrl; // Set the video source dynamically
+                                } else {
+                                    console.warn("No trailer found for movie:", movieId);
+                                }
+                            } else {
+                                console.warn("Trailer data not an array:", data);
+                            }
+                        })
+                        .catch((error) => console.error("Error fetching trailer:", error));
+                });
+            });
         });
     </script>
 </body>
