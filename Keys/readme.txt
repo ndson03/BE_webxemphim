@@ -1,0 +1,1 @@
+cho cả folder này vào ổ c máy hoặc cho vào đâu cũng đc xong sửa đường dẫn ở 2 cái File.ReadAllText trong InitializeRSA thành đường dẫn tới file trong folder này
