@@ -1,0 +1,83 @@
+﻿@model NetflixClone.Models.season
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>season</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.series.serieName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.series.serieName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seasonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seasonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seasonNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seasonNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.overview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.overview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posterPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posterPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trailer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voteAverage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voteAverage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voteCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voteCount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.seasonID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

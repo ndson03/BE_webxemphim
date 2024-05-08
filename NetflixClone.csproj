@@ -138,6 +138,7 @@
     <Compile Include="Controllers\moviesController.cs" />
     <Compile Include="Controllers\RSAEncryption.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\seasonsController.cs" />
     <Compile Include="Controllers\seriesController.cs" />
     <Compile Include="Controllers\SignupController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2722,6 +2723,12 @@
     <Content Include="Views\Signup\Create.cshtml" />
     <Content Include="Views\Signup\Index.cshtml" />
     <Content Include="Views\movies\PlayMovie.cshtml" />
+    <Content Include="Views\seasons\Create.cshtml" />
+    <Content Include="Views\seasons\Delete.cshtml" />
+    <Content Include="Views\seasons\Details.cshtml" />
+    <Content Include="Views\seasons\Edit.cshtml" />
+    <Content Include="Views\seasons\Index.cshtml" />
+    <Content Include="Views\Shared\EpisodesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
