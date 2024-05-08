@@ -25,9 +25,18 @@ namespace NetflixClone.Controllers
             return View(movieList);
         }
 
-        public ActionResult PlayMovie()
+        public ActionResult PlayMovie(int id)
         {
-            return View();
+            // Retrieve the movie from the database based on the id
+            var movie = db.movies.FirstOrDefault(m => m.movieID == id);
+
+            if (movie == null)
+            {
+                // Handle the case where the movie is not found
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(movie); // Pass the movie object to the view
         }
 
         // GET: movies/Details/5

@@ -1,16 +1,11 @@
-﻿
+﻿@model NetflixClone.Models.movie
+
 @{
-    ViewBag.Title = "PlayMovie";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Tittle = "Playing movie";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test display video</title>
+    <title>@Html.DisplayFor(m => m.movieName)</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <link rel="stylesheet" href="/css/all.min.css" />
     <link rel="stylesheet" href="/css/animate.min.css" />
@@ -22,10 +17,44 @@
     <link rel="stylesheet" href="/css/slick-animation.css" />
     <link rel="stylesheet" href="/css/slick-theme.css" />
     <link rel="stylesheet" href="/css/slick.css" />
+    <style>
+        .content {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .plyr {
+            width: 80%;
+            margin: auto;
+        }
+
+        #player {
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        footer.iq-bg-dark {
+            margin-top: 600px;
+        }
+    </style>
 </head>
 <body>
-    <div style="height: 400px;">
-        <video id="player" controls></video>
+    <div class="content">
+        <div class="video-container">
+            <video id="player" controls></video>
+        </div>
+        <a href="@Url.Action("Details", "movies", new { id = Model.movieID })">
+            <p>Back to details</p>
+        </a>
     </div>
     <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -80,4 +109,3 @@
     </script>
 </body>
 
-</html>
