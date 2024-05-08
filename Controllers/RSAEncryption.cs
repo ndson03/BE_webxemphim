@@ -21,11 +21,11 @@ namespace NetflixClone.Controllers
             //Uncomment export() khi chạy lần đầu, từ lần 2 thì comment lại vì có key rồi
             //export();
             // Đọc khóa từ file XML
-            string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
+            string xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixClone\ttcn_webxemphim\Keys\publicKey.xml");
 
             // Import khóa từ chuỗi XML vào đối tượng RSACryptoServiceProvider
             rsa.FromXmlString(xmlString);
-            xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
+            xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixClone\ttcn_webxemphim\Keys\privateKey.xml");
             rsa.FromXmlString(xmlString);
         }
 
@@ -34,10 +34,10 @@ namespace NetflixClone.Controllers
         {
             // Tạo thư mục ở ổ tương ứng để xuất file
             string publicKeyXml = rsa.ToXmlString(false);
-            File.WriteAllText(@"C:\Keys\publicKey.xml", publicKeyXml);
+            File.WriteAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixClone\ttcn_webxemphim\Keys\publicKey.xml", publicKeyXml);
 
             string privateKeyXml = rsa.ToXmlString(true);
-            File.WriteAllText(@"C:\Keys\privateKey.xml", privateKeyXml);
+            File.WriteAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixClone\ttcn_webxemphim\Keys\privateKey.xml", privateKeyXml);
         }
 
         public static byte[] Encrypt(string plainText)
