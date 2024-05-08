@@ -29,23 +29,27 @@
 
     <!--Top rated series-->
     <div class="slider-container" style="margin-top: 900px">
-        <h4 class="tt-movies-list">TOP RATED SERIES</h4>
+        <h4 class="tt-series-list">TOP RATED SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
                 if (serie.tags.Equals("topRated"))
                 {
-                    <div class="serie-item">
+                    <div class="serie-item" data-serieid="@serie.serieID">
                         <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-poster">
+                                @{
+                                    string path = "https://image.tmdb.org/t/p/w500/";
+                                }
+                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                <div class="play-button-overlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                             <div class="serie-details">
-                                <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                                 <div class="dt">
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                     <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                    <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                     <h5>@serie.serieName</h5>
                                 </div>
                             </div>
@@ -57,35 +61,39 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
 
     <!--Now playing series-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">NOW PLAYING SERIES</h4>
+        <h4 class="tt-series-list">NOW PLAYING SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
                 if (serie.tags.Equals("airingToday"))
                 {
-                    <div class="serie-item">
+                    <div class="serie-item" data-serieid="@serie.serieID">
                         <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-poster">
+                                @{
+                                    string path = "https://image.tmdb.org/t/p/w500/";
+                                }
+                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                <div class="play-button-overlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                             <div class="serie-details">
-                                <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                                 <div class="dt">
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                     <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                    <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                     <h5>@serie.serieName</h5>
                                 </div>
                             </div>
@@ -109,24 +117,28 @@
 
     <!--Top budget series-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">BLOCK-BUSTERS SERIES</h4>
+        <h4 class="tt-series-list">BLOCK-BUSTERS SERIES</h4>
         <div class="slider">
             @{
                 var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
             }
             @foreach (var serie in topBudget)
             {
-                <div class="serie-item">
+                <div class="serie-item" data-serieid="@serie.serieID">
                     <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        @{
-                            string path = "https://image.tmdb.org/t/p/w500/";
-                        }
-                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-poster">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="play-button-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                         <div class="serie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                             <div class="dt">
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                 <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                 <h5>@serie.serieName</h5>
                             </div>
                         </div>
@@ -149,24 +161,28 @@
 
     <!--Highest score series-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">HIGHEST SCORE SERIES</h4>
+        <h4 class="tt-series-list">HIGHEST SCORE SERIES</h4>
         <div class="slider">
             @{
                 var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
             }
             @foreach (var serie in topScore)
             {
-                <div class="serie-item">
+                <div class="serie-item" data-serieid="@serie.serieID">
                     <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        @{
-                            string path = "https://image.tmdb.org/t/p/w500/";
-                        }
-                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-poster">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="play-button-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                         <div class="serie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                             <div class="dt">
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                 <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                 <h5>@serie.serieName</h5>
                             </div>
                         </div>
@@ -188,24 +204,28 @@
 
     <!--Audience recommendation-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">AUDIENCE RECOMMENDATION</h4>
+        <h4 class="tt-series-list">AUDIENCE RECOMMENDATION</h4>
         <div class="slider">
             @{
                 var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
             }
             @foreach (var serie in audience)
             {
-                <div class="serie-item">
+                <div class="serie-item" data-serieid="@serie.serieID">
                     <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        @{
-                            string path = "https://image.tmdb.org/t/p/w500/";
-                        }
-                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-poster">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="play-button-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                         <div class="serie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                             <div class="dt">
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                 <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                 <h5>@serie.serieName</h5>
                             </div>
                         </div>
@@ -227,24 +247,28 @@
 
     <!--Rotten Tomatoes series-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">FRESH ROTTEN TOMATOES</h4>
+        <h4 class="tt-series-list">FRESH ROTTEN TOMATOES</h4>
         <div class="slider">
             @{
                 var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
             }
             @foreach (var serie in rotten)
             {
-                <div class="serie-item">
+                <div class="serie-item" data-serieid="@serie.serieID">
                     <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        @{
-                            string path = "https://image.tmdb.org/t/p/w500/";
-                        }
-                        <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                        <div class="serie-poster">
+                            @{
+                                string path = "https://image.tmdb.org/t/p/w500/";
+                            }
+                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="play-button-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                         <div class="serie-details">
-                            <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                             <div class="dt">
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                 <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                 <h5>@serie.serieName</h5>
                             </div>
                         </div>
@@ -266,23 +290,27 @@
 
     <!--Completed series-->
     <div class="slider-container">
-        <h4 class="tt-movies-list">COMPLETED SERIES</h4>
+        <h4 class="tt-series-list">COMPLETED SERIES</h4>
         <div class="slider">
             @foreach (var serie in Model)
             {
                 if (serie.status.Equals("Ended"))
                 {
-                    <div class="serie-item">
+                    <div class="serie-item" data-serieid="@serie.serieID">
                         <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            <div class="serie-poster">
+                                @{
+                                    string path = "https://image.tmdb.org/t/p/w500/";
+                                }
+                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                <div class="play-button-overlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
                             <div class="serie-details">
-                                <video disablepictureinpicture="true" class="tl-vd" loop muted src="~/Content/SingleMovie/video/trailer.mp4"></video>
                                 <div class="dt">
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
                                     <p><span style="color: red">@serie.voteAverage</span>/10</p>
-                                    <p style="color: antiquewhite">Seasons: @serie.numberOfSeasons</p>
                                     <h5>@serie.serieName</h5>
                                 </div>
                             </div>
@@ -294,12 +322,12 @@
         </div>
         <button class="prev-next-button previous">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
             </svg>
         </button>
         <button class="prev-next-button next">
             <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
             </svg>
         </button>
     </div>
@@ -344,7 +372,7 @@
                 }
 
                 startAutoPlay();
-    
+
                 // Show all slides
                 showSlide(currentIndex);
 
@@ -362,8 +390,8 @@
                 slider.addEventListener('mouseleave', function (event) {
                     startAutoPlay();
                 });
-                
-                
+
+
                 const videos = container.querySelectorAll("video");
 
                 function startPreview(video) {
