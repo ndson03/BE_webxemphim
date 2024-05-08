@@ -42,27 +42,14 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                         <div class="input-box" id="input1">
-                            @Html.LabelFor(model => model.fullName, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "text-danger" })
-                            </div>
+                            @Html.TextBox("fullname", null, new { required = "required", placeholder = "Full name" })
                         </div>
 
                         <div class="input-box" id="input1">
-                            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                            </div>
+                            @Html.TextBox("email", null, new { required = "required", placeholder = "Email" })
                         </div>
-
-                        <div class="input-box" id="input1">
-                            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="input-box" id="input2">
+                            @Html.Password("password", null, new { required = "required", placeholder = "Password" })
                         </div>
 
                         <div class="form-group">

@@ -22,8 +22,8 @@ namespace NetflixClone.Models
         [StringLength(100)]
         public string userName { get; set; }
 
-        [StringLength(200)]
-        public string password { get; set; }
+        //[StringLength(200)]
+        public byte[] password { get; set; }
 
         [StringLength(100)]
         public string fullName { get; set; }
@@ -36,8 +36,8 @@ namespace NetflixClone.Models
         [StringLength(45)]
         public string profileImage { get; set; }
 
-        [StringLength(200)]
-        public string email { get; set; }
+        //[StringLength(200)]
+        public byte[] email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<review> reviews { get; set; }

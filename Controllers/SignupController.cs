@@ -10,6 +10,8 @@ using NetflixClone.Models;
 using System.Data.Entity.Validation;
 using System.Text;
 using System.Data.Entity.Infrastructure;
+using Microsoft.SqlServer.Server;
+using System.Security.Cryptography;
 
 namespace NetflixClone.Controllers
 {
@@ -20,7 +22,10 @@ namespace NetflixClone.Controllers
 
         public SignupController()
         {
-            RSAEncryption.InitializeRSA();
+            if (!RSAEncryption.isInit)
+            {
+                RSAEncryption.InitializeRSA();
+            }
         }
 
         // GET: Signup
@@ -55,7 +60,7 @@ namespace NetflixClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID, userName, password, fullName, birthday, gender, profileImage, email")] user user)
+        /*public ActionResult Create([Bind(Include = "userID, userName, password, fullName, birthday, gender, profileImage, email")] user user)
         {
             try
             {
@@ -63,14 +68,14 @@ namespace NetflixClone.Controllers
                 {
                     list = new Encrypted.EncryptedList();
                     // Encrypt the email and password before saving to the database
-                    Encrypted encrypted = new Encrypted(RSAEncryption.Encrypt(user.email.Substring(0, Math.Min(user.email.Length, 100))), RSAEncryption.Encrypt(user.password.Substring(0, Math.Min(user.password.Length, 100))));
+                    Encrypted encrypted = new Encrypted(RSAEncryption.Encrypt(user.email), RSAEncryption.Encrypt(user.password));
                     list.Add(encrypted);
                     var userCount = db.users.Count();
                     user.userID = userCount + 1;
                     //comment email với password khi nào chạy thì bỏ cmt
-                    user.email = encrypted.getEncryptedEmail();
-                    user.password = encrypted.getEncryptedPassword();
-                    Console.WriteLine(user.email + user.password);
+                    user.email = encrypted.encryptedEmail;
+                    user.password = encrypted.encryptedPassword;
+                    //Console.WriteLine();
                     if (user.birthday == null || user.profileImage == null || user.gender == null || user.userName == null || user.fullName == null)
                     {
                         user.userName = "";
@@ -78,6 +83,52 @@ namespace NetflixClone.Controllers
                         user.profileImage = "";
                         user.gender = 1;
                     }
+
+                    user.profileImage = "";
+                    var f = Request.Files["ImageFile"];
+                    if (f != null)
+                    {
+                        string fileName = System.IO.Path.GetFileName(f.FileName);
+                        string uploadPath = Server.MapPath("~/Content/UserImages/" + fileName);
+                        f.SaveAs(uploadPath);
+                        user.profileImage = fileName;
+                    }
+                    db.users.Add(user);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index", "Login");
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "There was an error: " + e.Message;
+                return View(user);
+            }
+        }*/
+
+        public ActionResult Create(string fullname, string email, string password)
+        {
+            user usernew = new user();
+            try
+            {
+                list = new Encrypted.EncryptedList();
+                if (ModelState.IsValid)
+                {
+                    // Encrypt the email and password before saving to the database
+                    Encrypted encrypted = new Encrypted(RSAEncryption.Encrypt(email), RSAEncryption.Encrypt(password));
+                    list.Add(encrypted);
+                    var userCount = db.users.Count();
+                    usernew.userID = userCount + 1;
+                    //comment email với password khi nào chạy thì bỏ cmt
+                    usernew.email = encrypted.encryptedEmail;
+                    string a = RSAEncryption.Decrypt(encrypted.encryptedEmail);
+                    Console.WriteLine(a);
+                    usernew.password = encrypted.encryptedPassword;
+                    //Console.WriteLine();
+                        usernew.userName = "";
+                        usernew.birthday = DateTime.Now;
+                        usernew.profileImage = "";
+                        usernew.gender = 1;
+                    
 
                     /*user.profileImage = "";
                     var f = Request.Files["ImageFile"];
@@ -88,7 +139,7 @@ namespace NetflixClone.Controllers
                         f.SaveAs(uploadPath);
                         user.profileImage = fileName;
                     }*/
-                    db.users.Add(user);
+                    db.users.Add(usernew);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index", "Login");
@@ -96,7 +147,7 @@ namespace NetflixClone.Controllers
             catch (Exception e)
             {
                 ViewBag.Error = "There was an error: " + e.Message;
-                return View(user);
+                return View(usernew);
             }
         }
 

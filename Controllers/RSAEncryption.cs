@@ -1,34 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Web;
 using System.Security.Cryptography;
-using NetflixClone.Models;
+using System.Text;
 
 namespace NetflixClone.Controllers
 {
     public class RSAEncryption
     {
         private static RSA rsa;
+        public static bool isInit = false;
+
+        public static bool getIsInit()
+        {
+            return isInit;
+        }
 
         public static void InitializeRSA()
         {
-            rsa = RSA.Create();
+            isInit = true;
+            rsa = RSA.Create();//sẽ check ở đây, có thể do rsa.create nhiều lần dẫn đền khác key
         }
 
-        public static string Encrypt(string plainText)
+        public static byte[] Encrypt(string plainText)
         {
-            byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(plainText.Substring(0, Math.Min(plainText.Length, 45)));
+            byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(plainText);
             byte[] encryptedBytes = rsa.Encrypt(bytesToEncrypt, RSAEncryptionPadding.Pkcs1);
-            return Convert.ToBase64String(encryptedBytes);
+            string a = Decrypt(encryptedBytes);
+            Console.WriteLine(a);
+            return encryptedBytes;
         }
 
-        public static string Decrypt(string cipherText)
+        public static string Decrypt(byte[] cipherText)
         {
-            byte[] encryptedBytes = Convert.FromBase64String(cipherText);
-            byte[] decryptedBytes = rsa.Decrypt(encryptedBytes, RSAEncryptionPadding.Pkcs1);
+            //byte[] encryptedBytes = Convert.FromBase64String(cipherText);
+            //byte[] encryptedBytes = cipherText;
+            Console.WriteLine(cipherText);
+            byte[] decryptedBytes = rsa.Decrypt(cipherText, RSAEncryptionPadding.Pkcs1);
             return Encoding.UTF8.GetString(decryptedBytes);
         }
     }

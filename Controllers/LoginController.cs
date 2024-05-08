@@ -16,7 +16,11 @@ namespace NetflixClone.Controllers
 
         public LoginController()
         {
-            RSAEncryption.InitializeRSA(); // Initialize RSA encryption
+            //RSAEncryption.InitializeRSA(); // Initialize RSA encryption
+            if (!RSAEncryption.isInit)
+            {
+                RSAEncryption.InitializeRSA();
+            }
         }
 
         // GET: Login
@@ -42,20 +46,22 @@ namespace NetflixClone.Controllers
             else
             {
                 // Encrypt the email and password before comparing
-                string encryptedEmail = RSAEncryption.Encrypt(email);
-                string encryptedPassword = RSAEncryption.Encrypt(password);
 
-                var user = db.users.FirstOrDefault(u => u.email == encryptedEmail && u.password == encryptedPassword);
-                if (user != null)
+                foreach (var user in db.users)
                 {
-                    Session["user"] = user.fullName;
-                    return RedirectToAction("Index", "Home");
+                    Console.WriteLine(user.email);
+                    string decryptedEmail = RSAEncryption.Decrypt(user.email);
+                    
+                    string decryptedPassword = RSAEncryption.Decrypt(user.password);
+                    if (decryptedEmail == email && decryptedPassword == password)
+                    {
+                        Session["user"] = user.fullName;
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
-                else
-                {
                     ViewBag.Error = "Invalid email or password!";
                     return View("Login");
-                }
+                
             }
         }
 
@@ -119,5 +125,6 @@ namespace NetflixClone.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
