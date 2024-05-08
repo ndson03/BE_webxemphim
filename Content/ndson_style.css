@@ -29,7 +29,7 @@
 
 .movie-item:hover, .serie-item:hover {
     transform: scaleX(1.4) scaleY(1.4);
-    transform-origin: center;
+    transform-origin: bottom;
     z-index: 1;
     position: relative;
 }

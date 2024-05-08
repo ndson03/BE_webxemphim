@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/css/slick-animation.css" />
     <link rel="stylesheet" href="/css/slick-theme.css" />
     <link rel="stylesheet" href="/css/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
     <style>
         .content {
             width: 100%;
@@ -24,6 +26,7 @@
         }
 
         .video-container {
+            padding-top: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -32,7 +35,7 @@
         }
 
         .plyr {
-            width: 80%;
+            width: 65%;
             margin: auto;
         }
 
@@ -45,6 +48,39 @@
         footer.iq-bg-dark {
             margin-top: 600px;
         }
+
+        .dt-content {
+            position: absolute;
+            top: 250px;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            background-color: #2e2d2d;
+            border-radius: 0 10px 10px 0;
+            color: #b0b0b0;
+            font-size: 12px;
+            width: 70px;
+        }
+
+
+        .dt-btn {
+            height: 50px;
+            text-align: center;
+            align-content: center;
+            cursor: pointer;
+        }
+
+        .dt-btn:hover {
+            background-color: #474747;
+        }
+
+        .dt-btn a {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            margin: 0 0;
+            padding: 0 0;
+        }
     </style>
 </head>
 <body>
@@ -52,9 +88,31 @@
         <div class="video-container">
             <video id="player" controls></video>
         </div>
-        <a href="@Url.Action("Details", "movies", new { id = Model.movieID })">
-            <p>Back to details</p>
-        </a>
+        <div class="dt-content">
+            <div class="dt-btn" style="border-radius: 0 10px 0 0;">
+                <a href="@Url.Action("Details", "movies", new { id = Model.movieID })">
+                    <i class="fas fa-angle-left"></i>
+                    <br /> Detail
+                </a>
+            </div>
+            <div class="dt-btn">
+                <i class="fas fa-star"></i>
+                <br />Rate it
+            </div>
+            <div class="dt-btn">
+                <i class="fas fa-share"></i> 
+                <br />Share this
+            </div>
+            <div class="dt-btn">
+                <i class="fas fa-heart"></i>
+                <br />Favarite
+            </div>
+            <div class="dt-btn" style="border-radius: 0 0 10px 0;">
+                <i class="fas fa-lightbulb"></i>
+                <br />Off light
+            </div>
+        </div>
+        
     </div>
     <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>

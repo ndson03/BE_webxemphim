@@ -227,7 +227,8 @@
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <img src="@movie.posterPath" alt="@movie.movieName">
                         <div class="movie-details">
-                            <video class="tl-vd" loop muted src=""></video>                            <div class="dt">
+                            <video class="tl-vd" loop muted src=""></video>                            
+                            <div class="dt">
                                 <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
                                 <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
