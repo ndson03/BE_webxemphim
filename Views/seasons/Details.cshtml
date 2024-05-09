@@ -1,15 +1,11 @@
 ﻿@model NetflixClone.Models.season
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Seasons Details";
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
 
 <head>
-    <link href="~/Content/ndson_style.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
-    <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
     <link href="~/Content/ndson_style.css" rel="stylesheet">
 </head>
 
@@ -87,11 +83,11 @@
                                 </div>
                                 <div class="d-flex align-items-center mt-2 mt-md-3">
                                     <span class="badge badge-secondary p-2">16+</span>
-                                    @{
+                                    @{ 
                                         int number = 0;
-                                        foreach (var episode in db.episodes)
+                                        foreach(var episode in db.episodes)
                                         {
-                                            if (episode.seasonID == Model.seasonID)
+                                            if(episode.serieID.Equals(Model.serieID))
                                             {
                                                 number++;
                                             }
@@ -100,14 +96,14 @@
                                     <span class="ml-3">@number episodes</span>
                                 </div>
                             </div>
-                            <p data-animation-in="fadeInUp"  style="white-space: pre-wrap;">
+                            <p data-animation-in="fadeInUp" style="white-space: pre-wrap;">
                                 @Html.DisplayFor(model => model.overview)
                             </p>
                             <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
                                 <div class="text-primary title starring">
-                                    Season number:
+                                    Vote Average:
                                     <span class="text-body">
-                                        @Html.DisplayFor(model => model.seasonNumber)
+                                        @Html.DisplayFor(model => model.voteAverage)
                                     </span>
                                 </div>
                             </div>
@@ -123,13 +119,52 @@
                                     <a href="#" class="iq-view-all">View All</a>
                                 </div>
                                 <div class="favorite-contens">
-                                    Html.Partial("Casting_seasons", db.actors.ToList())
+                                    Html.Partial("Casting_Series", db.actors.ToList())
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>-->
+                <div class="slider-container" style="margin-top: 300px;">
+                    <h4 class="tt-series-list">EPISODES:</h4>
+                    <div class="slider">
+                        @foreach (var episode in db.episodes)
+                        {
+                            if (episode.serieID.Equals(Model.serieID))
+                            {
+                                <div class="serie-item">
+                                    <a href="@Url.Action("Details", "episodes", new { id = episode.episodeID })" class="season-link">
+                                        <div class="season-poster">
+                                            @{
+                                                string path = "https://image.tmdb.org/t/p/w500/";
+                                            }
+                                            <img class="poster-image" src="@Url.Content(path + episode.posterPath)" alt="@episode.episodeName">
+                                            <p>@episode.episodeName</p>
+                                        </div>
+                                        <div class="serie-details">
+                                            <div class="dt">
+                                                <p style="font-style: italic; color: lightgoldenrodyellow">episode: @episode.episodeNumber</p>
+                                                <p><span style="color: red">@episode.voteAverage</span>/10</p>
+                                                <h5>@episode.episodeName</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
 
+                        }
+                    </div>
+                    <button class="prev-next-button previous">
+                        <svg viewbox="0 0 100 100">
+                            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                        </svg>
+                    </button>
+                    <button class="prev-next-button next">
+                        <svg viewbox="0 0 100 100">
+                            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -137,53 +172,13 @@
 <!-- slider ends -->
 <!-- main content starts  -->
 <div class="main-content">
-    <!--episode list-->
-    <div class="slider-container" style="margin-top: 300px;">
-        <h4 class="tt-seasons-list">EPISODES:</h4>
-        <div class="slider">
-            @foreach (var episode in db.episodes)
-            {
-                if (episode.serieID.Equals(Model.serieID))
-                {
-                    <div class="season-item">
-                        <a href="@Url.Action("Details", "episodes", new { id = episode.episodeID })" class="season-link">
-                            <div class="season-poster">
-                                @{
-                                    string path = "https://image.tmdb.org/t/p/w500/";
-                                }
-                                <img class="poster-image" src="@Url.Content(path + episode.posterPath)" alt="@episode.episodeName">
-                                <p>@episode.episodeName</p>
-                            </div>
-                            <div class="season-details">
-                                <div class="dt">
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">season: @episode.episodeNumber</p>
-                                    <p><span style="color: red">@episode.voteAverage</span>/10</p>
-                                    <h5>@episode.episodeName</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                }
 
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-            </svg>
-        </button>
-    </div>
 </div>
 <!-- main content ends  -->
 
 <script>
     const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
-    const seriesId = '@Model.serieID'; // Assuming this is the series ID from the model
+    const seriesId = '@Model.serieID';
     const seasonNumber = '@Model.seasonNumber'; // Assuming this is the season number from the model
 
     const trailerVideo = document.getElementById('trailer-video');
@@ -291,3 +286,4 @@
         });
     });
 </script>
+

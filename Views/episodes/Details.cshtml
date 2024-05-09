@@ -1,7 +1,7 @@
 ﻿@model NetflixClone.Models.episode
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Episodes Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
@@ -86,6 +86,7 @@
                                 </div>
                                 <div class="d-flex align-items-center mt-2 mt-md-3">
                                     <span class="badge badge-secondary p-2">16+</span>
+                                    <span class="ml-3">Season: @Html.DisplayFor(model => model.episodeNumber)</span>
                                 </div>
                             </div>
                             <p data-animation-in="fadeInUp" style="white-space: pre-wrap;">
@@ -95,39 +96,30 @@
                                 <div class="text-primary title starring">
                                     Duration:
                                     <span class="text-body">
-                                        @Html.DisplayFor(model => model.runtime)
+                                        @Html.DisplayFor(model => model.runtime) (min)
                                     </span>
+                                </div>
+                                <div class="text-primary title tag">
+                                    Vote Average :
+                                    <span class="text-body">@Html.DisplayFor(model => model.voteAverage) </span>
+                                </div>
+                                <div class="text-primary title tag">
+                                    Vote Count :
+                                    <span class="text-body">@Html.DisplayFor(model => model.voteCount) </span>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
-                                <a href='@Url.Action("PlayMovie", "movies", new { id = Model.serieID })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
-                                <a href="#" class="btn btn-link">More Details</a>
+                                <a href="@Url.Action("PlayMovie", "movies", new { id = 13 })" id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
-                        <a href="@Url.Action("PlayMovie", "movies", new { id = Model.serieID })" class="video-open playbtn">
-                            <img src="~/Content/SingleMovie/images/play.png" class="play" alt="" />
-                            <span class="w-trailor">Watch</span>
-                        </a>
                     </div>
                 </div>
-                <!--<section id="iq-favorites">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12 overflow-hidden">
-                                <div class="iq-main-header d-flex align-items-center justify-content-between">
-                                    <h4 class="main-title">Casting</h4>
-                                    <a href="#" class="iq-view-all">View All</a>
-                                </div>
-                                <div class="favorite-contens">
-                                    Html.Partial("Casting_episodes", db.actors.ToList())
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>-->
-
+                <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
+                    <a href="@Url.Action("PlayMovie", "movies", new { id = 13 })" class="video-open playbtn">
+                        <img src="~/Content/SingleMovie/images/play.png" class="play" alt="" />
+                        <span class="w-trailor">Watch</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -135,157 +127,135 @@
 <!-- slider ends -->
 <!-- main content starts  -->
 <div class="main-content">
-    <!--episode list-->
-    @*<div class="slider-container" style="margin-top: 300px;">
-            <h4 class="tt-episodes-list">episodeS:</h4>
-            <div class="slider">
-                @foreach (var episode in db.episodes)
-                {
-                    if (episode.episodeID.Equals(Model.episodeID))
-                    {
-                        <div class="episode-item">
-                            <a href="@Url.Action("Index", "episodes", new { id = episode.episodeID })" class="episode-link">
-                                <div class="episode-poster">
-                                    @{
-                                        string path = "https://image.tmdb.org/t/p/w500/";
-                                    }
-                                    <img class="poster-image" src="@Url.Content(path + episode.posterPath)" alt="@episode.episodeName">
-                                    <p>@episode.episodeName</p>
-                                </div>
-                                <div class="episode-details">
-                                    <div class="dt">
-                                        <p style="font-style: italic; color: lightgoldenrodyellow">episode: @episode.episodeNumber</p>
-                                        <p><span style="color: red">@episode.voteAverage</span>/10</p>
-                                        <h5>@episode.episodeName</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    }
-
-                }
+    <!--Slides of episodes' captures-->
+    <section id="iq-suggested" class="s-margin">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Episode captures</h4>
+                    </div>
+                    <div class="favorite-contens">
+                        <ul class="favorites-slider list-inline row p-0 mb-0">
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <button class="prev-next-button previous">
-                <svg viewbox="0 0 100 100">
-                    <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-                </svg>
-            </button>
-            <button class="prev-next-button next">
-                <svg viewbox="0 0 100 100">
-                    <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-                </svg>
-            </button>
-        </div>*@
-
+        </div>
+    </section>
+    <!--SLides of episodes' trailers-->
+    <section id="iq-trailers" class="s-margin">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 overflow-hidden">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">Episode trailers</h4>
+                    </div>
+                    <div class="favorite-contens">
+                        <ul class="trailers-slider list-inline row p-0 mb-0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 <!-- main content ends  -->
-
+<!--=====Scripts part=====-->
+<!--Display image as background-->
 <script>
     const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
-    const seriesId = '@Model.serieID'; // Assuming this is the series ID from the model
-    const episodeNumber = '@Model.episodeNumber'; // Assuming this is the episode number from the model
+    const seriesId = '@Model.serieID';
+    const seasonNumber = 1;
+    const episodeNumber = 1;
+    const movieDetailsContainer = document.querySelector('.movie-details-container');
 
-    const trailerVideo = document.getElementById('trailer-video');
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/images?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const stills = data.stills;
 
-    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${1}/episode/${episodeNumber}/videos?api_key=${apiKey}`)
+            if (stills.length > 0) {
+                const randomStillIndex = Math.floor(Math.random() * stills.length);
+                const stillImagePath = `https://image.tmdb.org/t/p/original/${stills[randomStillIndex].file_path}`;
+                movieDetailsContainer.style.backgroundImage = `url(${stillImagePath})`;
+            } else {
+                console.warn('No still images found for this episode.');
+            }
+        })
+        .catch(error => console.error('Error fetching episode images:', error));
+</script>
+<!---->
+<!--Display episode's images in a slider-->
+<script>
+    const episodeCapturesContainer = document.querySelector('.favorites-slider');
+
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/images?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const stills = data.stills;
+
+            if (stills.length > 0) {
+                stills.forEach(still => {
+                    const imagePath = `https://image.tmdb.org/t/p/original/${still.file_path}`;
+
+                    // Create slide item
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('slide-item');
+
+                    // Create image element
+                    const imageElement = document.createElement('img');
+                    imageElement.src = imagePath;
+                    imageElement.classList.add('img-fluid');
+
+                    // Add image to slide item
+                    listItem.appendChild(imageElement);
+
+                    // Append slide item to container
+                    episodeCapturesContainer.appendChild(listItem);
+                });
+            } else {
+                console.warn('No still images found for this episode.');
+            }
+        })
+        .catch(error => console.error('Error fetching episode images:', error));
+</script>
+<!---->
+<!--Display episode's images in a slider-->
+<script>
+    const trailersContainer = document.querySelector('.trailers-slider');
+
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/videos?api_key=${apiKey}`)
         .then(response => response.json())
         .then(data => {
             const videos = data.results;
 
-            videos.forEach(video => {
-                if (video.site === 'YouTube') {
-                    trailerVideo.src = `https://www.youtube.com/embed/${video.key}?autoplay=1&controls=0&loop=1&mute=0`;
-                }
-            });
+            if (videos.length > 0) {
+                videos.forEach(video => {
+                    const key = video.key;
+                    const videoUrl = `https://www.youtube.com/watch?v=${key}`;
+
+                    // Create slide item
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('slide-item');
+
+                    // Create video element (iframe)
+                    const videoElement = document.createElement('iframe');
+                    videoElement.width = '280';
+                    videoElement.height = '157';
+                    videoElement.src = videoUrl;
+                    videoElement.allowFullscreen = true;
+
+                    // Add video to slide item
+                    listItem.appendChild(videoElement);
+
+                    // Append slide item to container
+                    trailersContainer.appendChild(listItem);
+                });
+            } else {
+                console.warn('No trailers found for this episode.');
+            }
         })
-        .catch(error => console.error('Error fetching trailer:', error));
+        .catch(error => console.error('Error fetching episode trailers:', error));
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const sliderContainers = document.querySelectorAll(".slider-container");
-
-        sliderContainers.forEach(function (container) {
-            const slider = container.querySelector(".slider");
-            const slides = slider.querySelectorAll(".episode-item");
-            const totalSlides = slides.length;
-            let currentIndex = 0;
-            const slidesPerPage = 6;
-            let intervalId = null;
-
-            function showSlide(index) {
-                const slideWidth = slides[0].offsetWidth;
-                const startPosition = index * slidesPerPage * slideWidth;
-                slider.scrollTo({
-                    left: startPosition,
-                    behavior: 'smooth'
-                });
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)) ? currentIndex + 1 : 0;
-                showSlide(currentIndex);
-            }
-
-            function prevSlide() {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
-                showSlide(currentIndex);
-            }
-
-            function startAutoPlay() {
-                intervalId = setInterval(nextSlide, 4000);
-            }
-
-            function stopAutoPlay() {
-                clearInterval(intervalId);
-            }
-
-            startAutoPlay();
-
-            // Show all slides
-            showSlide(currentIndex);
-
-            const prevButton = container.querySelector('.prev-next-button.previous');
-            const nextButton = container.querySelector('.prev-next-button.next');
-
-            prevButton.addEventListener('click', prevSlide);
-            nextButton.addEventListener('click', nextSlide);
-
-            slider.addEventListener('mouseenter', function (event) {
-                stopAutoPlay();
-
-            });
-
-            slider.addEventListener('mouseleave', function (event) {
-                startAutoPlay();
-            });
-
-
-            const videos = container.querySelectorAll("video");
-
-            function startPreview(video) {
-                video.muted = true;
-                video.currentTime = 1;
-                video.playbackRate = 0.5;
-                video.play();
-            }
-
-            function stopPreview(video) {
-                video.currentTime = 0;
-                video.playbackRate = 1;
-                video.pause();
-            }
-
-            videos.forEach((video) => {
-                const episodeItem = video.closest(".episode-item");
-
-                episodeItem.addEventListener("mouseenter", () => {
-                    startPreview(video);
-                });
-
-                episodeItem.addEventListener("mouseleave", () => {
-                    stopPreview(video);
-                });
-            });
-        });
-    });</script>
+<!---->

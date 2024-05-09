@@ -3,31 +3,29 @@
 <ul class="favorites-slider list-inline row p-0 mb-0">
     @foreach (var actor in Model)
     {
-        if (actor.series.Any(s => s.serieID == @ViewBag.serieID))
-        {
-            <!-- slide item 1 -->
-            <li class="slide-item">
-                <div class="block-images position-relative">
-                    <div class="img-box">
-                        @{
-                            string path = "https://image.tmdb.org/t/p/w500/";
-                        }
-                        <img src="@Url.Content(path + actor.profilePath)" class="img-fluid" alt="" />
-                    </div>
-                    <div class="block-description">
-                        <h6 class="iq-title">
-                            <a href="#">@actor.actorName </a>
-                        </h6>
-                        <!--<div class="hover-buttons">
-                            <span class="btn btn-hover iq-button">
-                                <i class="fa fa-play mr-1"></i>
-                                Play Now
-                            </span>
-                        </div>-->
-
-                    </div>
+        <!-- slide item 1 -->
+        <li class="slide-item">
+            <div class="block-images position-relative">
+                <div class="img-box">
+                    @{
+                        string path = "https://image.tmdb.org/t/p/w500/";
+                    }
+                    <img src="@Url.Content(path + actor.profilePath)" class="img-fluid" alt="" />
                 </div>
-            </li>
-        }
+                <div class="block-description">
+                    <h6 class="iq-title">
+                        <a href="#">@actor.actorName </a>
+                    </h6>
+                    <!--<div class="hover-buttons">
+                        <span class="btn btn-hover iq-button">
+                            <i class="fa fa-play mr-1"></i>
+                            Play Now
+                        </span>
+                    </div>-->
+
+                </div>
+            </div>
+        </li>
+
     }
 </ul>

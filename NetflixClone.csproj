@@ -2724,7 +2724,6 @@
     <Content Include="Views\Signup\Create.cshtml" />
     <Content Include="Views\Signup\Index.cshtml" />
     <Content Include="Views\movies\PlayMovie.cshtml" />
-    <Content Include="Views\Shared\EpisodesList.cshtml" />
     <Content Include="Views\seasons\Create.cshtml" />
     <Content Include="Views\seasons\Delete.cshtml" />
     <Content Include="Views\seasons\Details.cshtml" />
@@ -2735,6 +2734,7 @@
     <Content Include="Views\episodes\Details.cshtml" />
     <Content Include="Views\episodes\Edit.cshtml" />
     <Content Include="Views\episodes\Index.cshtml" />
+    <Content Include="Views\actors\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
