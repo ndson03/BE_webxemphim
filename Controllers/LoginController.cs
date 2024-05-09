@@ -26,7 +26,7 @@ namespace NetflixClone.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View(db.users.ToList());
+            return View();
         }
 
         [HttpGet]

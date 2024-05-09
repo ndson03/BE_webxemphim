@@ -1,0 +1,105 @@
+﻿@model NetflixClone.Models.episode
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>episode</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.season.seasonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.season.seasonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.series.serieName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.series.serieName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.episodeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.episodeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.episodeNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.episodeNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.overview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.overview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posterPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posterPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trailer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voteAverage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voteAverage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voteCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voteCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.runtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.runtime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

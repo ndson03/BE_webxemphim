@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NetflixClone.Models.season>
+﻿@model IEnumerable<NetflixClone.Models.episode>
 
 @{
     ViewBag.Title = "Index";
@@ -13,13 +13,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.season.seasonName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.series.serieName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.seasonName)
+            @Html.DisplayNameFor(model => model.episodeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.seasonNumber)
+            @Html.DisplayNameFor(model => model.episodeNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.overview)
@@ -36,19 +39,25 @@
         <th>
             @Html.DisplayNameFor(model => model.voteCount)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.runtime)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.season.seasonName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.series.serieName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.seasonName)
+            @Html.DisplayFor(modelItem => item.episodeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.seasonNumber)
+            @Html.DisplayFor(modelItem => item.episodeNumber)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.overview)
@@ -66,9 +75,12 @@
             @Html.DisplayFor(modelItem => item.voteCount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.seasonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.seasonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.seasonID })
+            @Html.DisplayFor(modelItem => item.runtime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.episodeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.episodeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.episodeID })
         </td>
     </tr>
 }

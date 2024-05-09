@@ -8,7 +8,7 @@ namespace NetflixClone.Models
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=MovieModel")
+            : base("name=Model1")
         {
         }
 
@@ -72,6 +72,10 @@ namespace NetflixClone.Models
                 .HasMany(e => e.seasons)
                 .WithOptional(e => e.series)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Entity<user>()
+                .Property(e => e.userName)
+                .IsUnicode(false);
 
             modelBuilder.Entity<user>()
                 .Property(e => e.birthday)

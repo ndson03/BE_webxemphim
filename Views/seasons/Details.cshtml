@@ -3,81 +3,291 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
 
-<h2>Details</h2>
+<head>
+    <link href="~/Content/ndson_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
+    <link href="~/Content/ndson_style.css" rel="stylesheet">
+</head>
 
-<div>
-    <h4>season</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.series.serieName)
-        </dt>
+<style>
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.series.serieName)
-        </dd>
+    #trailer-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.seasonName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.seasonName)
-        </dd>
+    #trailer-video {
+        pointer-events: none;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.seasonNumber)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.seasonNumber)
-        </dd>
+        #trailer-video::-webkit-media-controls-start-playback-button {
+            display: none;
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.overview)
-        </dt>
+    .movie-details-container {
+        min-height: 100vh;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.overview)
-        </dd>
+    .slick-bg.s-bg-1 {
+        height: auto !important;
+    }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.posterPath)
-        </dt>
+<!-- slider starts  -->
+<section id="home" class="iq-main-slider p-0">
+    <div id="home-slider" class="slider m-0 p-0">
+        <div class="slide slick-bg s-bg-1">
+            <div class="video-background">
+                <iframe id="trailer-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="container-fluid position-relative movie-details-container">
+                <div class="slider-inner">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <a href="javascript:void(0)">
+                                <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
+                                    <img src="~/Content/SingleMovie/images/logo.png" class="c-logo" alt="" />
+                                </div>
+                            </a>
+                            <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
+                                data-delay-in="0.6">
+                                @Html.DisplayFor(model => model.seasonName)
+                            </h1>
+                            <div class="d-flex flex-wrap align-items-center fadeInLeft animated" data-animation-in="fadeInLeft"
+                                 style="opacity: 1">
+                                <div class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3">
+                                    <ul class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star-half"></i></li>
+                                    </ul>
+                                    <span class="text-white ml-2">7.3(imbd)</span>
+                                </div>
+                                <div class="d-flex align-items-center mt-2 mt-md-3">
+                                    <span class="badge badge-secondary p-2">16+</span>
+                                    @{
+                                        int number = 0;
+                                        foreach (var episode in db.episodes)
+                                        {
+                                            if (episode.seasonID == Model.seasonID)
+                                            {
+                                                number++;
+                                            }
+                                        }
+                                    }
+                                    <span class="ml-3">@number episodes</span>
+                                </div>
+                            </div>
+                            <p data-animation-in="fadeInUp"  style="white-space: pre-wrap;">
+                                @Html.DisplayFor(model => model.overview)
+                            </p>
+                            <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
+                                <div class="text-primary title starring">
+                                    Season number:
+                                    <span class="text-body">
+                                        @Html.DisplayFor(model => model.seasonNumber)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<section id="iq-favorites">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 overflow-hidden">
+                                <div class="iq-main-header d-flex align-items-center justify-content-between">
+                                    <h4 class="main-title">Casting</h4>
+                                    <a href="#" class="iq-view-all">View All</a>
+                                </div>
+                                <div class="favorite-contens">
+                                    Html.Partial("Casting_seasons", db.actors.ToList())
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>-->
 
-        <dd>
-            @Html.DisplayFor(model => model.posterPath)
-        </dd>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- slider ends -->
+<!-- main content starts  -->
+<div class="main-content">
+    <!--episode list-->
+    <div class="slider-container" style="margin-top: 300px;">
+        <h4 class="tt-seasons-list">EPISODES:</h4>
+        <div class="slider">
+            @foreach (var episode in db.episodes)
+            {
+                if (episode.serieID.Equals(Model.serieID))
+                {
+                    <div class="season-item">
+                        <a href="@Url.Action("Details", "episodes", new { id = episode.episodeID })" class="season-link">
+                            <div class="season-poster">
+                                @{
+                                    string path = "https://image.tmdb.org/t/p/w500/";
+                                }
+                                <img class="poster-image" src="@Url.Content(path + episode.posterPath)" alt="@episode.episodeName">
+                                <p>@episode.episodeName</p>
+                            </div>
+                            <div class="season-details">
+                                <div class="dt">
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">season: @episode.episodeNumber</p>
+                                    <p><span style="color: red">@episode.voteAverage</span>/10</p>
+                                    <h5>@episode.episodeName</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.trailer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.trailer)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.voteAverage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.voteAverage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.voteCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.voteCount)
-        </dd>
-
-    </dl>
+            }
+        </div>
+        <button class="prev-next-button previous">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+            </svg>
+        </button>
+        <button class="prev-next-button next">
+            <svg viewbox="0 0 100 100">
+                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+            </svg>
+        </button>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.seasonID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<!-- main content ends  -->
+
+<script>
+    const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
+    const seriesId = '@Model.serieID'; // Assuming this is the series ID from the model
+    const seasonNumber = '@Model.seasonNumber'; // Assuming this is the season number from the model
+
+    const trailerVideo = document.getElementById('trailer-video');
+
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${seasonNumber}/videos?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const videos = data.results;
+
+            videos.forEach(video => {
+                if (video.site === 'YouTube') {
+                    trailerVideo.src = `https://www.youtube.com/embed/${video.key}?autoplay=1&controls=0&loop=1&mute=0`;
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching trailer:', error));
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sliderContainers = document.querySelectorAll(".slider-container");
+
+        sliderContainers.forEach(function (container) {
+            const slider = container.querySelector(".slider");
+            const slides = slider.querySelectorAll(".serie-item");
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            const slidesPerPage = 6;
+            let intervalId = null;
+
+            function showSlide(index) {
+                const slideWidth = slides[0].offsetWidth;
+                const startPosition = index * slidesPerPage * slideWidth;
+                slider.scrollTo({
+                    left: startPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)) ? currentIndex + 1 : 0;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
+                showSlide(currentIndex);
+            }
+
+            function startAutoPlay() {
+                intervalId = setInterval(nextSlide, 4000);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(intervalId);
+            }
+
+            startAutoPlay();
+
+            // Show all slides
+            showSlide(currentIndex);
+
+            const prevButton = container.querySelector('.prev-next-button.previous');
+            const nextButton = container.querySelector('.prev-next-button.next');
+
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+
+            slider.addEventListener('mouseenter', function (event) {
+                stopAutoPlay();
+
+            });
+
+            slider.addEventListener('mouseleave', function (event) {
+                startAutoPlay();
+            });
+
+
+            const videos = container.querySelectorAll("video");
+
+            function startPreview(video) {
+                video.muted = true;
+                video.currentTime = 1;
+                video.playbackRate = 0.5;
+                video.play();
+            }
+
+            function stopPreview(video) {
+                video.currentTime = 0;
+                video.playbackRate = 1;
+                video.pause();
+            }
+
+            videos.forEach((video) => {
+                const serieItem = video.closest(".serie-item");
+
+                serieItem.addEventListener("mouseenter", () => {
+                    startPreview(video);
+                });
+
+                serieItem.addEventListener("mouseleave", () => {
+                    stopPreview(video);
+                });
+            });
+        });
+    });
+</script>

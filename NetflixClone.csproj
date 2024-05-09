@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\actorsController.cs" />
     <Compile Include="Controllers\Encrypted.cs" />
+    <Compile Include="Controllers\episodesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\moviesController.cs" />
@@ -2723,12 +2724,17 @@
     <Content Include="Views\Signup\Create.cshtml" />
     <Content Include="Views\Signup\Index.cshtml" />
     <Content Include="Views\movies\PlayMovie.cshtml" />
+    <Content Include="Views\Shared\EpisodesList.cshtml" />
     <Content Include="Views\seasons\Create.cshtml" />
     <Content Include="Views\seasons\Delete.cshtml" />
     <Content Include="Views\seasons\Details.cshtml" />
     <Content Include="Views\seasons\Edit.cshtml" />
     <Content Include="Views\seasons\Index.cshtml" />
-    <Content Include="Views\Shared\EpisodesList.cshtml" />
+    <Content Include="Views\episodes\Create.cshtml" />
+    <Content Include="Views\episodes\Delete.cshtml" />
+    <Content Include="Views\episodes\Details.cshtml" />
+    <Content Include="Views\episodes\Edit.cshtml" />
+    <Content Include="Views\episodes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

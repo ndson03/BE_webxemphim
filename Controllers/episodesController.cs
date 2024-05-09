@@ -10,112 +10,116 @@ using NetflixClone.Models;
 
 namespace NetflixClone.Controllers
 {
-    public class seasonsController : Controller
+    public class episodesController : Controller
     {
         private Model1 db = new Model1();
 
-        // GET: seasons
+        // GET: episodes
         public ActionResult Index()
         {
-            var seasons = db.seasons.Include(s => s.series);
-            return View(seasons.ToList());
+            var episodes = db.episodes.Include(e => e.season).Include(e => e.series);
+            return View(episodes.ToList());
         }
 
-        // GET: seasons/Details/5
+        // GET: episodes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            season season = db.seasons.Find(id);
-            if (season == null)
+            episode episode = db.episodes.Find(id);
+            if (episode == null)
             {
                 return HttpNotFound();
             }
-            return View(season);
+            return View(episode);
         }
 
-        // GET: seasons/Create
+        // GET: episodes/Create
         public ActionResult Create()
         {
+            ViewBag.seasonID = new SelectList(db.seasons, "seasonID", "seasonName");
             ViewBag.serieID = new SelectList(db.series, "serieID", "serieName");
             return View();
         }
 
-        // POST: seasons/Create
+        // POST: episodes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "seasonID,seasonName,seasonNumber,overview,posterPath,trailer,voteAverage,voteCount,serieID")] season season)
+        public ActionResult Create([Bind(Include = "episodeID,episodeName,episodeNumber,overview,posterPath,trailer,voteAverage,voteCount,runtime,seasonID,serieID")] episode episode)
         {
             if (ModelState.IsValid)
             {
-                db.seasons.Add(season);
+                db.episodes.Add(episode);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", season.serieID);
-            return View(season);
+            ViewBag.seasonID = new SelectList(db.seasons, "seasonID", "seasonName", episode.seasonID);
+            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", episode.serieID);
+            return View(episode);
         }
 
-        // GET: seasons/Edit/5
+        // GET: episodes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            season season = db.seasons.Find(id);
-            if (season == null)
+            episode episode = db.episodes.Find(id);
+            if (episode == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", season.serieID);
-            return View(season);
+            ViewBag.seasonID = new SelectList(db.seasons, "seasonID", "seasonName", episode.seasonID);
+            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", episode.serieID);
+            return View(episode);
         }
 
-        // POST: seasons/Edit/5
+        // POST: episodes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "seasonID,seasonName,seasonNumber,overview,posterPath,trailer,voteAverage,voteCount,serieID")] season season)
+        public ActionResult Edit([Bind(Include = "episodeID,episodeName,episodeNumber,overview,posterPath,trailer,voteAverage,voteCount,runtime,seasonID,serieID")] episode episode)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(season).State = EntityState.Modified;
+                db.Entry(episode).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", season.serieID);
-            return View(season);
+            ViewBag.seasonID = new SelectList(db.seasons, "seasonID", "seasonName", episode.seasonID);
+            ViewBag.serieID = new SelectList(db.series, "serieID", "serieName", episode.serieID);
+            return View(episode);
         }
 
-        // GET: seasons/Delete/5
+        // GET: episodes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            season season = db.seasons.Find(id);
-            if (season == null)
+            episode episode = db.episodes.Find(id);
+            if (episode == null)
             {
                 return HttpNotFound();
             }
-            return View(season);
+            return View(episode);
         }
 
-        // POST: seasons/Delete/5
+        // POST: episodes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            season season = db.seasons.Find(id);
-            db.seasons.Remove(season);
+            episode episode = db.episodes.Find(id);
+            db.episodes.Remove(episode);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

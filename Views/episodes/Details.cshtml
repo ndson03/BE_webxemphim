@@ -1,9 +1,12 @@
-﻿@model NetflixClone.Models.series
+﻿@model NetflixClone.Models.episode
 
 @{
-    ViewBag.Title = "Series detail";
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
+}
+
 
 <head>
     <link href="~/Content/ndson_style.css" rel="stylesheet">
@@ -67,7 +70,7 @@
                             </a>
                             <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
                                 data-delay-in="0.6">
-                                @Html.DisplayFor(model => model.serieName)
+                                @Html.DisplayFor(model => model.episodeName)
                             </h1>
                             <div class="d-flex flex-wrap align-items-center fadeInLeft animated" data-animation-in="fadeInLeft"
                                  style="opacity: 1">
@@ -83,37 +86,30 @@
                                 </div>
                                 <div class="d-flex align-items-center mt-2 mt-md-3">
                                     <span class="badge badge-secondary p-2">16+</span>
-                                    <span class="ml-3">@Html.DisplayFor(model => model.numberOfSeasons) (seasons)</span>
                                 </div>
                             </div>
-                            <p data-animation-in="fadeInUp"  style="white-space: pre-wrap;">
+                            <p data-animation-in="fadeInUp" style="white-space: pre-wrap;">
                                 @Html.DisplayFor(model => model.overview)
                             </p>
                             <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
                                 <div class="text-primary title starring">
-                                    Original name:
+                                    Duration:
                                     <span class="text-body">
-                                        @Html.DisplayFor(model => model.originalSerieName)
+                                        @Html.DisplayFor(model => model.runtime)
                                     </span>
-                                </div>
-                                <div class="text-primary title genres">
-                                    Genres : <span class="text-body">
-                                        @foreach (var genre in Model.genres)
-                                        {
-                                            @genre.genreName
-                                            if (!genre.Equals(Model.genres.Last()))
-                                            {
-                                                <span>, </span>
-                                            }
-                                        }
-                                    </span>
-                                </div>
-                                <div class="text-primary title tag">
-                                    Tags :
-                                    <span class="text-body">@Html.DisplayFor(model => model.tags) </span>
                                 </div>
                             </div>
+                            <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
+                                <a href='@Url.Action("PlayMovie", "movies", new { id = Model.serieID })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
+                                <a href="#" class="btn btn-link">More Details</a>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
+                        <a href="@Url.Action("PlayMovie", "movies", new { id = Model.serieID })" class="video-open playbtn">
+                            <img src="~/Content/SingleMovie/images/play.png" class="play" alt="" />
+                            <span class="w-trailor">Watch</span>
+                        </a>
                     </div>
                 </div>
                 <!--<section id="iq-favorites">
@@ -125,52 +121,13 @@
                                     <a href="#" class="iq-view-all">View All</a>
                                 </div>
                                 <div class="favorite-contens">
-                                    Html.Partial("Casting_Series", db.actors.ToList())
+                                    Html.Partial("Casting_episodes", db.actors.ToList())
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>-->
-                <div class="slider-container" style="margin-top: 300px;">
-                    <h4 class="tt-series-list">SEASONS:</h4>
-                    <div class="slider">
-                        @foreach (var season in db.seasons)
-                        {
-                            if (season.serieID.Equals(Model.serieID))
-                            {
-                                <div class="serie-item">
-                                    <a href="@Url.Action("Details", "seasons", new { id = season.seasonID })" class="season-link">
-                                        <div class="season-poster">
-                                            @{
-                                                string path = "https://image.tmdb.org/t/p/w500/";
-                                            }
-                                            <img class="poster-image" src="@Url.Content(path + season.posterPath)" alt="@season.seasonName">
-                                            <p>@season.seasonName</p>
-                                        </div>
-                                        <div class="serie-details">
-                                            <div class="dt">
-                                                <p style="font-style: italic; color: lightgoldenrodyellow">season: @season.seasonNumber</p>
-                                                <p><span style="color: red">@season.voteAverage</span>/10</p>
-                                                <h5>@season.seasonName</h5>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            }
 
-                        }
-                    </div>
-                    <button class="prev-next-button previous">
-                        <svg viewbox="0 0 100 100">
-                            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-                        </svg>
-                    </button>
-                    <button class="prev-next-button next">
-                        <svg viewbox="0 0 100 100">
-                            <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-                        </svg>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -178,84 +135,59 @@
 <!-- slider ends -->
 <!-- main content starts  -->
 <div class="main-content">
-    <!--top rated section starts   -->
-    <section id="iq-favorites">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 overflow-hidden">
-                    <div class="iq-main-header d-flex align-items-center justify-content-between">
-                        <h4 class="main-title">Top Rated Series</h4>
-                        <a href="#" class="iq-view-all">View All</a>
-                    </div>
-                    <div class="favorite-contens">
-                        @Html.Partial("SeriesList_TopRated", db.series.ToList())
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- top rated section ends -->
-    <!--popular section starts  -->
-    <section id="iq-upcoming-movie">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 overflow-hidden">
-                    <div class="iq-main-header d-flex align-items-center justify-content-between">
-                        <h4 class="main-title">Airing Today</h4>
-                        <a href="#" class="iq-view-all">View All</a>
-                    </div>
-                    <div class="favorite-contens">
-                        @Html.Partial("SeriesList_AiringToday", db.series.ToList())
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- popular section ends -->
-    <!-- top ten trending  -->
-    <section id="iq-topten">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 overflow-hidden">
-                    <div class="topten-contents">
-                        <h4 class="main-title iq-title topten-title">
-                            Top 10 Audience Vote
-                        </h4>
-                        @Html.Partial("SeriesList_Top10", db.series.ToList())
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--episode list-->
+    @*<div class="slider-container" style="margin-top: 300px;">
+            <h4 class="tt-episodes-list">episodeS:</h4>
+            <div class="slider">
+                @foreach (var episode in db.episodes)
+                {
+                    if (episode.episodeID.Equals(Model.episodeID))
+                    {
+                        <div class="episode-item">
+                            <a href="@Url.Action("Index", "episodes", new { id = episode.episodeID })" class="episode-link">
+                                <div class="episode-poster">
+                                    @{
+                                        string path = "https://image.tmdb.org/t/p/w500/";
+                                    }
+                                    <img class="poster-image" src="@Url.Content(path + episode.posterPath)" alt="@episode.episodeName">
+                                    <p>@episode.episodeName</p>
+                                </div>
+                                <div class="episode-details">
+                                    <div class="dt">
+                                        <p style="font-style: italic; color: lightgoldenrodyellow">episode: @episode.episodeNumber</p>
+                                        <p><span style="color: red">@episode.voteAverage</span>/10</p>
+                                        <h5>@episode.episodeName</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
 
-
-
-    <!--suggested tv shows-->
-    <section id="iq-suggested" class="s-margin">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 overflow-hidden">
-                    <div class="iq-main-header d-flex align-items-center justify-content-between">
-                        <h4 class="main-title">Suggested Movies</h4>
-                        <a href="#" class="iq-view-all">View All</a>
-                    </div>
-                    <div class="favorite-contens">
-                        @Html.Partial("MovieList_Suggested", db.movies.ToList())
-                    </div>
-                </div>
+                }
             </div>
-        </div>
-    </section>
+            <button class="prev-next-button previous">
+                <svg viewbox="0 0 100 100">
+                    <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                </svg>
+            </button>
+            <button class="prev-next-button next">
+                <svg viewbox="0 0 100 100">
+                    <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                </svg>
+            </button>
+        </div>*@
+
 </div>
 <!-- main content ends  -->
 
 <script>
     const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
-    const movieId = '@Model.serieID';
+    const seriesId = '@Model.serieID'; // Assuming this is the series ID from the model
+    const episodeNumber = '@Model.episodeNumber'; // Assuming this is the episode number from the model
 
     const trailerVideo = document.getElementById('trailer-video');
 
-    fetch(`https://api.themoviedb.org/3/tv/${movieId}/videos?api_key=${apiKey}`)
+    fetch(`https://api.themoviedb.org/3/tv/${seriesId}/season/${1}/episode/${episodeNumber}/videos?api_key=${apiKey}`)
         .then(response => response.json())
         .then(data => {
             const videos = data.results;
@@ -275,7 +207,7 @@
 
         sliderContainers.forEach(function (container) {
             const slider = container.querySelector(".slider");
-            const slides = slider.querySelectorAll(".serie-item");
+            const slides = slider.querySelectorAll(".episode-item");
             const totalSlides = slides.length;
             let currentIndex = 0;
             const slidesPerPage = 6;
@@ -345,16 +277,15 @@
             }
 
             videos.forEach((video) => {
-                const serieItem = video.closest(".serie-item");
+                const episodeItem = video.closest(".episode-item");
 
-                serieItem.addEventListener("mouseenter", () => {
+                episodeItem.addEventListener("mouseenter", () => {
                     startPreview(video);
                 });
 
-                serieItem.addEventListener("mouseleave", () => {
+                episodeItem.addEventListener("mouseleave", () => {
                     stopPreview(video);
                 });
             });
         });
-    });
-</script>
+    });</script>

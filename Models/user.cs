@@ -19,13 +19,12 @@ namespace NetflixClone.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int userID { get; set; }
 
-        [StringLength(100)]
         public string userName { get; set; }
 
-        //[StringLength(200)]
+        [Required]
         public byte[] password { get; set; }
 
-        [StringLength(100)]
+        [StringLength(45)]
         public string fullName { get; set; }
 
         [Column(TypeName = "datetime2")]
@@ -36,7 +35,7 @@ namespace NetflixClone.Models
         [StringLength(45)]
         public string profileImage { get; set; }
 
-        //[StringLength(200)]
+        [Required]
         public byte[] email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
