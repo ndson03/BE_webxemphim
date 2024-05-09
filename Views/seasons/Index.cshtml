@@ -126,7 +126,7 @@
                         <a href="#" class="iq-view-all">View All</a>
                     </div>
                     <div class="favorite-contens">
-                        @Html.Partial("EpisodesList", db.seasons.ToList())
+                        @Html.Partial("EpisodesList", db.seasons.Where(s => s.serieID == Model.serieID).ToList())
                     </div>
                 </div>
             </div>
