@@ -30,6 +30,7 @@ namespace NetflixClone.Controllers
         }
 
         //Xuất key trong lần đầu chạy project
+        /*
         public static void export()
         {
             // Tạo thư mục ở ổ tương ứng để xuất file
@@ -39,6 +40,7 @@ namespace NetflixClone.Controllers
             string privateKeyXml = rsa.ToXmlString(true);
             File.WriteAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\privateKey.xml", privateKeyXml);
         }
+        */
 
         public static byte[] Encrypt(string plainText)
         {
