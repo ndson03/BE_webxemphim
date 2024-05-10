@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="icon" href="~/nficon.ico" type="image/x-icon">
     <link href="~/Content/MainPage/moviezone.css" rel="stylesheet">
     <link href="~/Content/ndson_style.css" rel="stylesheet">
     <title>Netflix</title>
@@ -66,10 +67,18 @@
                             </div>
                             <div class="movie-details">
                                 <div class="dt">
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                    <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                     <h5>@movie.movieName</h5>
-                                </div>
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                    <span class="stars" style="color: yellow; font-size: 13px">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                    <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
+                                </div>  
                             </div>
                         </a>
                     </div>
@@ -100,15 +109,20 @@
                         <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                             <div class="movie-poster">
                                 <img class="poster-image" src="@movie.posterPath" alt="@movie.movieName">
-                                <div class="play-button-overlay">
-                                    <i class="fas fa-play"></i>
-                                </div>
                             </div>
                             <div class="movie-details">
                                 <div class="dt">
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                    <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                     <h5>@movie.movieName</h5>
+                                    <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                    <span class="stars" style="color: yellow; font-size: 13px">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                    <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
                                 </div>
                             </div>
                         </a>
@@ -142,15 +156,20 @@
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <div class="movie-poster">
                             <img class="poster-image" src="@movie.posterPath" alt="@movie.movieName">
-                            <div class="play-button-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
                         </div>
                         <div class="movie-details">
                             <div class="dt">
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                <span class="stars" style="color: yellow; font-size: 13px">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
                             </div>
                         </div>
                     </a>
@@ -182,15 +201,20 @@
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <div class="movie-poster">
                             <img class="poster-image" src="@movie.posterPath" alt="@movie.movieName">
-                            <div class="play-button-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
                         </div>
                         <div class="movie-details">
                             <div class="dt">
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                <span class="stars" style="color: yellow; font-size: 13px">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
                             </div>
                         </div>
                     </a>
@@ -223,15 +247,20 @@
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <div class="movie-poster">
                             <img class="poster-image" src="@movie.posterPath" alt="@movie.movieName">
-                            <div class="play-button-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
                         </div>
                         <div class="movie-details">
                             <div class="dt">
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                <span class="stars" style="color: yellow; font-size: 13px">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
                             </div>
                         </div>
                     </a>
@@ -263,19 +292,20 @@
                     <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                         <div class="movie-poster">
                             <img class="poster-image" src="@movie.posterPath" alt="@movie.movieName">
-                            <div class="play-button-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
                         </div>
                         <div class="movie-details">
-<<<<<<< HEAD
-                            <video class="tl-vd" loop muted src=""></video>                            
-=======
->>>>>>> 2d0977ca6f4dd90142a2f4715f1860944fb27352
                             <div class="dt">
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
-                                <p><span style="color: red">@movie.voteAverage</span>/10</p>
                                 <h5>@movie.movieName</h5>
+                                <p style="font-style: italic; color: lightgoldenrodyellow">@movie.releaseDate</p>
+                                <span class="stars" style="color: yellow; font-size: 13px">
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </span>
+                                <span class="vt_avg" style="color: red; font-weight:bold;">@movie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@movie.overview</p>
                             </div>
                         </div>
                     </a>
@@ -293,7 +323,7 @@
             </svg>
         </button>
     </div>
-
+    <script src="~/Content/star_vote.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
@@ -414,6 +444,15 @@
                 });
             });
         });
+
+        //star rate
+        let vt_avg_list = document.querySelectorAll('.vt_avg');
+        vt_avg_list.forEach(vt_avg => {
+            let stars = vt_avg.previousElementSibling.querySelectorAll('.fa-star');
+            let a = parseFloat(vt_avg.innerText);
+            setColorStar(a, stars);
+        });
     </script>
+
 </body>
 </html>

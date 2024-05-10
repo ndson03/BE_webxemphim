@@ -231,6 +231,7 @@
     <Content Include="Content\CelebList\js\move-top.js" />
     <Content Include="Content\CelebList\js\owl.carousel.js" />
     <Content Include="Content\CelebList\js\simpleCart.min.js" />
+    <Content Include="Content\star_vote.js" />
     <Content Include="Content\UserImages\default.jpg" />
     <Content Include="Content\LandingPage_SignUp\aos\aos.css" />
     <Content Include="Content\LandingPage_SignUp\aos\aos.js" />
@@ -2685,6 +2686,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Server.js" />
+    <Content Include="Views\episodes\Create.cshtml" />
+    <Content Include="Views\episodes\Delete.cshtml" />
+    <Content Include="Views\episodes\Details.cshtml" />
+    <Content Include="Views\episodes\Edit.cshtml" />
+    <Content Include="Views\episodes\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
