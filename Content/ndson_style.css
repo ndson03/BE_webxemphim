@@ -20,7 +20,7 @@
     padding: 5px;
     color: white;
     font-size: 14px;
-    opacity: 0;
+    opacity: 0; 
     transition: opacity 0.3s ease;
     overflow-wrap: break-word;
 }
@@ -28,7 +28,7 @@
 
 /* Hover effect on movie item (Modified) */
 .movie-item:hover, .serie-item:hover {
-    border-bottom: 4px solid red;
+    border-top: 4px solid red;
     transform: scale(1.1); /* Increase size slightly on hover */
 
     z-index: 1;
@@ -150,11 +150,10 @@ video {
     top: 20px;
     right: 20px;
     padding-bottom: 20px;
-    position: absolute;
-    
+    position: absolute; 
     left: 20px;
     word-break: break-word;
-    position: absolute;
+
 }
 
 .dt h5 {
@@ -183,8 +182,9 @@ h5 {
 }
 
 .overview {
-    height: 230px;
+    
     overflow: hidden;
-
+    height: 210px;
+    color: #d6d6d6;
 }
 
