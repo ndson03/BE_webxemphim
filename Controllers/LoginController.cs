@@ -4,7 +4,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using NetflixClone.Models;
 
@@ -56,6 +58,7 @@ namespace NetflixClone.Controllers
                     if (decryptedEmail == email && decryptedPassword == password)
                     {
                         Session["user"] = user.fullName;
+                        Session["id"] = user.userID;
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -68,6 +71,7 @@ namespace NetflixClone.Controllers
         public ActionResult Logout()
         {
             Session.Remove("user");
+            Session.Remove("id");
             return RedirectToAction("Login");
         }
 
@@ -106,15 +110,24 @@ namespace NetflixClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,userName,password,fullName,birthday,gender,profileImage,email")] user user)
+        public ActionResult Edit(int userID, string userName, string email, string password, string fullName, DateTime birthday, int gender, string profileImage)
         {
+            user userupd = new user();
+            userupd.userID = userID;
+            userupd.userName = userName;
+            userupd.password = RSAEncryption.Encrypt(password);
+            userupd.gender = gender;
+            userupd.fullName = fullName;
+            userupd.birthday = birthday;
+            userupd.profileImage = profileImage;
+            userupd.email = RSAEncryption.Encrypt(email);
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(userupd).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(userupd);
         }
 
         protected override void Dispose(bool disposing)
