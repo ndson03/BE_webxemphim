@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 trailor-video">
-                        <a href="@Url.Action("PlayMovie", "movies")" class="video-open playbtn">
+                        <a href="@Url.Action("PlayMovie", "movies", new { id = Model.movieID })" class="video-open playbtn">
                             <img src="~/Content/SingleMovie/images/play.png" class="play" alt="" />
                             <span class="w-trailor">Watch</span>
                         </a>
