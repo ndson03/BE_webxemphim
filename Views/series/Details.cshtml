@@ -51,12 +51,12 @@
 
 <!-- slider starts  -->
 <section id="home" class="iq-main-slider p-0">
-    <div id="home-slider" class="slider m-0 p-0">
-        <div class="slide slick-bg s-bg-1">
+    <div id="home-slider" class="slider m-0 p-0" style="display: grid; grid-auto-rows: auto;">
+        <div class="slide slick-bg s-bg-1" >
             <div class="video-background">
                 <iframe id="trailer-video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
-            <div class="container-fluid position-relative movie-details-container">
+            <div class="container-fluid position-relative movie-details-container" >
                 <div class="slider-inner">
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-12 col-md-12">
@@ -86,7 +86,7 @@
                                     <span class="ml-3">@Html.DisplayFor(model => model.numberOfSeasons) (seasons)</span>
                                 </div>
                             </div>
-                            <p data-animation-in="fadeInUp"  style="white-space: pre-wrap;">
+                            <p data-animation-in="fadeInUp" style="white-space: pre-wrap;">
                                 @Html.DisplayFor(model => model.overview)
                             </p>
                             <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
