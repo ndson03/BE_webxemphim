@@ -21,6 +21,7 @@ namespace NetflixClone.Controllers
             //Uncomment export() khi chạy lần đầu, từ lần 2 thì comment lại vì có key rồi
             //export();
             // Đọc khóa từ file XML
+<<<<<<< HEAD
             string xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml");
             //string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
 
@@ -28,6 +29,17 @@ namespace NetflixClone.Controllers
             rsa.FromXmlString(xmlString);
             xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\privateKey.xml");
             //xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
+=======
+            //string xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml");
+            //string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
+            string xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\publicKey.xml");
+
+            // Import khóa từ chuỗi XML vào đối tượng RSACryptoServiceProvider
+            rsa.FromXmlString(xmlString);
+            //xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\privateKey.xml");
+            //xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
+            xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\privateKey.xml");
+>>>>>>> 3905ea6b3e409a51674449e20309b51a28dd8f0b
             rsa.FromXmlString(xmlString);
         }
 
@@ -49,7 +61,7 @@ namespace NetflixClone.Controllers
             byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(plainText);
             byte[] encryptedBytes = rsa.Encrypt(bytesToEncrypt, RSAEncryptionPadding.Pkcs1);
             string a = Decrypt(encryptedBytes);
-            Console.WriteLine(a);
+            //Console.WriteLine(a);
             return encryptedBytes;
         }
 
@@ -57,7 +69,7 @@ namespace NetflixClone.Controllers
         {
             //byte[] encryptedBytes = Convert.FromBase64String(cipherText);
             //byte[] encryptedBytes = cipherText;
-            Console.WriteLine(cipherText);
+            //Console.WriteLine(cipherText);
             byte[] decryptedBytes = rsa.Decrypt(cipherText, RSAEncryptionPadding.Pkcs1);
             return Encoding.UTF8.GetString(decryptedBytes);
         }

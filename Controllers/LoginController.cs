@@ -34,7 +34,7 @@ namespace NetflixClone.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(db.users.ToList());
+            return View();
         }
 
         [HttpPost]
