@@ -35,26 +35,11 @@
     position: relative;
 }
 
-    .movie-item:hover .movie-details, .serie-item:hover .serie-details {
-        opacity: 100;
+    .movie-item:hover .movie-details, .serie-item:hover .serie-details  {
+        opacity: 1;
     }
 
-    .movie-details video, .serie-item video{
-        margin-top: 70px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-        z-index: 1;
-        display: none;
-        padding-top: 32px;
-    }
 
-.movie-item:hover .movie-details video, .serie-item:hover .serie-details video{
-    display: block;
-}
 
 
 .prev-next-button {
@@ -72,17 +57,17 @@
     z-index: 1;
 }
 
-    .prev-next-button:hover {
-        background-color: white;
-    }
+.prev-next-button:hover {
+    background-color: white;
+}
 
-    .prev-next-button:focus {
-        outline: none;
-    }
+.prev-next-button:focus {
+    outline: none;
+}
 
-    .prev-next-button:active {
-        background-color: gainsboro;
-    }
+.prev-next-button:active {
+    background-color: gainsboro;
+}
 
 .previous {
     left: 15px;

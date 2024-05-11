@@ -7,6 +7,7 @@
 
 <head>
     <link href="~/Content/ndson_style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
 </head>
 
 <style>
@@ -47,6 +48,87 @@
     .slick-bg.s-bg-1 {
         height: auto !important;
     }
+
+    .serie-item {
+        position: relative;
+        width: calc(100% / 6 - 10px);
+        flex-shrink: 0;
+        margin-right: 10px;
+        transition: transform 0.3s ease
+    }
+
+
+    .ss-ep-details {
+        position: absolute;
+        inset: 0; /* Stretches to all sides (top, right, bottom, left) */
+        
+        padding: 5px;
+        color: white;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-wrap: break-word;
+    }
+
+    .serie-item:hover {
+        border-top: 0;
+        transform: scale(1.1); /* Increase size slightly on hover */
+        z-index: 0;
+        position: relative;
+    }
+    .serie-item:hover img {
+        border-bottom: 4px solid red;
+    }
+
+    .serie-item:hover .ss-ep-name {
+        display: none;
+    }
+
+    .ss-ep-details {
+        position: absolute;
+        bottom: 26px;
+        left: 0;
+        right: 0;
+        padding: 5px 20px;
+        color: white;
+        font-size: 14px;
+        background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.1) 100%);
+        opacity: 0;
+        top: 230px;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease; /* Cải tiến hiệu ứng chuyển động */
+    }
+
+    .serie-item:hover .ss-ep-details {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    h5 {
+        padding-top: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        overflow: hidden;
+    }
+
+    #home-slider  p {
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        word-break: break-word;
+        white-space: pre-line;
+    }
+
+  
+
+
+  
+
+
+
+
 </style>
 
 <!-- slider starts  -->
@@ -130,15 +212,21 @@
                                                 string path = "https://image.tmdb.org/t/p/w500/";
                                             }
                                             <img class="poster-image" src="@Url.Content(path + season.posterPath)" alt="@season.seasonName">
-                                            <p>@season.seasonName</p>
+
                                         </div>
-                                        <div class="serie-details">
-                                            <div class="dt">
-                                                <p style="font-style: italic; color: lightgoldenrodyellow">season: @season.seasonNumber</p>
-                                                <p><span style="color: red">@season.voteAverage</span>/10</p>
-                                                <h5>@season.seasonName</h5>
-                                            </div>
+                                        <div class="ss-ep-details">
+                                            <p style="font-style: italic; color: lightgoldenrodyellow">season: @season.seasonNumber</p>
+                                            <span class="stars" style="color: yellow; font-size: 10px; align-items:center;">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                            <span class="vt_avg" style="color: red; font-weight:bold;">@season.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                            <h5>@season.seasonName</h5>
                                         </div>
+                                       <h5 class="ss-ep-name" style="text-align:center">@season.seasonName</h5>
                                     </a>
                                 </div>
                             }
@@ -231,6 +319,7 @@
 </div>
 <!-- main content ends  -->
 
+<script src="~/Content/star_vote.js"></script>
 <script>
     const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
     const movieId = '@Model.serieID';
@@ -338,5 +427,12 @@
                 });
             });
         });
+    });
+    //star rate
+    let vt_avg_list = document.querySelectorAll('.vt_avg');
+    vt_avg_list.forEach(vt_avg => {
+        let stars = vt_avg.previousElementSibling.querySelectorAll('.fa-star');
+        let a = parseFloat(vt_avg.innerText);
+        setColorStar(a, stars);
     });
 </script>
