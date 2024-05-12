@@ -15,14 +15,9 @@
     <link rel="stylesheet" href="/css/slick.css" />
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="shortcut icon" href="https://www.netflix.com/in/favicon.ico" type="image/x-icon">
-<<<<<<< HEAD
-    <link href="~/Content/cmt.cs" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/ReviewResource/css/single.css"  />
+    <link rel="stylesheet" href="~/Content/ReviewResource/list-css/list.css"  />
 
-
-=======
-    <link href="~/Content/ReviewResource/css/single.css" rel="stylesheet" />
-    <link href="~/Content/ReviewResource/list-css/list.css" rel="stylesheet" />
->>>>>>> 8b603522165d04b385240be13c2f70e3853095a9
     <style>
         .content {
             width: 100%;
@@ -106,14 +101,7 @@
             padding: 5px 0;
         }
 
-        .cmt {
-            position: relative;
-            top: 100px;
-            padding: 10px 300px;
-            height: auto;
-            background-color: #141414;
-            color: whitesmoke;
-        }
+      
     </style>
 </head>
 
@@ -146,7 +134,7 @@
                 <br />Off light
             </div>
         </div>
-<<<<<<< HEAD
+
         <div class="inf-mv">
             <img class="poster-image" src="@String.Concat("https://image.tmdb.org/t/p/w500", @Model.posterPath)" alt="@Model.movieName">
             <div>
@@ -201,69 +189,21 @@
             </div>
             
         </div>
-        <div class="cmt">
-            <p style="font-size: 25px; border-left: 4px solid red; padding: 0px 5px; margin: 0 0 30px 0px;">Comments<span style="font-size: 18px;">(3)</span></p>
-            <div class="container d-flex custom-mt-100 custom-mb-100">
-                <div class="row">
-                    <div class="col-md-12">
+        
 
-                        <div class="custom-card custom-card-no-border">
-          
-
-                            <div class="custom-comment-widgets m-b-20">
-
-                                <div class="d-flex flex-row custom-comment-row">
-                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/tT8rjKC.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
-                                    <div class="custom-comment-text w-100">
-                                        <h5>userName</h5>
-                                        <div class="button-wrapper" style="display: flex; margin-bottom: 20px;">
-                                            <input type="text" class="cmt_ip" required />
-                                            <button class="submit" style="background-color: #141414; color: white; padding: 10px; margin-left: 10px; border-radius: 10px; font-size: 20px;" ><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex flex-row custom-comment-row">
-                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
-                                    <div class="custom-comment-text w-100">
-                                        <h5>Samso Nagaro</h5>
-                                        <div class="custom-comment-footer">
-                                            <span class="date">April 14, 2019</span>
-                                        </div>
-                                        <p class="m-b-5 m-t-10" style="color: #d1d0cf;">Phim quá đỉnh</p>
-                                    </div>
-                                </div>
-
-
-                                <div class="d-flex flex-row custom-comment-row">
-                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/cAdLHeY.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
-                                    <div class="custom-comment-text w-100">
-                                        <h5>Sarah Tim</h5>
-                                        <div class="custom-comment-footer">
-                                            <span class="date">Jan 20, 2020</span>
-                                        </div>
-                                        <p class="m-b-5 m-t-10" style="color: #d1d0cf;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-=======
         <div class="all-comments">
+            <p class="tt-cmt">Comments</p>
             <div class="all-comments-info">
-                <a href="#">Comments</a>
                 <div class="agile-info-wthree-box" id="comments-form">
                     <!-- Form for adding new comments -->
                     <form>
-                        <input type="text" placeholder="Name" required="">
+
+                        <input type="text" placeholder="Name" required="" >
                         <input type="text" placeholder="Email" required="">
-                        <input type="text" placeholder="Phone" required="">
                         <textarea placeholder="Message" required=""></textarea>
-                        <input type="submit" value="SEND">
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                         <div class="clearfix"> </div>
                     </form>
                 </div>
@@ -273,7 +213,7 @@
             </div>
         </div>
 
->>>>>>> 8b603522165d04b385240be13c2f70e3853095a9
+
     </div>
     <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -348,13 +288,14 @@
                 const commentItem = document.createElement('div');
                 commentItem.classList.add('media');
                 commentItem.innerHTML = `
-                    <h5>${comment.author}</h5>
+                    
                     <div class="media-left">
                         <a href="#">
-                            <img src="~/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
+                            <img src="/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
                         </a>
                     </div>
                     <div class="media-body">
+                    <h5>${comment.author}</h5>
                         <p>${comment.content}</p>
                         <span>View all posts by :<a href="#"> Admin </a></span>
                     </div>

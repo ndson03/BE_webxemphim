@@ -18,451 +18,451 @@
 <body>
     <section class="container">
         <div class="head">
-            <img src="~/Content/MainPage/assests/netflixlogo.png" alt="">
+            <!-- <img src="~/Content/MainPage/assests/netflixlogo.png" alt=""> -->
         </div>
     </section>
     <!-- Background Video -->
-    <video autoplay loop muted>
-        <source src="~/Content/SingleMovie/video/Y2meta.app%20-%20The%20Hobbit_%20An%20Unexpected%20Journey%20-%20Official%20Trailer%202%20[HD].mp4" type="video/mp4" />
-    </video>
+            <video autoplay loop muted>
+                <source src="~/Content/SingleMovie/video/Y2meta.app%20-%20The%20Hobbit_%20An%20Unexpected%20Journey%20-%20Official%20Trailer%202%20[HD].mp4" type="video/mp4" />
+            </video>
 
-    <!--Top rated series-->
-    <div class="slider-container" style="margin-top: 900px">
-        <h4 class="tt-series-list">TOP RATED SERIES</h4>
-        <div class="slider">
-            @foreach (var serie in Model)
-            {
-                if (serie.tags.Equals("topRated"))
-                {
-                    <div class="serie-item" data-serieid="@serie.serieID">
-                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            <div class="serie-poster">
-                                @{
-                                    string path = "https://image.tmdb.org/t/p/w500/";
-                                }
-                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+            <!--Top rated series-->
+            <div class="slider-container" style="margin-top: 900px">
+                <h4 class="tt-series-list">TOP RATED SERIES</h4>
+                <div class="slider">
+                    @foreach (var serie in Model)
+                    {
+                        if (serie.tags.Equals("topRated"))
+                        {
+                            <div class="serie-item" data-serieid="@serie.serieID">
+                                <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                    <div class="serie-poster">
+                                        @{
+                                            string path = "https://image.tmdb.org/t/p/w500/";
+                                        }
+                                        <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                    </div>
+                                    <div class="serie-details">
+                                        <div class="dt">
+                                            <h5>@serie.serieName</h5>
+                                            <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                            <span class="stars" style="color: yellow; font-size: 13px">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                            <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                            <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="serie-details">
-                                <div class="dt">
-                                    <h5>@serie.serieName</h5>
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                    <span class="stars" style="color: yellow; font-size: 13px">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                    <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                        }
+
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
+                    </svg>
+                </button>
+            </div>
+
+            <!--Now playing series-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">NOW PLAYING SERIES</h4>
+                <div class="slider">
+                    @foreach (var serie in Model)
+                    {
+                        if (serie.tags.Equals("airingToday"))
+                        {
+                            <div class="serie-item" data-serieid="@serie.serieID">
+                                <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                    <div class="serie-poster">
+                                        @{
+                                            string path = "https://image.tmdb.org/t/p/w500/";
+                                        }
+                                        <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                    </div>
+                                    <div class="serie-details">
+                                        <div class="dt">
+                                            <h5>@serie.serieName</h5>
+                                            <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                            <span class="stars" style="color: yellow; font-size: 13px">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                            <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                            <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
+                    </svg>
+                </button>
+            </div>
+
+            <!--Top budget series-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">BLOCK-BUSTERS SERIES</h4>
+                <div class="slider">
+                    @{
+                        var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
+                    }
+                    @foreach (var serie in topBudget)
+                    {
+                        <div class="serie-item" data-serieid="@serie.serieID">
+                            <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                <div class="serie-poster">
+                                    @{
+                                        string path = "https://image.tmdb.org/t/p/w500/";
+                                    }
+                                    <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                }
-
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
-            </svg>
-        </button>
-    </div>
-
-    <!--Now playing series-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">NOW PLAYING SERIES</h4>
-        <div class="slider">
-            @foreach (var serie in Model)
-            {
-                if (serie.tags.Equals("airingToday"))
-                {
-                    <div class="serie-item" data-serieid="@serie.serieID">
-                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            <div class="serie-poster">
-                                @{
-                                    string path = "https://image.tmdb.org/t/p/w500/";
-                                }
-                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
-                            </div>
-                            <div class="serie-details">
-                                <div class="dt">
-                                    <h5>@serie.serieName</h5>
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                    <span class="stars" style="color: yellow; font-size: 13px">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                    <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                <div class="serie-details">
+                                    <div class="dt">
+                                        <h5>@serie.serieName</h5>
+                                        <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                        <span class="stars" style="color: yellow; font-size: 13px">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                        <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                }
-
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
-            </svg>
-        </button>
-    </div>
-
-    <!--Top budget series-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">BLOCK-BUSTERS SERIES</h4>
-        <div class="slider">
-            @{
-                var topBudget = Model.Where(m => !string.IsNullOrEmpty(m.originalLanguage)).OrderBy(m => int.Parse(m.originalLanguage));
-            }
-            @foreach (var serie in topBudget)
-            {
-                <div class="serie-item" data-serieid="@serie.serieID">
-                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        <div class="serie-poster">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                            </a>
                         </div>
-                        <div class="serie-details">
-                            <div class="dt">
-                                <h5>@serie.serieName</h5>
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                <span class="stars" style="color: yellow; font-size: 13px">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </span>
-                                <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
-                            </div>
-                        </div>
-                    </a>
+                    }
                 </div>
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-            </svg>
-        </button>
-    </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                    </svg>
+                </button>
+            </div>
 
 
-    <!--Highest score series-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">HIGHEST SCORE SERIES</h4>
-        <div class="slider">
-            @{
-                var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
-            }
-            @foreach (var serie in topScore)
-            {
-                <div class="serie-item" data-serieid="@serie.serieID">
-                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        <div class="serie-poster">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
-                        </div>
-                        <div class="serie-details">
-                            <div class="dt">
-                                <h5>@serie.serieName</h5>
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                <span class="stars" style="color: yellow; font-size: 13px">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </span>
-                                <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-            </svg>
-        </button>
-    </div>
-
-    <!--Audience recommendation-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">AUDIENCE RECOMMENDATION</h4>
-        <div class="slider">
-            @{
-                var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
-            }
-            @foreach (var serie in audience)
-            {
-                <div class="serie-item" data-serieid="@serie.serieID">
-                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        <div class="serie-poster">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
-                        </div>
-                        <div class="serie-details">
-                            <div class="dt">
-                                <h5>@serie.serieName</h5>
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                <span class="stars" style="color: yellow; font-size: 13px">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </span>
-                                <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-            </svg>
-        </button>
-    </div>
-
-    <!--Rotten Tomatoes series-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">FRESH ROTTEN TOMATOES</h4>
-        <div class="slider">
-            @{
-                var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
-            }
-            @foreach (var serie in rotten)
-            {
-                <div class="serie-item" data-serieid="@serie.serieID">
-                    <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                        <div class="serie-poster">
-                            @{
-                                string path = "https://image.tmdb.org/t/p/w500/";
-                            }
-                            <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
-                        </div>
-                        <div class="serie-details">
-                            <div class="dt">
-                                <h5>@serie.serieName</h5>
-                                <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                <span class="stars" style="color: yellow; font-size: 13px">
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </span>
-                                <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
-            </svg>
-        </button>
-    </div>
-
-    <!--Completed series-->
-    <div class="slider-container">
-        <h4 class="tt-series-list">COMPLETED SERIES</h4>
-        <div class="slider">
-            @foreach (var serie in Model)
-            {
-                if (serie.status.Equals("Ended"))
-                {
-                    <div class="serie-item" data-serieid="@serie.serieID">
-                        <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
-                            <div class="serie-poster">
-                                @{
-                                    string path = "https://image.tmdb.org/t/p/w500/";
-                                }
-                                <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
-                            </div>
-                            <div class="serie-details">
-                                <div class="dt">
-                                    <h5>@serie.serieName</h5>
-                                    <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
-                                    <span class="stars" style="color: yellow; font-size: 13px">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
-                                    <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+            <!--Highest score series-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">HIGHEST SCORE SERIES</h4>
+                <div class="slider">
+                    @{
+                        var topScore = Model.Where(m => !string.IsNullOrEmpty(m.runtime)).OrderByDescending(m => int.Parse(m.runtime));
+                    }
+                    @foreach (var serie in topScore)
+                    {
+                        <div class="serie-item" data-serieid="@serie.serieID">
+                            <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                <div class="serie-poster">
+                                    @{
+                                        string path = "https://image.tmdb.org/t/p/w500/";
+                                    }
+                                    <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
                                 </div>
+                                <div class="serie-details">
+                                    <div class="dt">
+                                        <h5>@serie.serieName</h5>
+                                        <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                        <span class="stars" style="color: yellow; font-size: 13px">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                        <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                    </svg>
+                </button>
+            </div>
+
+            <!--Audience recommendation-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">AUDIENCE RECOMMENDATION</h4>
+                <div class="slider">
+                    @{
+                        var audience = Model.Where(m => m.voteCount.HasValue).OrderByDescending(m => m.voteCount);
+                    }
+                    @foreach (var serie in audience)
+                    {
+                        <div class="serie-item" data-serieid="@serie.serieID">
+                            <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                <div class="serie-poster">
+                                    @{
+                                        string path = "https://image.tmdb.org/t/p/w500/";
+                                    }
+                                    <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                </div>
+                                <div class="serie-details">
+                                    <div class="dt">
+                                        <h5>@serie.serieName</h5>
+                                        <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                        <span class="stars" style="color: yellow; font-size: 13px">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                        <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                    </svg>
+                </button>
+            </div>
+
+            <!--Rotten Tomatoes series-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">FRESH ROTTEN TOMATOES</h4>
+                <div class="slider">
+                    @{
+                        var rotten = Model.Where(m => m.voteAverage.HasValue).OrderByDescending(m => m.voteAverage);
+                    }
+                    @foreach (var serie in rotten)
+                    {
+                        <div class="serie-item" data-serieid="@serie.serieID">
+                            <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                <div class="serie-poster">
+                                    @{
+                                        string path = "https://image.tmdb.org/t/p/w500/";
+                                    }
+                                    <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                </div>
+                                <div class="serie-details">
+                                    <div class="dt">
+                                        <h5>@serie.serieName</h5>
+                                        <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                        <span class="stars" style="color: yellow; font-size: 13px">
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                        <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)">
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) ">
+                    </svg>
+                </button>
+            </div>
+
+            <!--Completed series-->
+            <div class="slider-container">
+                <h4 class="tt-series-list">COMPLETED SERIES</h4>
+                <div class="slider">
+                    @foreach (var serie in Model)
+                    {
+                        if (serie.status.Equals("Ended"))
+                        {
+                            <div class="serie-item" data-serieid="@serie.serieID">
+                                <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="serie-link">
+                                    <div class="serie-poster">
+                                        @{
+                                            string path = "https://image.tmdb.org/t/p/w500/";
+                                        }
+                                        <img class="poster-image" src="@Url.Content(path + serie.backdropPath)" alt="@serie.serieName">
+                                    </div>
+                                    <div class="serie-details">
+                                        <div class="dt">
+                                            <h5>@serie.serieName</h5>
+                                            <p style="font-style: italic; color: lightgoldenrodyellow">@serie.firstAirDate</p>
+                                            <span class="stars" style="color: yellow; font-size: 13px">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
+                                            <span class="vt_avg" style="color: red; font-weight:bold;">@serie.voteAverage</span><span style="font-size: 12px;">/10</span>
+                                            <p class="overview" style="font-size: 14px; margin-top: 7px;">@serie.overview</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                }
+                        }
 
-            }
-        </div>
-        <button class="prev-next-button previous">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
-            </svg>
-        </button>
-        <button class="prev-next-button next">
-            <svg viewbox="0 0 100 100">
-                <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
-            </svg>
-        </button>
-    </div>
+                    }
+                </div>
+                <button class="prev-next-button previous">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z" transform=" translate(15,0)" />
+                    </svg>
+                </button>
+                <button class="prev-next-button next">
+                    <svg viewbox="0 0 100 100">
+                        <path class="arrow" d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z " transform="translate(85,100) rotate(180) " />
+                    </svg>
+                </button>
+            </div>
 
-    <script src="~/Content/star_vote.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sliderContainers = document.querySelectorAll(".slider-container");
+            <script src="~/Content/star_vote.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const sliderContainers = document.querySelectorAll(".slider-container");
 
-            sliderContainers.forEach(function (container) {
-                const slider = container.querySelector(".slider");
-                const slides = slider.querySelectorAll(".serie-item");
-                const totalSlides = slides.length;
-                let currentIndex = 0;
-                const slidesPerPage = 6;
-                let intervalId = null;
+                    sliderContainers.forEach(function (container) {
+                        const slider = container.querySelector(".slider");
+                        const slides = slider.querySelectorAll(".serie-item");
+                        const totalSlides = slides.length;
+                        let currentIndex = 0;
+                        const slidesPerPage = 6;
+                        let intervalId = null;
 
-                function showSlide(index) {
-                    const slideWidth = slides[0].offsetWidth;
-                    const startPosition = index * slidesPerPage * slideWidth;
-                    slider.scrollTo({
-                        left: startPosition,
-                        behavior: 'smooth'
+                        function showSlide(index) {
+                            const slideWidth = slides[0].offsetWidth;
+                            const startPosition = index * slidesPerPage * slideWidth;
+                            slider.scrollTo({
+                                left: startPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+
+                        function nextSlide() {
+                            currentIndex = (currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)) ? currentIndex + 1 : 0;
+                            showSlide(currentIndex);
+                        }
+
+                        function prevSlide() {
+                            currentIndex = (currentIndex > 0) ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
+                            showSlide(currentIndex);
+                        }
+
+                        function startAutoPlay() {
+                            intervalId = setInterval(nextSlide, 4000);
+                        }
+
+                        function stopAutoPlay() {
+                            clearInterval(intervalId);
+                        }
+
+                        startAutoPlay();
+
+                        // Show all slides
+                        showSlide(currentIndex);
+
+                        const prevButton = container.querySelector('.prev-next-button.previous');
+                        const nextButton = container.querySelector('.prev-next-button.next');
+
+                        prevButton.addEventListener('click', prevSlide);
+                        nextButton.addEventListener('click', nextSlide);
+
+                        slider.addEventListener('mouseenter', function (event) {
+                            stopAutoPlay();
+
+                        });
+
+                        slider.addEventListener('mouseleave', function (event) {
+                            startAutoPlay();
+                        });
+
+
+                        const videos = container.querySelectorAll("video");
+
+                        function startPreview(video) {
+                            video.muted = true;
+                            video.currentTime = 1;
+                            video.playbackRate = 0.5;
+                            video.play();
+                        }
+
+                        function stopPreview(video) {
+                            video.currentTime = 0;
+                            video.playbackRate = 1;
+                            video.pause();
+                        }
+
+                        videos.forEach((video) => {
+                            const serieItem = video.closest(".serie-item");
+
+                            serieItem.addEventListener("mouseenter", () => {
+                                startPreview(video);
+                            });
+
+                            serieItem.addEventListener("mouseleave", () => {
+                                stopPreview(video);
+                            });
+                        });
                     });
-                }
-
-                function nextSlide() {
-                    currentIndex = (currentIndex + 1 < Math.ceil(totalSlides / slidesPerPage)) ? currentIndex + 1 : 0;
-                    showSlide(currentIndex);
-                }
-
-                function prevSlide() {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : Math.ceil(totalSlides / slidesPerPage) - 1;
-                    showSlide(currentIndex);
-                }
-
-                function startAutoPlay() {
-                    intervalId = setInterval(nextSlide, 4000);
-                }
-
-                function stopAutoPlay() {
-                    clearInterval(intervalId);
-                }
-
-                startAutoPlay();
-
-                // Show all slides
-                showSlide(currentIndex);
-
-                const prevButton = container.querySelector('.prev-next-button.previous');
-                const nextButton = container.querySelector('.prev-next-button.next');
-
-                prevButton.addEventListener('click', prevSlide);
-                nextButton.addEventListener('click', nextSlide);
-
-                slider.addEventListener('mouseenter', function (event) {
-                    stopAutoPlay();
-
                 });
 
-                slider.addEventListener('mouseleave', function (event) {
-                    startAutoPlay();
+                //star rate
+                let vt_avg_list = document.querySelectorAll('.vt_avg');
+                vt_avg_list.forEach(vt_avg => {
+                    let stars = vt_avg.previousElementSibling.querySelectorAll('.fa-star');
+                    let a = parseFloat(vt_avg.innerText);
+                    setColorStar(a, stars);
                 });
-
-
-                const videos = container.querySelectorAll("video");
-
-                function startPreview(video) {
-                    video.muted = true;
-                    video.currentTime = 1;
-                    video.playbackRate = 0.5;
-                    video.play();
-                }
-
-                function stopPreview(video) {
-                    video.currentTime = 0;
-                    video.playbackRate = 1;
-                    video.pause();
-                }
-
-                videos.forEach((video) => {
-                    const serieItem = video.closest(".serie-item");
-
-                    serieItem.addEventListener("mouseenter", () => {
-                        startPreview(video);
-                    });
-
-                    serieItem.addEventListener("mouseleave", () => {
-                        stopPreview(video);
-                    });
-                });
-            });
-        });
-
-        //star rate
-        let vt_avg_list = document.querySelectorAll('.vt_avg');
-        vt_avg_list.forEach(vt_avg => {
-            let stars = vt_avg.previousElementSibling.querySelectorAll('.fa-star');
-            let a = parseFloat(vt_avg.innerText);
-            setColorStar(a, stars);
-        });
-    </script>
+            </script>
 </body>
 </html>
