@@ -13,14 +13,40 @@ body{
     margin: 5px;
 }
 
-.head img{
-    position: relative;
-    width: 11%;
+.head {
+    height: 35px;
+}
+
+.head-img img{
+    width: 120px;
     z-index: 1;
     margin-left: 10px;
-    margin-top: -15px;
+    margin-top: -8px;
     margin-bottom: -14px;
 }
+
+.head-img {
+    display: inline-block;
+}
+
+.head-nav {
+    display: inline-block;
+}
+
+.head-nav ul li {
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    top: -5px;
+}
+
+.head-nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px;
+}
+
 .home-image{
     background-image: url(assests/hoome.jpg);
     background-position: center;
@@ -57,17 +83,49 @@ body{
 .play-btn{
     position: relative;
     text-decoration: none;
-    background-color: red;
     color: black;
     border-radius: 4px;
     padding: 8px 15px 7px;
     font-size: 18px;
     font-weight: bold;
-    transition: all ease 0.3s;
+    overflow: hidden;
+    display: inline-block;
 }
 
-.play-btn:hover {
-    filter: brightness(80%);
+.play-btn::before {
+    position: absolute;
+    content: "";
+    background-color: red;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    transition: all ease 0.8s;
+}
+
+.play-btn::after {
+    position: absolute;
+    content: "";
+    background-color: rgb(161, 44, 44);
+    right: 0;
+    width: 0;
+    z-index: -1;
+    transition: all ease 0.8s;
+    top: 0;
+    height: 100%;
+}
+
+.btn1::before {
+    height: 180%;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.btn1:hover::before{
+    width: 50%;
+}
+
+.btn1:hover::after{
+    width: 50%;
 }
 
 .play-btn span {
@@ -146,6 +204,18 @@ body{
     visibility: hidden;
     transition: all ease-in 0.7s;
     z-index: 1;
+    box-shadow: 2px 2px #08060657;
+}
+
+.original1 .original-details {
+    width: 220px;
+    margin-left: -1.7%;
+    height: 108%;
+}
+
+.original1 .icon-v,.original1 .icon-check,.original1 .icon-down {
+    width: 14px;
+    padding: 2px;
 }
 
 .original a:first-child .original-details, .original2 a:first-child .original-details, .original1 a:first-child .original-details {
@@ -181,6 +251,10 @@ body{
     width: 100%;
     top: 57%;
     background-color: #181818;
+}
+
+.original1 .details-info {
+    top: 46%;
 }
 
 .details-icon {
@@ -223,10 +297,26 @@ body{
     font-weight: bold;
 }
 
+.original1 .details-category {
+    font-size: 13px;
+    padding: 16px;
+}
+
 .more-one {
     border: 1px solid #bcbcbc;
     padding: 2px 8px;
     font-size: 14px;
+}
+
+.original1 .more-one {
+    padding: 3px;
+    font-size: 11px;
+}
+
+.original1 .more-hd {
+    padding: 5px 4px;
+    border-radius: 4px;
+    font-size: 9px;
 }
 
 .more-hd {

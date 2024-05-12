@@ -15,9 +15,14 @@
     <link rel="stylesheet" href="/css/slick.css" />
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="shortcut icon" href="https://www.netflix.com/in/favicon.ico" type="image/x-icon">
+<<<<<<< HEAD
     <link href="~/Content/cmt.cs" rel="stylesheet">
 
 
+=======
+    <link href="~/Content/ReviewResource/css/single.css" rel="stylesheet" />
+    <link href="~/Content/ReviewResource/list-css/list.css" rel="stylesheet" />
+>>>>>>> 8b603522165d04b385240be13c2f70e3853095a9
     <style>
         .content {
             width: 100%;
@@ -141,6 +146,7 @@
                 <br />Off light
             </div>
         </div>
+<<<<<<< HEAD
         <div class="inf-mv">
             <img class="poster-image" src="@String.Concat("https://image.tmdb.org/t/p/w500", @Model.posterPath)" alt="@Model.movieName">
             <div>
@@ -246,6 +252,28 @@
                 </div>
             </div>
         </div>
+=======
+        <div class="all-comments">
+            <div class="all-comments-info">
+                <a href="#">Comments</a>
+                <div class="agile-info-wthree-box" id="comments-form">
+                    <!-- Form for adding new comments -->
+                    <form>
+                        <input type="text" placeholder="Name" required="">
+                        <input type="text" placeholder="Email" required="">
+                        <input type="text" placeholder="Phone" required="">
+                        <textarea placeholder="Message" required=""></textarea>
+                        <input type="submit" value="SEND">
+                        <div class="clearfix"> </div>
+                    </form>
+                </div>
+            </div>
+            <div class="media-grids" id="comments-list">
+                <!-- Existing comments will be dynamically added here -->
+            </div>
+        </div>
+
+>>>>>>> 8b603522165d04b385240be13c2f70e3853095a9
     </div>
     <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
@@ -297,6 +325,51 @@
                 })
             }
         })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+    // Function to fetch and display comments
+    async function fetchAndDisplayComments() {
+        try {
+            const movieId = '@Model.movieID';
+            const apiKey = '4c7a48492227a8ce26dceb363ea366cb';
+            const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`;
+
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            const commentsList = document.getElementById('comments-list');
+
+            // Clear previous comments
+            commentsList.innerHTML = '';
+
+            // Iterate over each comment and add it to the list
+            data.results.forEach(comment => {
+                const commentItem = document.createElement('div');
+                commentItem.classList.add('media');
+                commentItem.innerHTML = `
+                    <h5>${comment.author}</h5>
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="~/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <p>${comment.content}</p>
+                        <span>View all posts by :<a href="#"> Admin </a></span>
+                    </div>
+                `;
+                commentsList.appendChild(commentItem);
+            });
+        } catch (error) {
+            console.error('Error fetching comments:', error);
+        }
+    }
+
+    // Call fetchAndDisplayComments function when the page loads
+    fetchAndDisplayComments();
+});
+
     </script>
 </body>
 
