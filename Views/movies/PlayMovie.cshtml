@@ -7,18 +7,16 @@
 <head>
     <title>@Html.DisplayFor(m => m.movieName)</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <link rel="stylesheet" href="/css/all.min.css" />
-    <link rel="stylesheet" href="/css/animate.min.css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/magnific-popup.css" />
+
     <link rel="stylesheet" href="/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="/css/select2-bootstrap4.min.css" />
-    <link rel="stylesheet" href="/css/select2.min.css" />
+
     <link rel="stylesheet" href="/css/slick-animation.css" />
     <link rel="stylesheet" href="/css/slick-theme.css" />
     <link rel="stylesheet" href="/css/slick.css" />
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="shortcut icon" href="https://www.netflix.com/in/favicon.ico" type="image/x-icon">
+    <link href="~/Content/cmt.cs" rel="stylesheet">
+
 
     <style>
         .content {
@@ -49,6 +47,10 @@
         footer.iq-bg-dark {
             margin-top: 100px;
         }
+        footer{
+            position: relative;
+        }
+
 
         .dt-content {
             position: absolute;
@@ -79,8 +81,37 @@
                 display: block;
                 text-decoration: none;
             }
+
+        .inf-mv {
+            position: relative;
+            top: 70px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url("@String.Concat("https://image.tmdb.org/t/p/w500", @Model.backdropPath)");
+            background-size: cover;
+            display: flex;
+            margin: 0 auto;
+            padding: 50px 250px;
+        }
+
+        .inf-mv img{
+            width: 200px;
+            margin-right: 50px;
+
+        }
+        .text-primary{
+            padding: 5px 0;
+        }
+
+        .cmt {
+            position: relative;
+            top: 100px;
+            padding: 10px 300px;
+            height: auto;
+            background-color: #141414;
+            color: whitesmoke;
+        }
     </style>
 </head>
+
 <body>
     <div class="content">
         <div class="video-container">
@@ -98,7 +129,7 @@
                 <br />Rate it
             </div>
             <div class="dt-btn">
-                <i class="fas fa-share"></i> 
+                <i class="fas fa-share"></i>
                 <br />Share this
             </div>
             <div class="dt-btn">
@@ -110,7 +141,111 @@
                 <br />Off light
             </div>
         </div>
-        
+        <div class="inf-mv">
+            <img class="poster-image" src="@String.Concat("https://image.tmdb.org/t/p/w500", @Model.posterPath)" alt="@Model.movieName">
+            <div>
+                <h1 style="font-size: 40px;" class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
+                    data-delay-in="0.6">
+                    @Html.DisplayFor(model => model.movieName)
+                </h1>
+                <div class="d-flex flex-wrap align-items-center fadeInLeft animated" data-animation-in="fadeInLeft"
+                     style="opacity: 1">
+                    <div class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3">
+                        <ul class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star-half"></i></li>
+                        </ul>
+                        <span class="text-white ml-2">@Html.DisplayFor(model => model.voteAverage)</span>
+                    </div>
+                    <div class="d-flex align-items-center mt-2 mt-md-3">
+                        <span class="badge badge-secondary p-2">16+</span>
+                        <span class="ml-3">@Html.DisplayFor(model => model.runtime) (minutes)</span>
+                    </div>
+                </div>
+                <p data-animation-in="fadeInUp">
+                    @Html.DisplayFor(model => model.overview)
+                </p>
+                <div class="trending-list" data-animation-in="fadeInUp" data-delay-in="1.2">
+                    <div class="text-primary title starring">
+                        Original name:
+                        <span class="text-body">
+                            @Html.DisplayFor(model => model.originalMovieName)
+                        </span>
+                    </div>
+                    <div class="text-primary title genres">
+                        Genres : <span class="text-body">
+                            @foreach (var genre in Model.genres)
+                            {
+                                @genre.genreName
+                                if (!genre.Equals(Model.genres.Last()))
+                                {
+                                    <span>, </span>
+                                }
+                            }
+                        </span>
+                    </div>
+                    <div class="text-primary title tag">
+                        Tags :
+                        <span class="text-body">@Html.DisplayFor(model => model.tags) </span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="cmt">
+            <p style="font-size: 25px; border-left: 4px solid red; padding: 0px 5px; margin: 0 0 30px 0px;">Comments<span style="font-size: 18px;">(3)</span></p>
+            <div class="container d-flex custom-mt-100 custom-mb-100">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="custom-card custom-card-no-border">
+          
+
+                            <div class="custom-comment-widgets m-b-20">
+
+                                <div class="d-flex flex-row custom-comment-row">
+                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/tT8rjKC.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
+                                    <div class="custom-comment-text w-100">
+                                        <h5>userName</h5>
+                                        <div class="button-wrapper" style="display: flex; margin-bottom: 20px;">
+                                            <input type="text" class="cmt_ip" required />
+                                            <button class="submit" style="background-color: #141414; color: white; padding: 10px; margin-left: 10px; border-radius: 10px; font-size: 20px;" ><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row custom-comment-row">
+                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
+                                    <div class="custom-comment-text w-100">
+                                        <h5>Samso Nagaro</h5>
+                                        <div class="custom-comment-footer">
+                                            <span class="date">April 14, 2019</span>
+                                        </div>
+                                        <p class="m-b-5 m-t-10" style="color: #d1d0cf;">Phim quá đỉnh</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="d-flex flex-row custom-comment-row">
+                                    <div class="p-2"><span class="custom-round"><img src="https://i.imgur.com/cAdLHeY.jpg" alt="user" width="50" style="border-radius: 100%"></span></div>
+                                    <div class="custom-comment-text w-100">
+                                        <h5>Sarah Tim</h5>
+                                        <div class="custom-comment-footer">
+                                            <span class="date">Jan 20, 2020</span>
+                                        </div>
+                                        <p class="m-b-5 m-t-10" style="color: #d1d0cf;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>

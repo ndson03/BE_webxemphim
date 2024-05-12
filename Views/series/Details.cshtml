@@ -94,7 +94,7 @@
         font-size: 14px;
         background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.1) 100%);
         opacity: 0;
-        top: 220px;
+        top: 230px;
         transform: translateY(100%);
         transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease; /* Cải tiến hiệu ứng chuyển động */
     }
@@ -142,11 +142,7 @@
                 <div class="slider-inner">
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-12 col-md-12">
-                            <a href="javascript:void(0)">
-                                <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
-                                    <img src="~/Content/SingleMovie/images/logo.png" class="c-logo" alt="" />
-                                </div>
-                            </a>
+                            <br /><br />
                             <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
                                 data-delay-in="0.6">
                                 @Html.DisplayFor(model => model.serieName)

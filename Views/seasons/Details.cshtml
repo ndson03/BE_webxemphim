@@ -60,11 +60,7 @@
                 <div class="slider-inner">
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-12 col-md-12">
-                            <a href="javascript:void(0)">
-                                <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
-                                    <img src="~/Content/SingleMovie/images/logo.png" class="c-logo" alt="" />
-                                </div>
-                            </a>
+                            <br /><br />
                             <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
                                 data-delay-in="0.6">
                                 @Html.DisplayFor(model => model.seasonName)
@@ -83,11 +79,11 @@
                                 </div>
                                 <div class="d-flex align-items-center mt-2 mt-md-3">
                                     <span class="badge badge-secondary p-2">16+</span>
-                                    @{ 
+                                    @{
                                         int number = 0;
-                                        foreach(var episode in db.episodes)
+                                        foreach (var episode in db.episodes)
                                         {
-                                            if(episode.serieID.Equals(Model.serieID))
+                                            if (episode.serieID.Equals(Model.serieID))
                                             {
                                                 number++;
                                             }

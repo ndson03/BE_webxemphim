@@ -131,6 +131,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\cmt.css" />
     <Compile Include="Controllers\actorsController.cs" />
     <Compile Include="Controllers\Encrypted.cs" />
     <Compile Include="Controllers\episodesController.cs" />
