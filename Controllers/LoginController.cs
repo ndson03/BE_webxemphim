@@ -92,6 +92,7 @@ namespace NetflixClone.Controllers
                         var role = user.fullName;
                         var jwtToken = Authentication.GenerateJWTAuthetication(user.userName, role);
                         var validUserName = Authentication.ValidateToken(jwtToken);
+                        Console.WriteLine(validUserName);
                         return RedirectToAction("Index", "Home");
                     }
                 }
