@@ -38,6 +38,36 @@ namespace NetflixClone.Controllers
         }
 
         [HttpPost]
+        //public ActionResult Login(string email, string password)
+        //{
+        //    if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        //    {
+        //        ViewBag.Error = "Email or password is empty!";
+        //        return View("Login");
+        //    }
+        //    else
+        //    {
+        //        // Encrypt the email and password before comparing
+
+        //        foreach (var user in db.users)
+        //        {
+        //            Console.WriteLine(user.email);
+        //            string decryptedEmail = RSAEncryption.Decrypt(user.email);
+
+        //            string decryptedPassword = RSAEncryption.Decrypt(user.password);
+        //            if (decryptedEmail == email && decryptedPassword == password)
+        //            {
+        //                Session["user"] = user.fullName;
+        //                Session["id"] = user.userID;
+        //                return RedirectToAction("Index", "Home");
+        //            }
+        //        }
+        //            ViewBag.Error = "Invalid email or password!";
+        //            return View("Login");
+
+        //    }
+        //}
+
         public ActionResult Login(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -53,18 +83,21 @@ namespace NetflixClone.Controllers
                 {
                     Console.WriteLine(user.email);
                     string decryptedEmail = RSAEncryption.Decrypt(user.email);
-                    
+
                     string decryptedPassword = RSAEncryption.Decrypt(user.password);
                     if (decryptedEmail == email && decryptedPassword == password)
                     {
                         Session["user"] = user.fullName;
                         Session["id"] = user.userID;
+                        var role = user.fullName;
+                        var jwtToken = Authentication.GenerateJWTAuthetication(user.userName, role);
+                        var validUserName = Authentication.ValidateToken(jwtToken);
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                    ViewBag.Error = "Invalid email or password!";
-                    return View("Login");
-                
+                ViewBag.Error = "Invalid email or password!";
+                return View("Login");
+
             }
         }
 
