@@ -25,7 +25,6 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 10px 0;
-
 }
 
 .logo {
@@ -44,7 +43,6 @@ nav button {
     border-radius: 4px;
     margin-left: 10px;
     cursor: pointer;
-
 }
 
 #abc {
@@ -63,10 +61,10 @@ nav button {
     font-size: 16px;
 }
 
-.lang-btn img {
-    width: 10px;
-    margin-left: 10px;
-}
+    .lang-btn img {
+        width: 10px;
+        margin-left: 10px;
+    }
 
 .header-content {
     position: absolute;
@@ -79,60 +77,73 @@ nav button {
     max-width: 70%;
 }
 
-.header-content h1 {
-    font-size: 45px;
-    line-height: 70px;
-    font-weight: 900;
-    margin: 0;
-    white-space: nowrap;
-}
+    .header-content h1 {
+        font-size: 45px;
+        line-height: 70px;
+        font-weight: 900;
+        margin: 0;
+        white-space: nowrap;
+    }
 
-.header-content h3 {
-    font-weight: 400px;
-    margin-bottom: 25px;
-    margin-top: 20px;
-    font-size: 20px;
-}
+    .header-content h3 {
+        font-weight: 400px;
+        margin-bottom: 25px;
+        margin-top: 20px;
+        font-size: 20px;
+    }
 
-.header-content p {
-    font-size: 20px;
-}
+    .header-content p {
+        font-size: 20px;
+    }
 
 
 .email-signup {
-    background-color: rgba(98, 98, 98, 0.5);
+    /*background-color: rgba(98, 98, 98, 0.5);
     border-radius: 4px;
     display: flex;
     align-items: center;
     margin-top: 30px;
     overflow: hidden;
     width: 550px;
-    margin-left: 202px;
+    margin-left: 202px;*/
+    background-color: #fff;
+    border-radius: 4px;
+    margin-top: 30px;
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 40px;
+    overflow: hidden;
 }
 
-.email-signup input {
-    flex: 1;
-    border: 0;
-    outline: 0;
-    margin-left: 20px;
-    background-color: rgba(98, 98, 98, 0.5);
-}
+    .email-signup input {
+        color: #333;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        border: 0;
+        outline: 0;
+        padding-left: 6px;
+    }
 
-.email-signup input::placeholder {
-    color: rgb(171, 178, 183);
-    font-size: 17px;
-}
+        .email-signup input::placeholder {
+            font-size: 15px;
+            color: #333;
+        }
 
-.email-signup button {
-    background-color: #db0001;
-    border: 0;
-    outline: 0;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 15px 30px;
-    border-radius: 5px;
-}
+    .email-signup button {
+        background-color: #db0001;
+        border: 0;
+        outline: 0;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        position: absolute;
+        padding: 0 4px;
+        height: 100%;
+        right: -1px;
+    }
 
 .features {
     padding: 50px 12%;
@@ -158,11 +169,11 @@ nav button {
     margin-bottom: 20px;
 }
 
-.img-col img {
-    display: block;
-    width: 90%;
-    margin: auto;
-}
+    .img-col img {
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
 
 .features h2 {
     font-size: 50px;
@@ -174,13 +185,12 @@ nav button {
     padding: 10px 12%;
     text-align: center;
     font-size: 18px;
-
 }
 
-.faq h2 {
-    font-weight: -500;
-    font-size: 40px;
-}
+    .faq h2 {
+        font-weight: -500;
+        font-size: 40px;
+    }
 
 .accordion {
     margin: 60px auto;
@@ -188,23 +198,23 @@ nav button {
     max-width: 750px;
 }
 
-.accordion li {
-    list-style: none;
-    width: 100%;
-    padding: 5px;
-}
+    .accordion li {
+        list-style: none;
+        width: 100%;
+        padding: 5px;
+    }
 
-.accordion li label {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: #303030;
-    margin-bottom: 2px;
-    cursor: pointer;
-    position: relative;
-}
+        .accordion li label {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 500;
+            background-color: #303030;
+            margin-bottom: 2px;
+            cursor: pointer;
+            position: relative;
+        }
 
 label::after {
     content: '+';
@@ -227,13 +237,18 @@ input[type="radio"] {
     transition: max-height 0.5s, padding 0.5s;
 }
 
-.accordion input[type="radio"]:checked+label+.content {
+.accordion input[type="radio"]:checked + label + .content {
     max-height: 600px;
     padding: 30px 20px;
 }
 
-.accordion input[type="radio"]:checked+label::after {
+.accordion input[type="radio"]:checked + label::after {
     transform: rotate(135deg);
+}
+
+.more-signup {
+    display: flex;
+    flex-direction: column;
 }
 
 .faq .email-signup {
@@ -246,25 +261,22 @@ input[type="radio"] {
 }
 
 .footer {
-    padding: 50px 15px 10px;
     border-top: 6px solid;
     color: #474747;
-    margin: 100px;
     width: 100%;
     padding: 20px;
 }
 
-.footer h2 {
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 30px;
-}
+    .footer h2 {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
 
 .row {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
 }
 
 .footer .col {
@@ -273,13 +285,13 @@ input[type="radio"] {
     margin-bottom: 20px;
 }
 
-.footer .col a {
-    display: block;
-    color: #9b9696;
-    font-size: 14px;
-    margin-bottom: 10px;
-    text-decoration: underline;
-}
+    .footer .col a {
+        display: block;
+        color: #9b9696;
+        font-size: 14px;
+        margin-bottom: 10px;
+        text-decoration: underline;
+    }
 
 .footer .row {
     align-items: flex-start;
@@ -319,9 +331,9 @@ input[type="radio"] {
         padding-top: 150px;
     }
 
-    .header-content h1 {
-        font-size: 30px;
-    }
+        .header-content h1 {
+            font-size: 30px;
+        }
 
     .email-signup button {
         font-size: 12px;
@@ -368,16 +380,18 @@ input[type="radio"] {
     }
 }
 
-.col a{
+.col a {
     transition: all 0.2s ease-in-out !important;
     text-decoration: none !important;
     color: #bfbfbf !important;
 }
-.col a:hover{
-    transform: translateY(-3px) !important;
-    color: #fff !important;
-}
-.col{
+
+    .col a:hover {
+        transform: translateY(-3px) !important;
+        color: #fff !important;
+    }
+
+.col {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
