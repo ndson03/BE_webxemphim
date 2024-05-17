@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Tittle = "Playing movie";
+    int movieId = ViewBag.MovieId;
+    NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
 }
 
 <head>
@@ -15,8 +17,8 @@
     <link rel="stylesheet" href="/css/slick.css" />
     <link rel="stylesheet" href="~/Content/MainPage/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="shortcut icon" href="https://www.netflix.com/in/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="~/Content/ReviewResource/css/single.css"  />
-    <link rel="stylesheet" href="~/Content/ReviewResource/list-css/list.css"  />
+    <link rel="stylesheet" href="~/Content/ReviewResource/css/single.css" />
+    <link rel="stylesheet" href="~/Content/ReviewResource/list-css/list.css" />
 
     <style>
         .content {
@@ -101,7 +103,7 @@
             padding: 5px 0;
         }
 
-      
+
     </style>
 </head>
 
@@ -187,31 +189,54 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
-        
+
 
         <div class="all-comments">
             <p class="tt-cmt">Comments</p>
             <div class="all-comments-info">
                 <div class="agile-info-wthree-box" id="comments-form">
-                    <!-- Form for adding new comments -->
-                    <form>
+                    <!-- Form comment/review -->
 
-                        <input type="text" placeholder="Name" required="" >
-                        <input type="text" placeholder="Email" required="">
-                        <textarea placeholder="Message" required=""></textarea>
+                    @using (Html.BeginForm("Add", "Review", FormMethod.Post))
+                    {
+                        <div class="input-box" id="input1">
+                            @Html.TextBox("Name", null, new { required = "required", placeholder = "Name" })
+                        </div>
+                        <div class="input-box" id="input1">
+                            @Html.TextBox("Email", null, new { required = "required", placeholder = "email" })
+                        </div>
+                        <div class="input-box" id="input1">
+                            @Html.TextBox("Message", null, new { required = "required", placeholder = "message" })
+                        </div>
+                        @Html.Hidden("id", (int)ViewBag.MovieId)
                         <button type="submit">
                             <i class="fas fa-paper-plane"></i>
                         </button>
-                        <div class="clearfix"> </div>
-                    </form>
+                    }
+                    <div class="clearfix"> </div>
+
                 </div>
             </div>
             <div class="media-grids" id="comments-list">
                 <!-- Existing comments will be dynamically added here -->
             </div>
-        </div>
+            @foreach (var r in Model.reviews)
+            {
+                    <div class="media-left">
+                        <a href="#">
+                            <img src="/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h5>@r.user.userName</h5>
+                        <p>@r.content</p>
+                        <span><a href= "@Url.Action("Delete", "Review", new { id = r.reviewID, movieid = r.movieID })"> Delete </a></span>
+                        
+                    </div>
+            }
+            </div>
 
 
     </div>
@@ -288,7 +313,7 @@
                 const commentItem = document.createElement('div');
                 commentItem.classList.add('media');
                 commentItem.innerHTML = `
-                    
+
                     <div class="media-left">
                         <a href="#">
                             <img src="/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />

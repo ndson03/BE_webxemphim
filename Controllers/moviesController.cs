@@ -35,7 +35,7 @@ namespace NetflixClone.Controllers
                 // Handle the case where the movie is not found
                 return RedirectToAction("Index", "Home");
             }
-
+            ViewBag.MovieId = id;
             return View(movie); // Pass the movie object to the view
         }
 

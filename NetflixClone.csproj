@@ -180,6 +180,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\moviesController.cs" />
     <Compile Include="Controllers\RSAEncryption.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\WatchlistController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\seasonsController.cs" />
