@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Movie detail";
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
+    int loggedUserID = (int)@Session["id"];
 }
 
 <style>
@@ -99,7 +100,7 @@
                             </div>
                             <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
                                 <a href="@Url.Action("PlayMovie", "movies", new { id = Model.movieID })" id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Play Now</a>
-                                <a href='@Url.Action("Add", "Watchlist", new { id = Model.movieID, watchlistID =  Session["id"] })' id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Add to watchlist</a>
+                                <a href='@Url.Action("Add", "Watchlist", new { id = Model.movieID, watchlistID = db.watchlists.Where(w => w.userID == loggedUserID).Select(w => w.watchlistID).FirstOrDefault() })' id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Add to watchlist</a>
                                 <a href="#" class="btn btn-link">More Details</a>
                             </div>
                             <!-- Container to inject the content -->

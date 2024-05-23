@@ -123,6 +123,7 @@ namespace NetflixClone.Controllers
                     usernew.password = encrypted.encryptedPassword;
                     //Console.WriteLine();
                         usernew.userName = fullname;
+                        usernew.fullName = fullname;
                         usernew.birthday = DateTime.Now;
                         usernew.profileImage = "";
                         usernew.gender = 1;
@@ -138,6 +139,11 @@ namespace NetflixClone.Controllers
                         user.profileImage = fileName;
                     }*/
                     db.users.Add(usernew);
+                    watchlist favoritelist = new watchlist();
+                    favoritelist.watchlistID = db.watchlists.Count() + 1;
+                    favoritelist.userID = usernew.userID;
+                    favoritelist.watchlistName = "favoritelist";
+                    db.watchlists.Add(favoritelist);
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index", "Login");

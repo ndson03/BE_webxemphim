@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Series detail";
     NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
+    int loggedUserID = (int)@Session["id"];
 }
 
 <head>
@@ -191,7 +192,7 @@
                                     <span class="text-body">@Html.DisplayFor(model => model.tags) </span>
                                 </div>
                                 <div class="d-flex align-items-center r-mb-23 mt-4" data-animation-in="fadeInUp" data-delay-in="1.2">
-                                    <a href= '@Url.Action("Add", "Watchlist", new { id = Model.serieID, watchlistID =  Session["id"] })' id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Add to watchlist</a>
+                                    <a href= '@Url.Action("Add", "Watchlist", new { id = Model.serieID, watchlistID = db.watchlists.Where(w => w.userID == loggedUserID).Select(w => w.watchlistID).FirstOrDefault() })' id="playNowBtn" class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Add to watchlist</a>
                                 </div>
                             </div>
                         </div>
