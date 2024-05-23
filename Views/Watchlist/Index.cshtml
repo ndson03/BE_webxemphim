@@ -1,4 +1,9 @@
 ﻿@model NetflixClone.Models.MediaListWatchlistModel
+@{
+    ViewBag.Title = "watchlist";
+    NetflixClone.Models.Model1 db = new NetflixClone.Models.Model1();
+    int loggedUserID = (int)@Session["id"];
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,7 +157,7 @@
                     @foreach (var movie in Model.Movies)
                     {
                         <div class="movie-item">
-                            <a href='@Url.Action("Delete", "Watchlist", new { id = movie.movieID, watchlistID =  Session["id"] })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Delete</a>
+                            <a href='@Url.Action("Delete", "Watchlist", new { id = movie.movieID, watchlistID = db.watchlists.Where(w => w.userID == loggedUserID).Select(w => w.watchlistID).FirstOrDefault() })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Delete</a>
                             <a href="@Url.Action("Details", "movies", new { id = movie.movieID })" class="movie-link">
                                 <img src="@movie.posterPath" alt="@movie.movieName">
                                 <div class="movie-details">
@@ -190,7 +195,7 @@
                 <div class="slider">
                     @foreach (var serie in Model.Series)
                     {
-                        
+
                         <div class="movie-item">
                             <a href='@Url.Action("Delete", "Watchlist", new { id = serie.serieID, watchlistID =  Session["id"] })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Delete</a>
                             <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="movie-link">
