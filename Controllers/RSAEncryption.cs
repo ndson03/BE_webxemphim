@@ -19,7 +19,7 @@ namespace NetflixClone.Controllers
             isInit = true;
             rsa = RSA.Create();
             //Uncomment export() khi chạy lần đầu, từ lần 2 thì comment lại vì có key rồi
-            export();
+            //export();
             // Đọc khóa từ file XML
             // Import khóa từ chuỗi XML vào đối tượng RSACryptoServiceProvider
 
@@ -36,7 +36,7 @@ namespace NetflixClone.Controllers
 
         //Xuất key trong lần đầu chạy project
         
-        public static void export()
+        /*public static void export()
         {
             // Tạo thư mục ở ổ tương ứng để xuất file
             string publicKeyXml = rsa.ToXmlString(false);
@@ -44,7 +44,7 @@ namespace NetflixClone.Controllers
 
             string privateKeyXml = rsa.ToXmlString(true);
             File.WriteAllText(@"D:\Learning\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml", privateKeyXml);
-        }
+        }*/
         
 
         public static byte[] Encrypt(string plainText)
