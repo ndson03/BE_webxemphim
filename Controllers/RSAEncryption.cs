@@ -23,29 +23,29 @@ namespace NetflixClone.Controllers
             // Đọc khóa từ file XML
             // Import khóa từ chuỗi XML vào đối tượng RSACryptoServiceProvider
 
-            //string xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml");
-            string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
+            string xmlString = File.ReadAllText(@"D:\Learning\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml");
+            //string xmlString = File.ReadAllText(@"C:\Keys\publicKey.xml");
             //string xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\publicKey.xml");
             rsa.FromXmlString(xmlString);
 
-            //xmlString = File.ReadAllText(@"D:\LEARNING\ThucTapChuyenNganh\ttcn_webxemphim\Keys\privateKey.xml");
-            xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
+            xmlString = File.ReadAllText(@"D:\Learning\ThucTapChuyenNganh\ttcn_webxemphim\Keys\privateKey.xml");
+            //xmlString = File.ReadAllText(@"C:\Keys\privateKey.xml");
             //xmlString = File.ReadAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\privateKey.xml");
             rsa.FromXmlString(xmlString);
         }
 
         //Xuất key trong lần đầu chạy project
-        /*
-        public static void export()
+        
+        /*public static void export()
         {
             // Tạo thư mục ở ổ tương ứng để xuất file
             string publicKeyXml = rsa.ToXmlString(false);
-            File.WriteAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\publicKey.xml", publicKeyXml);
+            File.WriteAllText(@"D:\Learning\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml", publicKeyXml);
 
             string privateKeyXml = rsa.ToXmlString(true);
-            File.WriteAllText(@"D:\Semester 6\Thực tập chuyên ngành\SourceCode\Project_NetflixCllone\ttcn_webxemphim\Keys\privateKey.xml", privateKeyXml);
-        }
-        */
+            File.WriteAllText(@"D:\Learning\ThucTapChuyenNganh\ttcn_webxemphim\Keys\publicKey.xml", privateKeyXml);
+        }*/
+        
 
         public static byte[] Encrypt(string plainText)
         {
