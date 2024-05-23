@@ -89,7 +89,7 @@ namespace NetflixClone.Controllers
                     {
                         Session["user"] = user.fullName;
                         Session["id"] = user.userID;
-                        var role = user.fullName;
+                       /* var role = user.fullName;
                         var jwtToken = Authentication.GenerateJWTAuthetication(user.userName, role);
                         var validUserName = Authentication.ValidateToken(jwtToken);
                         Console.WriteLine(validUserName);
@@ -97,7 +97,7 @@ namespace NetflixClone.Controllers
                         {
                             ViewBag.Error = "Unauthorized login attempt";
                             return View();
-                        }
+                        }*/
                         return RedirectToAction("Index", "Home");
                     }
                 }
