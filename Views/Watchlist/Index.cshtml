@@ -197,7 +197,7 @@
                     {
 
                         <div class="movie-item">
-                            <a href='@Url.Action("Delete", "Watchlist", new { id = serie.serieID, watchlistID =  Session["id"] })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Delete</a>
+                            <a href='@Url.Action("Delete", "Watchlist", new { id = serie.serieID, watchlistID = db.watchlists.Where(w => w.userID == loggedUserID).Select(w => w.watchlistID).FirstOrDefault() })' class="btn btn-hover iq-button"><i class="fa fa-play mr-3"></i>Delete</a>
                             <a href="@Url.Action("Details", "series", new { id = serie.serieID })" class="movie-link">
                                 <img src="@serie.posterPath" alt="@serie.serieName">
                                 <div class="movie-details">
