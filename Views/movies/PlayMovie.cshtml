@@ -202,16 +202,17 @@
                     @using (Html.BeginForm("Add", "Review", FormMethod.Post))
                     {
                         <div class="input-box" id="input1">
-                            @Html.TextBox("Name", null, new { required = "required", placeholder = "Name" })
+                            @Html.TextBox("Name", null, new { style = "width:200px; height:40px", required = "required", placeholder = "Name" })
                         </div>
                         <div class="input-box" id="input1">
-                            @Html.TextBox("Email", null, new { required = "required", placeholder = "email" })
+                            @Html.TextBox("Email", null, new { style = "width:400px; height:40px", required = "required", placeholder = "email" })
                         </div>
                         <div class="input-box" id="input1">
-                            @Html.TextBox("Message", null, new { required = "required", placeholder = "message" })
+                            @Html.TextBox("Message", null, new { style = "width:800px; height:40px;margin: 20px;", required = "required", placeholder = "message" })
                         </div>
                         @Html.Hidden("id", (int)ViewBag.MovieId)
-                        <button type="submit">
+                        <button type="submit"
+                                style="">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     }
