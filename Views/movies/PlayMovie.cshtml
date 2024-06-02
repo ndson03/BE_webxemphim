@@ -201,12 +201,14 @@
 
                     @using (Html.BeginForm("Add", "Review", FormMethod.Post))
                     {
-                        <div class="input-box" id="input1">
+                        @*<div class="input-box" id="input1">
                             @Html.TextBox("Name", null, new { style = "width:200px; height:40px", required = "required", placeholder = "Name" })
                         </div>
                         <div class="input-box" id="input1">
                             @Html.TextBox("Email", null, new { style = "width:400px; height:40px", required = "required", placeholder = "email" })
-                        </div>
+                        </div>*@
+                        @Html.Hidden("Name", "")
+                        @Html.Hidden("Email", "")
                         <div class="input-box" id="input1">
                             @Html.TextBox("Message", null, new { style = "width:800px; height:40px;margin: 20px;", required = "required", placeholder = "message" })
                         </div>
@@ -225,16 +227,18 @@
             </div>
             @foreach (var r in Model.reviews)
             {
-                    <div class="media-left">
-                        <a href="#">
-                            <img src="/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h5>@r.user.userName</h5>
-                        <p>@r.content</p>
-                        <span><a href= "@Url.Action("Delete", "Review", new { id = r.reviewID, movieid = r.movieID })"> Delete </a></span>
-                        
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img src="/Content/ReviewResource/images/user.jpg" title="One movies" alt=" " />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h5>@r.user.userName</h5>
+                            <p>@r.content</p>
+                            <span><a href="@Url.Action("Delete", "Review", new { id = r.reviewID, movieid = r.movieID })"> Delete </a></span>
+
+                        </div>
                     </div>
             }
             </div>
