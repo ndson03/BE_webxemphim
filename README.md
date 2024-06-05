@@ -18,7 +18,7 @@ Welcome to our Netflix clone project! This web application allows users to watch
 
 ## Installation and Setup
 
-1. Clone the repository to your local machine.
+1. Clone the repository to your local.
 
 2. Set up SQL Server database:
 - Create a new database and execute the SQL scripts provided in the `database-scripts` folder to create tables and insert initial data.
@@ -27,7 +27,7 @@ Welcome to our Netflix clone project! This web application allows users to watch
 - Sign up for a TMDB API key from [TMDB website](https://www.themoviedb.org/documentation/api).
 
 4. Configure the application:
-- Update the `appsettings.json` file with your TMDB API key and SQL Server connection string.
+- Update with your TMDB API key and SQL Server connection string.
 
 5. Build and run the application:
 - Open the solution file in Visual Studio.
@@ -44,3 +44,4 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 5. Push to the branch.
 6. Create a new Pull Request.
 
+## Latest Demo
